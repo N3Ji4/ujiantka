@@ -1,0 +1,7 @@
+{
+  "name": "TKA Belajar",
+  "description": "Platform persiapan Tes Kemampuan Akademik (TKA) yang tenang, modern, dan bebas distraksi untuk Matematika, Bahasa Inggris, PKWU, dan Teknik Komputer.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

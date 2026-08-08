@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TKA Belajar - Platform Persiapan Tes Kemampuan Akademik</title>
+    <script>
+      // Safe fetch shim to prevent "Cannot set property fetch of #<Window> which has only a getter"
+      (function() {
+        try {
+          if (typeof window !== 'undefined') {
+            var defaultFetch = window.fetch ? window.fetch.bind(window) : undefined;
+            var currentFetch = defaultFetch;
+            try {
+              Object.defineProperty(window, 'fetch', {
+                get: function() {
+                  return currentFetch || defaultFetch;
+                },
+                set: function(fn) {
+                  currentFetch = fn;
+                },
+                configurable: true,
+                enumerable: true
+              });
+            } catch (err) {
+              // Ignore if already configured
+            }
+          }
+        } catch (e) {
+          // Ignore
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
