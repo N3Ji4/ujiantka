@@ -1,380 +1,163 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { 
-  Trophy, 
-  RotateCcw, 
-  BookOpen, 
-  ArrowLeft, 
+  Award, 
   CheckCircle2, 
   XCircle, 
   Clock, 
-  Sparkles, 
-  TrendingUp, 
-  Filter, 
-  Layers, 
-  FileText,
-  ChevronDown,
-  ChevronUp,
-  AlertTriangle
+  RotateCcw, 
+  Home, 
+  BookOpen, 
+  CheckSquare,
+  HelpCircle
 } from 'lucide-react';
-import confetti from 'canvas-confetti';
-import { Subject, Question, UserAnswer } from '../types';
-import { questionsBySubject } from '../data';
+import { Question, Subject, UserAnswer } from '../types';
 
 interface SummaryViewProps {
   subject: Subject;
-  answers: Record<string, UserAnswer>;
-  timeSpentSec: number;
-  onRetakeQuiz: () => void;
-  onRetakeMissedOnly: (missedQuestionIds: string[]) => void;
-  onOpenMaterials: (subject: Subject) => void;
-  onNavigateHome: () => void;
+  questions: Question[];
+  answers: UserAnswer[];
+  totalTimeSec: number;
+  onRetake: () => void;
+  onGoHome: () => void;
+  onOpenMaterials: () => void;
 }
 
 export const SummaryView: React.FC<SummaryViewProps> = ({
   subject,
+  questions,
   answers,
-  timeSpentSec,
-  onRetakeQuiz,
-  onRetakeMissedOnly,
-  onOpenMaterials,
-  onNavigateHome
+  totalTimeSec,
+  onRetake,
+  onGoHome,
+  onOpenMaterials
 }) => {
-  const allQuestions = questionsBySubject[subject.id] || [];
-  const [filterMode, setFilterMode] = useState<'all' | 'incorrect' | 'correct'>('all');
-  const [expandedQId, setExpandedQId] = useState<string | null>(null);
+  const correctCount = answers.filter((a) => a.isCorrect).length;
+  const totalCount = questions.length;
+  const scorePercent = totalCount > 0 ? Math.round((correctCount / totalCount) * 100) : 0;
 
-  const answerList = Object.values(answers) as UserAnswer[];
-  const totalAnswered = answerList.length;
-  const correctCount = answerList.filter((a) => a.isCorrect).length;
-  const incorrectCount = totalAnswered - correctCount;
-  const unansweredCount = allQuestions.length - totalAnswered;
-  const accuracy = allQuestions.length > 0 ? Math.round((correctCount / allQuestions.length) * 100) : 0;
-
-  const missedQuestionIds = allQuestions
-    .filter((q) => !answers[q.id] || !answers[q.id].isCorrect)
-    .map((q) => q.id);
-
-  // Trigger celebration on mount if score >= 80%
-  useEffect(() => {
-    if (accuracy >= 80) {
-      try {
-        confetti({
-          particleCount: 80,
-          spread: 70,
-          origin: { y: 0.6 }
-        });
-      } catch {
-        // Safe discard
-      }
-    }
-  }, [accuracy]);
-
-  const formatTime = (totalSec: number) => {
-    const mins = Math.floor(totalSec / 60);
-    const secs = totalSec % 60;
-    return `${mins} menit ${secs} detik`;
+  const formatTimer = (sec: number) => {
+    const mins = Math.floor(sec / 60);
+    const secs = sec % 60;
+    return `${mins}m ${secs}s`;
   };
 
-  const avgSecPerQuestion = totalAnswered > 0 ? Math.round(timeSpentSec / totalAnswered) : 0;
-
-  // Group by topic tag for analytics
-  const topicStats: Record<string, { total: number; correct: number }> = {};
-  allQuestions.forEach((q) => {
-    if (!topicStats[q.topicTag]) {
-      topicStats[q.topicTag] = { total: 0, correct: 0 };
-    }
-    topicStats[q.topicTag].total += 1;
-    if (answers[q.id]?.isCorrect) {
-      topicStats[q.topicTag].correct += 1;
-    }
-  });
-
-  const filteredQuestions = allQuestions.filter((q) => {
-    const ans = answers[q.id];
-    if (filterMode === 'correct') return ans?.isCorrect;
-    if (filterMode === 'incorrect') return !ans || !ans.isCorrect;
-    return true;
-  });
+  const answerMap = new Map<string, UserAnswer>(answers.map((a) => [a.questionId, a]));
 
   return (
-    <div className="space-y-8 pb-24">
-      {/* Top Banner with Score */}
-      <div className="rounded-3xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/90 shadow-xs p-6 sm:p-8 space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-100 dark:border-zinc-800 pb-6">
-          <div className="flex items-center gap-3">
-            <div 
-              className="w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-xs"
-              style={{ backgroundColor: subject.accentColor }}
-            >
-              <Trophy className="w-6 h-6" />
-            </div>
-            <div>
-              <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${subject.badgeBg}`}>
-                {subject.shortTitle}
-              </span>
-              <h1 className="text-xl sm:text-2xl font-extrabold text-zinc-900 dark:text-zinc-100">
-                Laporan Hasil Latihan TKA
-              </h1>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                Analisis akurasi, kecepatan waktu, dan pemetaan topik yang perlu diperdalam.
-              </p>
-            </div>
-          </div>
+    <div className="max-w-3xl mx-auto space-y-8 pb-24">
+      {/* Result Hero */}
+      <div className="rounded-3xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-8 sm:p-12 shadow-lg text-center space-y-6">
+        <div className="w-20 h-20 rounded-3xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto text-3xl font-extrabold shadow-inner">
+          {scorePercent}%
+        </div>
 
-          <div className="flex items-center gap-2">
-            <button
-              id="btn-summary-home"
-              onClick={onNavigateHome}
-              className="px-3.5 py-2 text-xs font-semibold rounded-xl text-zinc-700 dark:text-zinc-300 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200"
-            >
-              Beranda
-            </button>
-            <button
-              id="btn-summary-materials"
-              onClick={() => onOpenMaterials(subject)}
-              className="px-3.5 py-2 text-xs font-semibold text-white rounded-xl shadow-xs"
-              style={{ backgroundColor: subject.accentColor }}
-            >
-              Buka Materi Terkait
-            </button>
+        <div className="space-y-2">
+          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+            {subject.title} - Selesai
+          </span>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-zinc-100">
+            {scorePercent >= 80 ? 'Luar Biasa, Hasil Sangat Baik!' : scorePercent >= 60 ? 'Bagus, Pertahankan!' : 'Terus Tingkatkan Latihan!'}
+          </h1>
+          <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">
+            Anda berhasil menjawab <strong className="text-zinc-900 dark:text-zinc-100">{correctCount}</strong> dari <strong className="text-zinc-900 dark:text-zinc-100">{totalCount}</strong> soal dengan benar.
+          </p>
+        </div>
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-zinc-100 dark:border-zinc-800">
+          <div className="p-4 rounded-2xl bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 space-y-1">
+            <div className="text-xl font-bold text-emerald-600 dark:text-emerald-400">{correctCount}</div>
+            <div className="text-xs text-zinc-500 font-medium">Jawaban Benar</div>
+          </div>
+          <div className="p-4 rounded-2xl bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 space-y-1">
+            <div className="text-xl font-bold text-rose-600 dark:text-rose-400">{totalCount - correctCount}</div>
+            <div className="text-xs text-zinc-500 font-medium">Jawaban Salah</div>
+          </div>
+          <div className="col-span-2 sm:col-span-1 p-4 rounded-2xl bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 space-y-1">
+            <div className="text-xl font-bold text-sky-600 dark:text-sky-400">{formatTimer(totalTimeSec)}</div>
+            <div className="text-xs text-zinc-500 font-medium">Total Waktu</div>
           </div>
         </div>
 
-        {/* 4 Score Metrics */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          <div className="p-4 rounded-2xl bg-zinc-50 dark:bg-zinc-950/50 border border-zinc-200/60 dark:border-zinc-800 space-y-1">
-            <span className="text-[11px] font-medium text-zinc-500">Skor Akhir</span>
-            <div className="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-zinc-100">
-              {correctCount} <span className="text-sm font-normal text-zinc-400">/ {allQuestions.length}</span>
-            </div>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-800/60 space-y-1">
-            <span className="text-[11px] font-medium text-emerald-700 dark:text-emerald-300">Tingkat Akurasi</span>
-            <div className="text-2xl sm:text-3xl font-extrabold text-emerald-800 dark:text-emerald-300">
-              {accuracy}%
-            </div>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-zinc-50 dark:bg-zinc-950/50 border border-zinc-200/60 dark:border-zinc-800 space-y-1">
-            <span className="text-[11px] font-medium text-zinc-500">Total Waktu</span>
-            <div className="text-base sm:text-lg font-bold text-zinc-900 dark:text-zinc-100 font-mono">
-              {formatTime(timeSpentSec)}
-            </div>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-zinc-50 dark:bg-zinc-950/50 border border-zinc-200/60 dark:border-zinc-800 space-y-1">
-            <span className="text-[11px] font-medium text-zinc-500">Rata-rata per Soal</span>
-            <div className="text-base sm:text-lg font-bold text-zinc-900 dark:text-zinc-100 font-mono">
-              {avgSecPerQuestion} detik
-            </div>
-          </div>
-        </div>
-
-        {/* Action Bar for Retake */}
-        <div className="flex flex-wrap items-center gap-3 pt-2">
-          {missedQuestionIds.length > 0 && (
-            <button
-              id="btn-retake-missed"
-              onClick={() => onRetakeMissedOnly(missedQuestionIds)}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold text-amber-900 dark:text-amber-200 bg-amber-100 dark:bg-amber-950/60 hover:bg-amber-200 border border-amber-200 dark:border-amber-800 transition-colors"
-            >
-              <RotateCcw className="w-3.5 h-3.5" />
-              <span>Ulangi {missedQuestionIds.length} Soal yang Belum Tepat</span>
-            </button>
-          )}
-
+        {/* Action Buttons */}
+        <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
           <button
-            id="btn-retake-all"
-            onClick={onRetakeQuiz}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold text-white bg-zinc-900 dark:bg-zinc-100 dark:text-zinc-900 hover:bg-zinc-800 transition-colors shadow-xs"
+            onClick={onRetake}
+            className="flex items-center gap-2 px-6 py-3 rounded-xl text-xs sm:text-sm font-bold text-white bg-zinc-900 dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 transition-opacity shadow-xs"
           >
-            <RotateCcw className="w-3.5 h-3.5" />
-            <span>🔄 Ulangi Random (Acak Soal Wajib)</span>
+            <RotateCcw className="w-4 h-4" /> Ulangi Ujian (Soal Acak)
+          </button>
+          <button
+            onClick={onOpenMaterials}
+            className="flex items-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-semibold text-zinc-700 dark:text-zinc-300 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
+          >
+            <BookOpen className="w-4 h-4" /> Pelajari Materi
+          </button>
+          <button
+            onClick={onGoHome}
+            className="flex items-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-semibold text-zinc-700 dark:text-zinc-300 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
+          >
+            <Home className="w-4 h-4" /> Beranda
           </button>
         </div>
       </div>
 
-      {/* Topic Analytics Breakdown */}
-      <div className="rounded-3xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/90 shadow-xs p-6 sm:p-8 space-y-4">
-        <h2 className="text-base font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
-          <Layers className="w-4 h-4 text-emerald-500" />
-          Pemetaan Penguasaan Berdasarkan Topik
+      {/* Review Questions & Explanations */}
+      <div className="space-y-4">
+        <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">
+          Evaluasi & Pembahasan Soal
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-          {Object.entries(topicStats).map(([topic, stats]) => {
-            const topicAcc = Math.round((stats.correct / stats.total) * 100);
+        <div className="space-y-4">
+          {questions.map((q, idx) => {
+            const userAns = answerMap.get(q.id);
+            const isCorrect = userAns?.isCorrect;
+            const chosen = userAns?.selectedOption || '-';
+
             return (
-              <div
-                key={topic}
-                className="p-3.5 rounded-2xl bg-zinc-50 dark:bg-zinc-950/50 border border-zinc-200/60 dark:border-zinc-800 space-y-2"
+              <div 
+                key={q.id}
+                className={`rounded-2xl border p-6 bg-white dark:bg-zinc-900 shadow-xs space-y-4 ${
+                  isCorrect 
+                    ? 'border-emerald-200 dark:border-emerald-900/60' 
+                    : 'border-rose-200 dark:border-rose-900/60'
+                }`}
               >
-                <div className="flex justify-between text-xs font-semibold">
-                  <span className="text-zinc-800 dark:text-zinc-200">{topic}</span>
-                  <span className={topicAcc >= 75 ? 'text-emerald-600' : 'text-amber-600'}>
-                    {stats.correct}/{stats.total} ({topicAcc}%)
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <span className={`w-7 h-7 rounded-xl flex items-center justify-center font-bold text-xs ${
+                      isCorrect ? 'bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300' : 'bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300'
+                    }`}>
+                      {idx + 1}
+                    </span>
+                    <span className="text-xs font-semibold text-zinc-400">Topik: {q.topicTag}</span>
+                  </div>
+
+                  <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold ${
+                    isCorrect ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300' : 'bg-rose-50 text-rose-700 dark:bg-rose-950/60 dark:text-rose-300'
+                  }`}>
+                    {isCorrect ? <CheckCircle2 className="w-3.5 h-3.5" /> : <XCircle className="w-3.5 h-3.5" />}
+                    {isCorrect ? 'Benar' : 'Salah'}
                   </span>
                 </div>
-                <div className="w-full h-1.5 rounded-full bg-zinc-200 dark:bg-zinc-800 overflow-hidden">
-                  <div
-                    className="h-full rounded-full transition-all duration-500"
-                    style={{
-                      width: `${topicAcc}%`,
-                      backgroundColor: topicAcc >= 75 ? '#10b981' : '#f59e0b'
-                    }}
-                  />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
 
-      {/* Comprehensive Question Breakdown */}
-      <div className="space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div>
-            <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">
-              Bedah Kunci Jawaban & Pembahasan Lengkap
-            </h2>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400">
-              Klik pada setiap butir soal untuk membaca trik eliminasi dan konsep intinya.
-            </p>
-          </div>
+                <h3 className="text-sm sm:text-base font-bold text-zinc-900 dark:text-zinc-100">
+                  {q.question}
+                </h3>
 
-          {/* Filter Pills */}
-          <div className="flex items-center gap-1.5">
-            <button
-              onClick={() => setFilterMode('all')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
-                filterMode === 'all'
-                  ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900'
-                  : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400'
-              }`}
-            >
-              Semua ({allQuestions.length})
-            </button>
-            <button
-              onClick={() => setFilterMode('incorrect')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
-                filterMode === 'incorrect'
-                  ? 'bg-rose-600 text-white'
-                  : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400'
-              }`}
-            >
-              Salah / Belum ({missedQuestionIds.length})
-            </button>
-            <button
-              onClick={() => setFilterMode('correct')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
-                filterMode === 'correct'
-                  ? 'bg-emerald-600 text-white'
-                  : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400'
-              }`}
-            >
-              Benar ({correctCount})
-            </button>
-          </div>
-        </div>
-
-        {/* Question Review List */}
-        <div className="space-y-3">
-          {filteredQuestions.map((q) => {
-            const ans = answers[q.id];
-            const isCorrect = ans?.isCorrect;
-            const isExpanded = expandedQId === q.id;
-
-            return (
-              <div
-                key={q.id}
-                className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/90 shadow-xs overflow-hidden transition-all"
-              >
-                <div
-                  onClick={() => setExpandedQId(isExpanded ? null : q.id)}
-                  className="p-4 sm:p-5 flex items-start justify-between gap-3 cursor-pointer hover:bg-zinc-50/50 dark:hover:bg-zinc-800/40 transition-colors"
-                >
-                  <div className="flex items-start gap-3 min-w-0">
-                    <div className="mt-0.5">
-                      {ans ? (
-                        isCorrect ? (
-                          <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
-                        ) : (
-                          <XCircle className="w-5 h-5 text-rose-600 shrink-0" />
-                        )
-                      ) : (
-                        <div className="w-5 h-5 rounded-full border-2 border-zinc-300 dark:border-zinc-700" />
-                      )}
-                    </div>
-                    <div className="space-y-1 min-w-0">
-                      <div className="flex items-center gap-2 flex-wrap text-xs">
-                        <span className="font-bold text-zinc-900 dark:text-zinc-100">
-                          Soal #{q.number}
-                        </span>
-                        <span className="text-zinc-400">•</span>
-                        <span className="text-zinc-500 dark:text-zinc-400">{q.topicTag}</span>
-                      </div>
-                      <p className="text-xs sm:text-sm text-zinc-800 dark:text-zinc-200 font-medium line-clamp-2">
-                        {q.question}
-                      </p>
-                    </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                  <div className={`p-3 rounded-xl border ${chosen === q.correctAnswer ? 'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-300 text-emerald-900 dark:text-emerald-200' : 'bg-rose-50 dark:bg-rose-950/40 border-rose-300 text-rose-900 dark:text-rose-200'}`}>
+                    <strong>Pilihan Anda:</strong> {chosen}
                   </div>
-
-                  <div className="flex items-center gap-2 shrink-0">
-                    <span className="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950 px-2 py-0.5 rounded">
-                      Kunci: {q.correctAnswer}
-                    </span>
-                    {isExpanded ? (
-                      <ChevronUp className="w-4 h-4 text-zinc-400" />
-                    ) : (
-                      <ChevronDown className="w-4 h-4 text-zinc-400" />
-                    )}
+                  <div className="p-3 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200">
+                    <strong>Kunci Jawaban:</strong> {q.correctAnswer}
                   </div>
                 </div>
 
-                {/* Expanded Explanation */}
-                {isExpanded && (
-                  <div className="p-5 border-t border-zinc-100 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-950/60 space-y-4 text-xs sm:text-sm">
-                    {/* Full question & Options */}
-                    <div className="space-y-2">
-                      <p className="font-medium text-zinc-900 dark:text-zinc-100 whitespace-pre-line">
-                        {q.question}
-                      </p>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
-                        {q.options.map((opt) => {
-                          const isKey = opt.id === q.correctAnswer;
-                          const isUserChoice = ans?.selectedOption === opt.id;
-
-                          let style = 'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300';
-                          if (isKey) {
-                            style = 'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-500 text-emerald-900 dark:text-emerald-100 font-semibold';
-                          } else if (isUserChoice && !isKey) {
-                            style = 'bg-rose-50 dark:bg-rose-950/60 border-rose-400 text-rose-900 dark:text-rose-100';
-                          }
-
-                          return (
-                            <div key={opt.id} className={`p-2.5 rounded-xl border text-xs flex items-start gap-2 ${style}`}>
-                              <span className="font-bold">{opt.id}.</span>
-                              <span>{opt.text}</span>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-
-                    {/* Pembahasan detail */}
-                    <div className="p-4 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800 space-y-2">
-                      <div className="font-bold text-zinc-900 dark:text-zinc-100 text-xs">
-                        Pembahasan Konseptual:
-                      </div>
-                      <p className="text-zinc-700 dark:text-zinc-300 leading-relaxed whitespace-pre-line text-xs">
-                        {q.explanation}
-                      </p>
-                      <div className="pt-2 border-t border-zinc-100 dark:border-zinc-800 text-xs text-amber-700 dark:text-amber-400 font-medium">
-                        💡 Tips TKA: {q.tkaExamTip}
-                      </div>
-                    </div>
+                {q.explanation && (
+                  <div className="p-4 rounded-xl bg-zinc-50 dark:bg-zinc-950/50 border border-zinc-200 dark:border-zinc-800 text-xs text-zinc-600 dark:text-zinc-300 space-y-1">
+                    <strong className="text-zinc-900 dark:text-zinc-100 block">Pembahasan:</strong>
+                    <p className="leading-relaxed">{q.explanation}</p>
                   </div>
                 )}
               </div>

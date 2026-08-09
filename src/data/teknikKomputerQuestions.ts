@@ -2,102 +2,72 @@ import { Question } from '../types';
 
 export const teknikKomputerQuestions: Question[] = [
   {
-    id: 'tk-q1',
-    number: 1,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Perangkat Keras (Hardware) PC',
+    id: 'tkq-1',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Arsitektur Komputer',
     difficulty: 'Mudah',
-    question: 'Komponen utama pada motherboard komputer yang berfungsi sebagai otak pemrosesan data dan mengeksekusi instruksi aritmatika serta logika adalah...',
+    question: 'Bagian dari CPU yang berfungsi untuk melakukan perhitungan aritmatika dan logika adalah...',
     options: [
-      { id: 'A', text: 'RAM (Random Access Memory)' },
-      { id: 'B', text: 'CPU (Central Processing Unit)' },
-      { id: 'C', text: 'Hard Disk Drive (HDD)' },
-      { id: 'D', text: 'Power Supply Unit (PSU)' }
+      { id: 'A', text: 'ALU (Arithmetic Logic Unit)' },
+      { id: 'B', text: 'Control Unit' },
+      { id: 'C', text: 'Cache Memory' },
+      { id: 'D', text: 'ROM BIOS' }
     ],
-    correctAnswer: 'B',
-    explanation: 'Central Processing Unit (CPU) sering disebut sebagai "otak" komputer karena bertugas memproses seluruh instruksi program melalui unit ALU (Arithmetic Logic Unit), CU (Control Unit), dan sekumpulan register internal. RAM adalah memori penyimpanan sementara yang bersifat volatile, HDD adalah media penyimpanan permanen berkapasitas besar, dan PSU menyuplai arus listrik DC ke seluruh komponen hardware.',
-    keyConcept: 'Arsitektur dan Fungsi Utama Komponen Hardware Komputer',
-    tkaExamTip: 'CPU = Otak pemrosesan instruksi; RAM = Memori kerja sementara; PSU = Sumber catu daya listrik.'
+    correctAnswer: 'A',
+    explanation: 'ALU bertanggung jawab atas operasi matematika dasar dan perbandingan logika dalam instruksi CPU.'
   },
   {
-    id: 'tk-q2',
-    number: 2,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Perangkat Keras & Penyimpanan',
-    difficulty: 'Mudah',
-    question: 'Media penyimpanan data modern yang menggunakan teknologi Flash Memory berbasis chip NAND tanpa komponen mekanik bergerak (sehingga memiliki kecepatan baca/tulis jauh lebih tinggi daripada HDD konvensional) disebut...',
-    options: [
-      { id: 'A', text: 'Floppy Disk' },
-      { id: 'B', text: 'SSD (Solid State Drive)' },
-      { id: 'C', text: 'CD-ROM' },
-      { id: 'D', text: 'Magnetic Tape' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'Solid State Drive (SSD) menggunakan chip memori flash semikonduktor tanpa piringan magnetik berputar seperti pada Hard Disk Drive (HDD). Keunggulan SSD meliputi kecepatan akses data yang sangat tinggi, tahan terhadap benturan fisik, tidak berisik, dan konsumsi daya listrik yang lebih hemat.',
-    keyConcept: 'Perbandingan Teknologi Penyimpanan Data HDD vs SSD',
-    tkaExamTip: 'SSD = Chip semikonduktor tanpa piringan mekanik (sangat cepat dan tahan guncangan).'
-  },
-  {
-    id: 'tk-q3',
-    number: 3,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Perakitan & BIOS Komputer',
-    difficulty: 'Mudah',
-    question: 'Program tingkat rendah (low-level firmware) yang tertanam pada chip memori flash motherboard dan dijalankan pertama kali saat komputer dinyalakan untuk melakukan POST (Power-On Self Test) adalah...',
-    options: [
-      { id: 'A', text: 'Microsoft Windows' },
-      { id: 'B', text: 'BIOS / UEFI' },
-      { id: 'C', text: 'Microsoft Office' },
-      { id: 'D', text: 'Linux Kernel' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'BIOS (Basic Input/Output System) atau penerusnya UEFI (Unified Extensible Firmware Interface) adalah firmware yang disimpan pada chip ROM/Flash di motherboard. Saat komputer dihidupkan, BIOS langsung melakukan uji mandiri perangkat keras (POST), mendeteksi RAM, keyboard, dan media boot, sebelum menyerahkan kendali sistem ke sistem operasi utama.',
-    keyConcept: 'Fungsi BIOS/UEFI dan Proses Booting Komputer',
-    tkaExamTip: 'POST (Power-On Self Test) dilakukan oleh BIOS sebelum sistem operasi dimuat ke RAM.'
-  },
-  {
-    id: 'tk-q4',
-    number: 4,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Jaringan Komputer Dasar',
-    difficulty: 'Mudah',
-    question: 'Jenis kabel jaringan LAN yang paling banyak digunakan pada topologi star jaringan lokal (LAN) dengan susunan 8 pin warna-warni dan menggunakan konektor RJ-45 adalah...',
-    options: [
-      { id: 'A', text: 'Kabel Coaxial' },
-      { id: 'B', text: 'Kabel UTP (Unshielded Twisted Pair)' },
-      { id: 'C', text: 'Kabel Fiber Optik' },
-      { id: 'D', text: 'Kabel Paralel Printer' },
-    ],
-    correctAnswer: 'B',
-    explanation: 'Kabel UTP (Unshielded Twisted Pair) adalah standar kabel jaringan tembaga yang terdiri dari 4 pasang (8 buah) kawat tembaga saling berpilin tanpa pelindung logam tambahan. Kabel ini diakhiri dengan konektor RJ-45 dan menggunakan standar susunan kabel Straight-Through (untuk menghubungkan PC ke Switch/Hub) atau Crossover.',
-    keyConcept: 'Pengkabelan Jaringan Lokal dan Konektor RJ-45',
-    tkaExamTip: 'Kabel UTP + konektor RJ-45 adalah media fisik standar jaringan Ethernet LAN.'
-  },
-  {
-    id: 'tk-q5',
-    number: 5,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Pengkabelan & Standar TIA/EIA',
+    id: 'tkq-2',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Jaringan',
     difficulty: 'Sedang',
-    question: 'Dalam standar pengkabelan kabel UTP untuk jaringan Ethernet, susunan warna kabel standar TIA/EIA-568B dari pin 1 sampai pin 8 secara berurutan adalah...',
+    question: 'Dalam Model OSI, protokol TCP dan UDP bekerja pada layer ke berapa?',
     options: [
-      { id: 'A', text: 'Putih-Hijau, Hijau, Putih-Oranye, Biru, Putih-Biru, Oranye, Putih-Coklat, Coklat' },
-      { id: 'B', text: 'Putih-Oranye, Oranye, Putih-Hijau, Biru, Putih-Biru, Hijau, Putih-Coklat, Coklat' },
-      { id: 'C', text: 'Putih-Coklat, Coklat, Putih-Biru, Biru, Putih-Hijau, Hijau, Putih-Oranye, Oranye' },
-      { id: 'D', text: 'Oranye, Putih-Oranye, Hijau, Putih-Hijau, Biru, Putih-Biru, Coklat, Putih-Coklat' }
+      { id: 'A', text: 'Layer 2 (Data Link)' },
+      { id: 'B', text: 'Layer 3 (Network)' },
+      { id: 'C', text: 'Layer 4 (Transport)' },
+      { id: 'D', text: 'Layer 7 (Application)' }
     ],
-    correctAnswer: 'B',
-    explanation: 'Standar internasional TIA/EIA-568B yang paling sering digunakan dalam pemasangan jaringan komputer lokal memiliki urutan warna pin 1 s/d 8: 1. Putih-Oranye, 2. Oranye, 3. Putih-Hijau, 4. Biru, 5. Putih-Biru, 6. Hijau, 7. Putih-Coklat, 8. Coklat. Standar 568A menukar posisi hijau dan oranye.',
-    keyConcept: 'Standar Warna Susunan Kabel UTP TIA/EIA-568B',
-    tkaExamTip: 'Ingat urutan universal 568B: Putih-Oranye, Oranye, Putih-Hijau, Biru, Putih-Biru, Hijau, Putih-Coklat, Coklat.'
+    correctAnswer: 'C',
+    explanation: 'TCP dan UDP adalah protokol Transport Layer yang mengatur keandalan dan pengiriman segmen data end-to-end.'
   },
   {
-    id: 'tk-q6',
-    number: 6,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Alamat IP & Jaringan Dasar',
-    difficulty: 'Mudah',
-    question: 'Berdasarkan penggolongan kelas alamat IPv4 standar, alamat IP 192.168.10.1 berada pada...',
+    id: 'tkq-3',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Sistem Operasi',
+    difficulty: 'Sulit',
+    question: 'Kondisi di mana sekumpulan proses saling menunggu sumber daya yang sedang dipegang oleh proses lain sehingga tidak ada proses yang dapat berjalan disebut...',
+    options: [
+      { id: 'A', text: 'Starvation' },
+      { id: 'B', text: 'Deadlock' },
+      { id: 'C', text: 'Thrashing' },
+      { id: 'D', text: 'Context Switching' }
+    ],
+    correctAnswer: 'B',
+    explanation: 'Deadlock terjadi ketika empat syarat (Mutual exclusion, Hold & wait, No preemption, Circular wait) terpenuhi secara simultan.'
+  },
+  {
+    id: 'tkq-4',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Jaringan',
+    difficulty: 'Sedang',
+    question: 'Berapa jumlah host yang dapat digunakan pada subnet dengan prefiks /26 (IP v4)?',
+    mathFormula: '2^{32 - 26} - 2 = 2^6 - 2 = 64 - 2',
+    options: [
+      { id: 'A', text: '30 host' },
+      { id: 'B', text: '62 host' },
+      { id: 'C', text: '126 host' },
+      { id: 'D', text: '254 host' }
+    ],
+    correctAnswer: 'B',
+    explanation: 'Sisa bit host = 32 - 26 = 6 bit. Jumlah IP = 2^6 = 64. Dikurangi 1 network ID dan 1 broadcast ID, jadi 64 - 2 = 62 host.'
+  },
+  {
+    id: 'tkq-5',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Jaringan',
+    difficulty: 'Sedang',
+    question: 'Alamat IP 192.168.1.1 termasuk dalam kelas IP address berapa?',
     options: [
       { id: 'A', text: 'Kelas A' },
       { id: 'B', text: 'Kelas B' },
@@ -105,440 +75,382 @@ export const teknikKomputerQuestions: Question[] = [
       { id: 'D', text: 'Kelas D' }
     ],
     correctAnswer: 'C',
-    explanation: 'Penggolongan kelas IPv4 berdasarkan oktet pertama:\n- Kelas A: 1 - 126 (Default subnet mask 255.0.0.0)\n- Kelas B: 128 - 191 (Default subnet mask 255.255.0.0)\n- Kelas C: 192 - 223 (Default subnet mask 255.255.255.0)\n- Kelas D: 224 - 239 (Multicast)\nKarena angka pertama adalah 192, maka IP tersebut termasuk dalam Kelas C.',
-    keyConcept: 'Klasifikasi Alamat IPv4 Kelas A, B, dan C',
-    tkaExamTip: 'Kelas C dimulai dari rentang 192 hingga 223 pada oktet pertama.'
+    explanation: 'Kelas C memiliki rentang oktet pertama 192 hingga 223, dengan subnet mask default 255.255.255.0.'
   },
   {
-    id: 'tk-q7',
-    number: 7,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Perangkat Jaringan Komputer',
-    difficulty: 'Mudah',
-    question: 'Perangkat keras jaringan yang berfungsi untuk meneruskan paket data antar dua segmen jaringan yang berbeda (misalnya menghubungkan jaringan lokal LAN ke internet) berdasarkan alamat lapisan jaringan (IP Address) adalah...',
+    id: 'tkq-6',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Arsitektur Komputer',
+    difficulty: 'Sedang',
+    question: 'Memori internal berkecepatan tinggi yang terletak di antara CPU dan RAM utama untuk mempercepat akses data disebut...',
     options: [
-      { id: 'A', text: 'LAN Card (NIC)' },
-      { id: 'B', text: 'Switch Hub' },
+      { id: 'A', text: 'Hard Disk Drive (HDD)' },
+      { id: 'B', text: 'Cache Memory (L1/L2/L3)' },
+      { id: 'C', text: 'Flash Drive' },
+      { id: 'D', text: 'CMOS RAM' }
+    ],
+    correctAnswer: 'B',
+    explanation: 'Cache memory menyimpan salinan data yang sering diakses dari RAM utama untuk memangkas waktu tunggu CPU.'
+  },
+  {
+    id: 'tkq-7',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Sistem Operasi',
+    difficulty: 'Sedang',
+    question: 'Perintah pada sistem operasi Linux/Unix untuk mengubah hak akses (permissions) suatu file atau direktori adalah...',
+    options: [
+      { id: 'A', text: 'chmod' },
+      { id: 'B', text: 'chown' },
+      { id: 'C', text: 'grep' },
+      { id: 'D', text: 'ps aux' }
+    ],
+    correctAnswer: 'A',
+    explanation: '`chmod` (change mode) digunakan untuk mengatur izin baca (r), tulis (w), dan eksekusi (x) bagi user, group, dan others.'
+  },
+  {
+    id: 'tkq-8',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Jaringan',
+    difficulty: 'Sulit',
+    question: 'Perangkat jaringan yang bekerja pada Layer 3 (Network Layer) dari model OSI dan berfungsi meneruskan paket antar jaringan berbeda adalah...',
+    options: [
+      { id: 'A', text: 'Hub' },
+      { id: 'B', text: 'Switch Layer 2' },
       { id: 'C', text: 'Router' },
       { id: 'D', text: 'Repeater' }
     ],
     correctAnswer: 'C',
-    explanation: 'Router bekerja pada Layer 3 (Network Layer) model OSI dan bertugas melakukan routing (pemilihan jalur terbaik) untuk meneruskan paket data antar jaringan yang berbeda subnet atau menghubungkan jaringan lokal dengan WAN/Internet. Switch bekerja di Layer 2 (menggunakan MAC address dalam satu jaringan lokal).',
-    keyConcept: 'Fungsi Perangkat Jaringan (Router vs Switch vs Hub)',
-    tkaExamTip: 'Router menghubungkan jaringan berbeda (antar subnet/internet); Switch menghubungkan perangkat dalam satu subnet.'
+    explanation: 'Router beroperasi pada Layer 3 untuk melakukan routing paket berdasarkan alamat IP tujuan.'
   },
   {
-    id: 'tk-q8',
-    number: 8,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Topologi Jaringan',
-    difficulty: 'Mudah',
-    question: 'Topologi jaringan komputer di mana setiap komputer terhubung langsung melalui kabel ke satu perangkat sentral (perangkat penghubung seperti Switch atau Hub) disebut...',
-    options: [
-      { id: 'A', text: 'Topologi Bus' },
-      { id: 'B', text: 'Topologi Ring' },
-      { id: 'C', text: 'Topologi Star (Bintang)' },
-      { id: 'D', text: 'Topologi Mesh' }
-    ],
-    correctAnswer: 'C',
-    explanation: 'Topologi Star (Bintang) adalah topologi yang paling populer dalam LAN modern, di mana setiap komputer node memiliki kabel tersendiri yang terhubung ke perangkat pusat (Central Switch/Hub). Kelebihannya adalah jika satu kabel putus, komputer lain tidak terganggu.',
-    keyConcept: 'Karakteristik Topologi Jaringan Komputer (Star, Bus, Ring, Mesh)',
-    tkaExamTip: 'Topologi Star menggunakan perangkat sentral (Switch) sebagai pusat kontrol koneksi.'
-  },
-  {
-    id: 'tk-q9',
-    number: 9,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Troubleshooting & Perawatan PC',
+    id: 'tkq-9',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Keamanan Jaringan',
     difficulty: 'Sedang',
-    question: 'Saat komputer dihidupkan, layar monitor tidak menampilkan gambar apa pun, namun terdengar bunyi bip panjang sebanyak 1 kali diikuti 2 kali bip pendek dari speaker internal motherboard. Berdasarkan standar kode error BIOS (AMI/Award BIOS), masalah utama komponen hardware tersebut biasanya terletak pada...',
+    question: 'Protokol jaringan yang mengenkripsi seluruh komunikasi jarak jauh secara aman (menggantikan Telnet) pada port 22 adalah...',
     options: [
-      { id: 'A', text: 'Kerusakan Power Supply' },
-      { id: 'B', text: 'Modul RAM tidak terdeteksi atau rusak' },
-      { id: 'C', text: 'Kartu Grafis (VGA Card) bermasalah' },
-      { id: 'D', text: 'Hard disk korup' }
+      { id: 'A', text: 'HTTP' },
+      { id: 'B', text: 'SSH (Secure Shell)' },
+      { id: 'C', text: 'FTP' },
+      { id: 'D', text: 'SMTP' }
     ],
-    correctAnswer: 'C',
-    explanation: 'Kode Beep (Beep Code) BIOS merupakan indikator diagnostik awal saat POST. Pada sebagian besar motherboard (seperti AMI/Award BIOS), 1 bip panjang diikuti 2 atau 3 bip pendek menandakan adanya kegagalan pada kartu grafis (VGA Card) atau slot PCIe grafis yang kurang terpasang rapat.',
-    keyConcept: 'Diagnostik Kerusakan Hardware Melalui Beep Code BIOS',
-    tkaExamTip: 'Beep code adalah bahasa sandi audio BIOS untuk mendeteksi hardware yang gagal saat POST.'
+    correctAnswer: 'B',
+    explanation: 'SSH menyediakan saluran aman terenkripsi untuk pengelolaan jarak jauh pada port 22.'
   },
   {
-    id: 'tk-q10',
-    number: 10,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Sistem Operasi Jaringan',
-    difficulty: 'Mudah',
-    question: 'Perintah pada Command Prompt (CMD) sistem operasi Windows yang digunakan untuk menguji konektivitas jaringan komputer dengan mengirimkan paket ICMP Echo Request ke komputer target adalah...',
+    id: 'tkq-10',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Troubleshooting',
+    difficulty: 'Sedang',
+    question: 'Perintah utilitas jaringan (CLI) yang digunakan untuk melacak jalur paket yang dilewati menuju host tujuan adalah...',
     options: [
-      { id: 'A', text: 'ipconfig' },
-      { id: 'B', text: 'ping' },
-      { id: 'C', text: 'tracert' },
+      { id: 'A', text: 'ping' },
+      { id: 'B', text: 'traceroute / tracert' },
+      { id: 'C', text: 'ipconfig / ifconfig' },
       { id: 'D', text: 'netstat' }
     ],
     correctAnswer: 'B',
-    explanation: 'Perintah `ping` (Packet Internet Groper) menggunakan protokol ICMP untuk memeriksa apakah suatu host komputer dapat dijangkau di jaringan IP serta mengukur waktu tunda (latency/round-trip time) dan persentase packet loss. Perintah `ipconfig` digunakan untuk melihat konfigurasi IP komputer.',
-    keyConcept: 'Perintah Dasar Networking Command Prompt (Ping & Ipconfig)',
-    tkaExamTip: 'Ping = Tes koneksi jaringan; Ipconfig = Cek IP komputer sendiri.'
+    explanation: 'Traceroute melacak setiap hop router yang dilalui paket data dari sumber ke tujuan.'
   },
   {
-    id: 'tk-q11',
-    number: 11,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Keamanan Jaringan & Protokol',
+    id: 'tkq-11',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Jaringan',
     difficulty: 'Sedang',
-    question: 'Protokol jaringan yang bertugas secara otomatis memberikan (mengalokasikan) nomor alamat IP Address dan konfigurasi gateway kepada komputer klien dalam satu jaringan lokal adalah...',
+    question: 'Berapakah subnet mask yang sesuai dengan prefiks /28 pada IPv4?',
     options: [
-      { id: 'A', text: 'DNS (Domain Name System)' },
-      { id: 'B', text: 'DHCP (Dynamic Host Configuration Protocol)' },
-      { id: 'C', text: 'FTP (File Transfer Protocol)' },
-      { id: 'D', text: 'HTTP (Hypertext Transfer Protocol)' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'DHCP (Dynamic Host Configuration Protocol) bekerja secara otomatis mendistribusikan IP address, subnet mask, gateway, dan DNS server kepada setiap perangkat klien yang baru terhubung ke jaringan, sehingga administrator tidak perlu melakukan konfigurasi IP secara manual satu persatu.',
-    keyConcept: 'Fungsi Protokol DHCP dalam Pengalamatan Jaringan',
-    tkaExamTip: 'DHCP = Pemberi IP otomatis (Dynamic) ke komputer klien.'
-  },
-  {
-    id: 'tk-q12',
-    number: 12,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Keselamatan Kerja (K3LH)',
-    difficulty: 'Mudah',
-    question: 'Sebelum melakukan perakitan komputer atau membongkar komponen hardware di dalam CPU case, tindakan pencegahan keselamatan kerja (K3LH) yang paling penting untuk menghindari kerusakan komponen akibat aliran listrik statis tubuh adalah...',
-    options: [
-      { id: 'A', text: 'Memakai sarung tangan wol warna merah' },
-      { id: 'B', text: 'Menggunakan gelang antistatis (Anti-Static Wrist Strap) yang diarde' },
-      { id: 'C', text: 'Menyalakan kipas angin di dalam ruangan' },
-      { id: 'D', text: 'Mematikan lampu ruangan kerja' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'Listrik statis (Electrostatic Discharge / ESD) dari tubuh manusia dapat merusak chip mikrokontroler dan sirkuit terpadu (IC) yang sensitif pada motherboard dan RAM. Penggunaan gelang antistatis yang dihubungkan ke ground (arde) atau menyentuh casing logam power supply yang terhubung listrik sebelum memegang komponen sangat diwajibkan.',
-    keyConcept: 'Prosedur K3LH dan Pencegahan ESD (Electrostatic Discharge)',
-    tkaExamTip: 'ESD (Listrik Statis) dapat membakar chip IC sensitif; cegah dengan gelang antistatis.'
-  },
-  {
-    id: 'tk-q13',
-    number: 13,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Perangkat Keras & Motherboard',
-    difficulty: 'Sedang',
-    question: 'Slot ekspansi pada motherboard modern yang umumnya digunakan untuk memasang kartu grafis berkinerja tinggi (GPU / Graphic Card) adalah...',
-    options: [
-      { id: 'A', text: 'PCI Slot (Conventional)' },
-      { id: 'B', text: 'PCI Express x16 (PCIe x16)' },
-      { id: 'C', text: 'AGP Slot' },
-      { id: 'D', text: 'IDE Ribbon Cable Slot' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'PCIe x16 (Peripheral Component Interconnect Express x16) adalah standar slot ekspansi berkecepatan tinggi pada motherboard modern yang dirancang khusus untuk menangani bandwidth besar yang dibutuhkan oleh kartu grafis (GPU gaming/rendering).',
-    keyConcept: 'Jenis Slot Ekspansi Motherboard (PCIe x16)',
-    tkaExamTip: 'PCIe x16 adalah slot utama untuk memasang kartu grafis (VGA).'
-  },
-  {
-    id: 'tk-q14',
-    number: 14,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Sistem Operasi & Partisi Disk',
-    difficulty: 'Sedang',
-    question: 'Sistem berkas (file system) standar modern yang digunakan pada sistem operasi Microsoft Windows untuk mengelola partisi hard disk dengan dukungan keamanan file, enkripsi, dan kapasitas penyimpanan sangat besar adalah...',
-    options: [
-      { id: 'A', text: 'FAT16' },
-      { id: 'B', text: 'FAT32' },
-      { id: 'C', text: 'NTFS (New Technology File System)' },
-      { id: 'D', text: 'Ext3' }
+      { id: 'A', text: '255.255.255.128' },
+      { id: 'B', text: '255.255.255.192' },
+      { id: 'C', text: '255.255.255.240' },
+      { id: 'D', text: '255.255.255.248' }
     ],
     correctAnswer: 'C',
-    explanation: 'NTFS (New Technology File System) adalah sistem berkas standar utama Windows yang menggantikan FAT32. NTFS mendukung izin akses file per user (security permissions), penjurnalan untuk pemulihan error disk, dan ukuran file tunggal yang sangat besar (lebih dari 4 GB).',
-    keyConcept: 'Sistem Berkas (File System) NTFS vs FAT32',
-    tkaExamTip: 'FAT32 terbatas maksimal file 4GB; NTFS mendukung file berukuran raksasa dan keamanan file tingkat lanjut.'
+    explanation: 'Prefiks /28 berarti 28 bit network dan 4 bit host. 4 bit terakhir bernilai 11110000 dalam biner, yaitu 240 dalam desimal (255.255.255.240).'
   },
   {
-    id: 'tk-q15',
-    number: 15,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Jaringan Nirkabel (Wi-Fi)',
+    id: 'tkq-12',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Sistem Operasi',
     difficulty: 'Mudah',
-    question: 'Standar teknologi jaringan nirkabel (Wireless LAN) yang populer digunakan saat ini di perkantoran dan rumah berdasarkan spesifikasi IEEE dinamakan...',
+    question: 'Manajemen memori virtual dalam sistem operasi menggunakan teknik pemindahan halaman memori antara RAM dan penyimpanan sekunder disebut...',
     options: [
-      { id: 'A', text: 'IEEE 802.3' },
-      { id: 'B', text: 'IEEE 802.11 (Wi-Fi)' },
-      { id: 'C', text: 'IEEE 802.15 (Bluetooth)' },
-      { id: 'D', text: 'IEEE 802.5 (Token Ring)' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'IEEE 802.11 adalah keluarga standar internasional untuk komunikasi jaringan nirkabel lokal (WLAN atau yang akrab disebut Wi-Fi). Adapun IEEE 802.3 adalah standar untuk jaringan kabel Ethernet.',
-    keyConcept: 'Standar Komunikasi IEEE untuk Jaringan Nirkabel Wi-Fi',
-    tkaExamTip: '802.11 = Wi-Fi (Wireless LAN); 802.3 = Ethernet (Kabel LAN).'
-  },
-  {
-    id: 'tk-q16',
-    number: 16,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Perangkat Keras & Pendingin PC',
-    difficulty: 'Mudah',
-    question: 'Pasta khusus berwarna abu-abu atau putih yang dioleskan di antara permukaan prosesor (CPU) dan heatsink pendingin berfungsi untuk...',
-    options: [
-      { id: 'A', text: 'Menambah tegangan listrik prosesor' },
-      { id: 'B', text: 'Mengisi celah mikroskopis udara agar konduksi panas dari CPU ke heatsink berjalan maksimal' },
-      { id: 'C', text: 'Mencegah CPU berkarat karena air' },
-      { id: 'D', text: 'Mempercepat putaran kipas casing' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'Thermal paste (pasta termal) berfungsi mengisi ketidakrataan mikroskopis antara permukaan metal CPU dan heatsink. Udara adalah penghantar panas yang buruk, sehingga pasta termal memastikan perpindahan panas (heat transfer) dari CPU ke kipas pendingin berlangsung sangat efisien.',
-    keyConcept: 'Fungsi Thermal Paste pada Sistem Pendingin CPU',
-    tkaExamTip: 'Thermal paste mengoptimalkan konduksi panas dari chip CPU ke heatsink pendingin.'
-  },
-  {
-    id: 'tk-q17',
-    number: 17,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Jaringan Komputer & DNS',
-    difficulty: 'Sedang',
-    question: 'Layanan atau protokol jaringan yang bertugas menerjemahkan nama domain situs web yang mudah dibaca manusia (contoh: www.smk.sch.id) menjadi alamat IP numerik komputer server (contoh: 192.0.2.1) adalah...',
-    options: [
-      { id: 'A', text: 'DNS (Domain Name System)' },
-      { id: 'B', text: 'FTP (File Transfer Protocol)' },
-      { id: 'C', text: 'SMTP (Simple Mail Transfer Protocol)' },
-      { id: 'D', text: 'DHCP Server' }
+      { id: 'A', text: 'Paging / Swapping' },
+      { id: 'B', text: 'Caching' },
+      { id: 'C', text: 'Spooling' },
+      { id: 'D', text: 'Fragmentation' }
     ],
     correctAnswer: 'A',
-    explanation: 'DNS (Domain Name System) bertindak sebagai "buku telepon" internet yang memetakan nama domain internet yang mudah diingat ke alamat IP numerik yang dipahami oleh router dan komputer di jaringan.',
-    keyConcept: 'Fungsi DNS (Domain Name System)',
-    tkaExamTip: 'DNS = Menerjemahkan nama domain teks menjadi alamat IP numerik.'
+    explanation: 'Paging dan swapping memungkinkan OS memperluas kapasitas memori fisik menggunakan ruang swap/page file pada disk.'
   },
   {
-    id: 'tk-q18',
-    number: 18,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Troubleshooting Jaringan',
+    id: 'tkq-13',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Arsitektur Komputer',
     difficulty: 'Sedang',
-    question: 'Alat penguji khusus untuk memastikan apakah kabel UTP yang baru selesai dipasang konektor RJ-45 memiliki sambungan pin yang benar dan tidak ada kabel yang putus atau tertukar susunannya dinamakan...',
+    question: 'Komponen pada motherboard yang menghubungkan CPU, RAM, dan kartu grafis berkecepatan tinggi pada arsitektur chipset tradisional disebut...',
     options: [
-      { id: 'A', text: 'Multimeter Digital' },
-      { id: 'B', text: 'LAN Cable Tester' },
-      { id: 'C', text: 'Crimping Tool' },
-      { id: 'D', text: 'Optical Time Domain Reflectometer (OTDR)' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'LAN Cable Tester adalah alat genggam elektronik yang digunakan untuk mengetes sambungan 8 pin pada kabel UTP. Jika lampu LED indikator menyala berurutan dari 1 sampai 8 di kedua sisi alat, berarti kabel tersambung dengan sempurna.',
-    keyConcept: 'Penggunaan LAN Cable Tester dan Crimping Tool',
-    tkaExamTip: 'Crimping tool untuk menjepit konektor RJ-45; LAN cable tester untuk mengetes sambungan kabel.'
-  },
-  {
-    id: 'tk-q19',
-    number: 19,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Arsitektur Komputer & RAM',
-    difficulty: 'Mudah',
-    question: 'Jenis memori RAM komputer yang bersifat volatile (data akan hilang saat komputer dimatikan) dan saat ini menjadi standar pada komputer desktop modern adalah...',
-    options: [
-      { id: 'A', text: 'ROM (Read Only Memory)' },
-      { id: 'B', text: 'DDR4 / DDR5 SDRAM' },
-      { id: 'C', text: 'CMOS Battery Memory' },
-      { id: 'D', text: 'Flash Disk USB' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'DDR4 dan DDR5 SDRAM (Double Data Rate Synchronous Dynamic RAM) adalah teknologi memori kerja utama komputer saat ini yang menawarkan kecepatan transfer data sangat tinggi dan efisiensi daya yang lebih baik.',
-    keyConcept: 'Karakteristik Memori Utama DDR SDRAM',
-    tkaExamTip: 'RAM berjenis volatile (butuh aliran listrik agar data tetap tersimpan).'
-  },
-  {
-    id: 'tk-q20',
-    number: 20,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Perangkat Keras & Catu Daya',
-    difficulty: 'Sedang',
-    question: 'Konektor daya utama pada Power Supply Unit (PSU) yang dicolokkan ke motherboard komputer modern untuk menyuplai tegangan listrik utama memiliki jumlah pin sebanyak...',
-    options: [
-      { id: 'A', text: '10 Pin' },
-      { id: 'B', text: '20 Pin' },
-      { id: 'C', text: '24 Pin (20+4 Pin)' },
-      { id: 'D', text: '8 Pin saja' }
-    ],
-    correctAnswer: 'C',
-    explanation: 'Konektor ATX Power utama pada motherboard modern menggunakan konfigurasi 24 pin (atau modular 20+4 pin), yang menyuplai tegangan +3.3V, +5V, dan +12V ke seluruh rangkaian motherboard.',
-    keyConcept: 'Konektor Daya PSU ATX 24-Pin',
-    tkaExamTip: 'Konektor utama motherboard modern adalah ATX 24-pin.'
-  },
-  {
-    id: 'tk-q21',
-    number: 21,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Jaringan Komputer Dasar',
-    difficulty: 'Sedang',
-    question: 'Alamat fisik unik sepanjang 48-bit (6 byte) yang tertanam secara permanen pada chip Network Interface Card (NIC) oleh pabrik pembuatnya disebut...',
-    options: [
-      { id: 'A', text: 'IP Address' },
-      { id: 'B', text: 'MAC Address (Media Access Control)' },
-      { id: 'C', text: 'Subnet Mask' },
-      { id: 'D', text: 'Gateway Address' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'MAC Address adalah alamat perangkat keras yang bersifat unik secara global untuk setiap kartu jaringan (NIC). Berbeda dengan IP Address yang dapat berubah sesuai lokasi jaringan, MAC Address bersifat permanen di Layer 2 (Data Link).',
-    keyConcept: 'Perbedaan MAC Address vs IP Address',
-    tkaExamTip: 'MAC Address = Alamat fisik permanen di kartu jaringan (Layer 2).'
-  },
-  {
-    id: 'tk-q22',
-    number: 22,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Sistem Operasi & Virtualisasi',
-    difficulty: 'Sedang',
-    question: 'Teknologi yang memungkinkan sebuah komputer fisik menjalankan beberapa sistem operasi secara bersamaan dalam bentuk mesin virtual (Virtual Machine) menggunakan software seperti VirtualBox atau VMware dinamakan...',
-    options: [
-      { id: 'A', text: 'Defragmentation' },
-      { id: 'B', text: 'Virtualization (Virtualisasi)' },
-      { id: 'C', text: 'Overclocking' },
-      { id: 'D', text: 'Formatting' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'Virtualisasi menggunakan perangkat lunak hypervisor (seperti VirtualBox, VMware, atau KVM) untuk mempartisi sumber daya hardware fisik (CPU, RAM, Storage) sehingga dapat menjalankan beberapa OS terisolasi secara bersamaan.',
-    keyConcept: 'Konsep Dasar Virtualisasi Mesin',
-    tkaExamTip: 'Virtualisasi memungkinkan 1 PC fisik menjalankan banyak OS virtual sekaligus.'
-  },
-  {
-    id: 'tk-q23',
-    number: 23,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Jaringan Komputer & Port',
-    difficulty: 'Sedang',
-    question: 'Nomor port standar yang digunakan oleh protokol web secure terenkripsi (HTTPS) untuk komunikasi data aman di internet adalah...',
-    options: [
-      { id: 'A', text: 'Port 21' },
-      { id: 'B', text: 'Port 80' },
-      { id: 'C', text: 'Port 443' },
-      { id: 'D', text: 'Port 22' }
-    ],
-    correctAnswer: 'C',
-    explanation: 'Port standar layanan jaringan:\n- HTTP (Web biasa): Port 80\n- HTTPS (Web aman terenkripsi SSL/TLS): Port 443\n- FTP (File Transfer): Port 21\n- SSH (Secure Shell remote): Port 22\n- DNS: Port 53.',
-    keyConcept: 'Nomor Port Standar Protokol Jaringan (HTTP, HTTPS, SSH, FTP)',
-    tkaExamTip: 'HTTPS selalu menggunakan port 443; HTTP biasa menggunakan port 80.'
-  },
-  {
-    id: 'tk-q24',
-    number: 24,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Troubleshooting PC & CMOS',
-    difficulty: 'Sedang',
-    question: 'Baterai kecil berbentuk koin (CR2032) yang terpasang di atas motherboard komputer memiliki fungsi utama untuk...',
-    options: [
-      { id: 'A', text: 'Menyuplai listrik tambahan saat CPU bermain game berat' },
-      { id: 'B', text: 'Menjaga pasokan daya ke chip CMOS agar pengaturan BIOS dan jam sistem (Real-Time Clock) tidak hilang saat PC dimatikan' },
-      { id: 'C', text: 'Mendinginkan chipset utara (Northbridge)' },
-      { id: 'D', text: 'Menghapus virus pada hard disk' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'Baterai CMOS (Complementary Metal-Oxide-Semiconductor) menyuplai daya kecil secara terus-menerus ke chip memori CMOS motherboard saat komputer dicabut dari colokan listrik, sehingga tanggal, waktu, dan konfigurasi BIOS tersimpan dengan aman.',
-    keyConcept: 'Fungsi Baterai CMOS pada Motherboard',
-    tkaExamTip: 'Baterai CMOS habis ditandai dengan jam komputer yang selalu reset saat PC dimatikan.'
-  },
-  {
-    id: 'tk-q25',
-    number: 25,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Perangkat Keras & Expansion Card',
-    difficulty: 'Mudah',
-    question: 'Komponen tambahan berupa kartu sirkuit yang dipasang pada slot motherboard untuk memberikan tambahan port koneksi atau kemampuan grafis, salah satunya adalah LAN Card (Ethernet Card), disebut sebagai...',
-    options: [
-      { id: 'A', text: 'Expansion Card (Kartu Ekspansi)' },
-      { id: 'B', text: 'Power Supply' },
-      { id: 'C', text: 'Kabel SATA' },
-      { id: 'D', text: 'Heatsink Fan' }
-    ],
-    correctAnswer: 'A',
-    explanation: 'Expansion card adalah papan sirkuit cetak yang dapat dimasukkan ke dalam soket ekspansi (slot PCI/PCIe) pada motherboard untuk memberikan fungsi tambahan seperti kartu grafis, kartu suara, atau kartu jaringan tambahan.',
-    keyConcept: 'Konsep Kartu Ekspansi (Expansion Card) Motherboard',
-    tkaExamTip: 'Expansion card menambah fitur modular pada motherboard.'
-  },
-  {
-    id: 'tk-q26',
-    number: 26,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Jaringan Komputer & Subnetting Dasar',
-    difficulty: 'Sedang',
-    question: 'Berapakah jumlah total alamat IP (Total IP) dalam satu blok subnet jaringan dengan prefix /24 (Subnet mask 255.255.255.0)?',
-    options: [
-      { id: 'A', text: '16 IP' },
-      { id: 'B', text: '64 IP' },
-      { id: 'C', text: '256 IP' },
-      { id: 'D', text: '512 IP' }
-    ],
-    correctAnswer: 'C',
-    explanation: 'Prefix /24 menyisakan 32 - 24 = 8 bit untuk host. Total IP = 2⁸ = 256 alamat IP. Dari 256 IP tersebut, 1 alamat digunakan sebagai Network ID dan 1 alamat sebagai Broadcast ID, menyisakan 254 host valid.',
-    keyConcept: 'Perhitungan Total IP dan Host Valid CIDR /24',
-    tkaExamTip: 'CIDR /24 adalah satu blok kelas C penuh berisi 256 total IP (254 host valid).'
-  },
-  {
-    id: 'tk-q27',
-    number: 27,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Perawatan & Pemeliharaan PC',
-    difficulty: 'Mudah',
-    question: 'Penumpukan debu yang tebal pada kipas heatsink prosesor komputer dapat menyebabkan masalah serius berupa...',
-    options: [
-      { id: 'A', text: 'Komputer menjadi sangat dingin dan membeku' },
-      { id: 'B', text: 'Overheating (suhu CPU terlalu panas) yang mengakibatkan komputer sering mati mendadak (restart sendiri)' },
-      { id: 'C', text: 'Kecepatan internet bertambah cepat' },
-      { id: 'D', text: 'Kapasitas hard disk bertambah besar' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'Debu yang menyumbat sirip heatsink menghalangi aliran udara kipas pendingin, menyebabkan panas CPU tidak dapat dibuang dengan baik. Akibatnya suhu naik drastis (overheating) dan sistem melakukan proteksi otomatis dengan mati mendadak.',
-    keyConcept: 'Dampak Penumpukan Debu dan Pentingnya Perawatan Fisik PC',
-    tkaExamTip: 'Debu menghalangi aliran udara pendingin dan memicu overheating pada CPU/GPU.'
-  },
-  {
-    id: 'tk-q28',
-    number: 28,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Jaringan Komputer & Perangkat',
-    difficulty: 'Sedang',
-    question: 'Perangkat jaringan yang berfungsi untuk memperkuat dan meregenerasi sinyal data yang melemah akibat jarak tempuh yang jauh pada kabel jaringan disebut...',
-    options: [
-      { id: 'A', text: 'Switch' },
-      { id: 'B', text: 'Repeater / Range Extender' },
-      { id: 'C', text: 'Hard Disk' },
-      { id: 'D', text: 'Power Supply' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'Repeater bekerja pada Layer 1 (Physical Layer) untuk menerima sinyal jaringan yang melemah dan memancarkan kembali dengan daya penuh, sehingga jarak transmisi data kabel atau nirkabel dapat diperluas.',
-    keyConcept: 'Fungsi Repeater dalam Penguatan Sinyal Jaringan',
-    tkaExamTip: 'Repeater = Memperkuat dan memperpanjang jangkauan sinyal jaringan.'
-  },
-  {
-    id: 'tk-q29',
-    number: 29,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Sistem Operasi & Perintah Dasar',
-    difficulty: 'Sedang',
-    question: 'Perintah pada terminal Command Prompt Windows untuk melihat daftar alamat IP lengkap beserta konfigurasi gateway dan MAC address dari komputer lokal adalah...',
-    options: [
-      { id: 'A', text: 'ping localhost' },
-      { id: 'B', text: 'ipconfig /all' },
-      { id: 'C', text: 'cls' },
-      { id: 'D', text: 'dir' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'Perintah `ipconfig /all` menampilkan informasi jaringan yang sangat lengkap pada sistem Windows, meliputi nama host, tipe adaptor fisik, alamat MAC, alamat IPv4/IPv6, status DHCP, hingga alamat DNS server yang aktif.',
-    keyConcept: 'Penggunaan Perintah ipconfig /all di Windows',
-    tkaExamTip: 'ipconfig /all menampilkan detail lengkap termasuk MAC address dan status DHCP.'
-  },
-  {
-    id: 'tk-q30',
-    number: 30,
-    subjectId: 'teknik-komputer',
-    topicTag: 'Arsitektur Komputer & Chipset',
-    difficulty: 'Mudah',
-    question: 'Komponen chipset pada motherboard tradisional yang bertugas menghubungkan CPU dengan komponen berkecepatan tinggi seperti RAM dan Slot Kartu Grafis (PCIe) dinamakan...',
-    options: [
-      { id: 'A', text: 'Southbridge' },
-      { id: 'B', text: 'Northbridge (Memory Controller Hub)' },
+      { id: 'A', text: 'Northbridge' },
+      { id: 'B', text: 'Southbridge' },
       { id: 'C', text: 'BIOS Chip' },
-      { id: 'D', text: 'Konektor SATA' }
+      { id: 'D', text: 'Super I/O' }
+    ],
+    correctAnswer: 'A',
+    explanation: 'Northbridge menangani komunikasi berkecepatan tinggi antara CPU, RAM, dan GPU (pada arsitektur lama).'
+  },
+  {
+    id: 'tkq-14',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Jaringan',
+    difficulty: 'Sedang',
+    question: 'Protokol pada Layer 7 (Application) yang otomatis mendistribusikan alamat IP kepada perangkat klien dalam jaringan adalah...',
+    options: [
+      { id: 'A', text: 'DNS' },
+      { id: 'B', text: 'DHCP (Dynamic Host Configuration Protocol)' },
+      { id: 'C', text: 'FTP' },
+      { id: 'D', text: 'SNMP' }
     ],
     correctAnswer: 'B',
-    explanation: 'Northbridge (atau Memory Controller Hub) pada arsitektur motherboard lama menangani komunikasi berkecepatan tinggi antara CPU, RAM, dan kartu grafis. (Pada CPU modern, fungsi Northbridge ini sudah diintegrasikan langsung ke dalam die silikon CPU).',
-    keyConcept: 'Arsitektur Chipset Motherboard (Northbridge vs Southbridge)',
-    tkaExamTip: 'Northbridge = Menghubungkan CPU dengan RAM & VGA; Southbridge = Menghubungkan perangkat I/O (SATA, USB, Audio).'
+    explanation: 'DHCP secara otomatis menyewakan konfigurasi IP, subnet mask, gateway, dan DNS ke perangkat klien.'
+  },
+  {
+    id: 'tkq-15',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Keamanan Jaringan',
+    difficulty: 'Sedang',
+    question: 'Teknologi yang menerjemahkan alamat IP privat lokal menjadi satu atau beberapa alamat IP publik agar dapat mengakses internet adalah...',
+    options: [
+      { id: 'A', text: 'NAT (Network Address Translation)' },
+      { id: 'B', text: 'VLAN' },
+      { id: 'C', text: 'STP (Spanning Tree Protocol)' },
+      { id: 'D', text: 'ARP' }
+    ],
+    correctAnswer: 'A',
+    explanation: 'NAT memungkinkan beberapa perangkat ber-IP privat berbagi satu IP publik untuk koneksi internet.'
+  },
+  {
+    id: 'tkq-16',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Sistem Operasi',
+    difficulty: 'Mudah',
+    question: 'Perintah dasar Linux untuk melihat daftar file dan direktori secara lengkap (termasuk file tersembunyi dan izin akses) adalah...',
+    options: [
+      { id: 'A', text: 'ls -la' },
+      { id: 'B', text: 'cd ..' },
+      { id: 'C', text: 'pwd' },
+      { id: 'D', text: 'mkdir' }
+    ],
+    correctAnswer: 'A',
+    explanation: '`ls -la` menampilkan seluruh file (l = long format, a = all/hidden) beserta izin kepemilikan dan ukuran.'
+  },
+  {
+    id: 'tkq-17',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Jaringan',
+    difficulty: 'Sulit',
+    question: 'Protokol routing dinamis yang menggunakan algoritma State-Link (Dijkstra) dan membagi jaringan ke dalam area-area adalah...',
+    options: [
+      { id: 'A', text: 'RIP (Routing Information Protocol)' },
+      { id: 'B', text: 'OSPF (Open Shortest Path First)' },
+      { id: 'C', text: 'BGP' },
+      { id: 'D', text: 'PPP' }
+    ],
+    correctAnswer: 'B',
+    explanation: 'OSPF adalah protokol routing interior berbasis link-state yang sangat efisien dan menggunakan algoritma Dijkstra.'
+  },
+  {
+    id: 'tkq-18',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Arsitektur Komputer',
+    difficulty: 'Sedang',
+    question: 'Jenis memori non-volatile yang dapat dihapus dan diprogram ulang secara elektronik, banyak digunakan pada SSD dan flash drive, adalah...',
+    options: [
+      { id: 'A', text: 'SRAM' },
+      { id: 'B', text: 'DRAM' },
+      { id: 'C', text: 'NAND Flash Memory' },
+      { id: 'D', text: 'ROM Mask' }
+    ],
+    correctAnswer: 'C',
+    explanation: 'NAND Flash memory menyimpan data secara persisten tanpa daya listrik, dasar dari teknologi Solid State Drive (SSD).'
+  },
+  {
+    id: 'tkq-19',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Jaringan',
+    difficulty: 'Sedang',
+    question: 'Fungsi utama dari VLAN (Virtual Local Area Network) pada switch managed adalah...',
+    options: [
+      { id: 'A', text: 'Meningkatkan kapasitas daya listrik switch' },
+      { id: 'B', text: 'Memecah jaringan fisik tunggal menjadi beberapa domain siaran (broadcast domain) secara logis' },
+      { id: 'C', text: 'Menggantikan fungsi router sepenuhnya' },
+      { id: 'D', text: 'Mempercepat kabel tembaga' }
+    ],
+    correctAnswer: 'B',
+    explanation: 'VLAN memisahkan lalu lintas broadcast secara logis pada switch yang sama untuk meningkatkan keamanan dan efisiensi.'
+  },
+  {
+    id: 'tkq-20',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Sistem Operasi',
+    difficulty: 'Sedang',
+    question: 'Keadaan di mana CPU terlalu sering melakukan paging (pertukaran halaman memori ke disk) sehingga kinerja sistem sangat lambat disebut...',
+    options: [
+      { id: 'A', text: 'Thrashing' },
+      { id: 'B', text: 'Deadlock' },
+      { id: 'C', text: 'Multitasking' },
+      { id: 'D', text: 'Starvation' }
+    ],
+    correctAnswer: 'A',
+    explanation: 'Thrashing terjadi ketika memori fisik tidak cukup, menyebabkan sistem menghabiskan sebagian besar waktunya melakukan paging.'
+  },
+  {
+    id: 'tkq-21',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Jaringan',
+    difficulty: 'Sedang',
+    question: 'Port standar yang digunakan oleh protokol HTTPS (Secure Web Browsing) adalah...',
+    options: [
+      { id: 'A', text: 'Port 80' },
+      { id: 'B', text: 'Port 443' },
+      { id: 'C', text: 'Port 21' },
+      { id: 'D', text: 'Port 53' }
+    ],
+    correctAnswer: 'B',
+    explanation: 'HTTPS menggunakan port 443 untuk enkripsi SSL/TLS, sedangkan HTTP standar menggunakan port 80.'
+  },
+  {
+    id: 'tkq-22',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Troubleshooting',
+    difficulty: 'Mudah',
+    question: 'Perintah pada Windows Command Prompt untuk melihat konfigurasi IP komputer saat ini adalah...',
+    options: [
+      { id: 'A', text: 'ipconfig' },
+      { id: 'B', text: 'ifconfig' },
+      { id: 'C', text: 'route print' },
+      { id: 'D', text: 'netstat -an' }
+    ],
+    correctAnswer: 'A',
+    explanation: '`ipconfig` menampilkan informasi alamat IP, subnet mask, dan default gateway pada sistem operasi Windows.'
+  },
+  {
+    id: 'tkq-23',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Arsitektur Komputer',
+    difficulty: 'Sedang',
+    question: 'Satuan ukuran kecepatan clock prosesor modern dalam siklus per detik adalah...',
+    options: [
+      { id: 'A', text: 'Byte' },
+      { id: 'B', text: 'Hertz (GHz / MHz)' },
+      { id: 'C', text: 'Watt' },
+      { id: 'D', text: 'RPM' }
+    ],
+    correctAnswer: 'B',
+    explanation: 'Kecepatan clock CPU diukur dalam Gigahertz (GHz), menyatakan miliaran siklus clock per detik.'
+  },
+  {
+    id: 'tkq-24',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Jaringan',
+    difficulty: 'Sulit',
+    question: 'Berapakah jumlah host yang valid pada subnet IP 192.168.10.0 dengan netmask 255.255.255.224 (/27)?',
+    mathFormula: '2^{32 - 27} - 2 = 2^5 - 2 = 32 - 2',
+    options: [
+      { id: 'A', text: '14 host' },
+      { id: 'B', text: '30 host' },
+      { id: 'C', text: '62 host' },
+      { id: 'D', text: '126 host' }
+    ],
+    correctAnswer: 'B',
+    explanation: 'Subnet /27 menyisakan 5 bit host (32 - 27 = 5). Total IP = 2^5 = 32. Host valid = 32 - 2 = 30 host.'
+  },
+  {
+    id: 'tkq-25',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Sistem Operasi',
+    difficulty: 'Sedang',
+    question: 'Proses penjadwalan CPU di mana setiap proses diberi jatah waktu (time quantum) yang sama secara bergiliran disebut...',
+    options: [
+      { id: 'A', text: 'First-Come, First-Served (FCFS)' },
+      { id: 'B', text: 'Round Robin (RR)' },
+      { id: 'C', text: 'Shortest Job First (SJF)' },
+      { id: 'D', text: 'Priority Scheduling' }
+    ],
+    correctAnswer: 'B',
+    explanation: 'Round Robin menggunakan time quantum (slice) untuk memberikan giliran yang adil kepada setiap proses.'
+  },
+  {
+    id: 'tkq-26',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Jaringan',
+    difficulty: 'Mudah',
+    question: 'Kabel UTP (Unshielded Twisted Pair) untuk menghubungkan komputer langsung ke switch (straight-through) menggunakan standar susunan pin...',
+    options: [
+      { id: 'A', text: 'T568A di kedua ujung atau T568B di kedua ujung' },
+      { id: 'B', text: 'T568A di satu ujung dan T568B di ujung lain' },
+      { id: 'C', text: 'Hanya pin 1 dan 2' },
+      { id: 'D', text: 'Kabel koaksial' }
+    ],
+    correctAnswer: 'A',
+    explanation: 'Kabel straight-through menggunakan standar urutan warna yang sama di kedua ujungnya (biasanya T568B - T568B).'
+  },
+  {
+    id: 'tkq-27',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Keamanan Jaringan',
+    difficulty: 'Sedang',
+    question: 'Sistem keamanan jaringan yang memantau lalu lintas masuk dan keluar serta memblokir paket berdasarkan aturan (rules) yang ditetapkan disebut...',
+    options: [
+      { id: 'A', text: 'Firewall' },
+      { id: 'B', text: 'Repeater' },
+      { id: 'C', text: 'Bridge' },
+      { id: 'D', text: 'Hub' }
+    ],
+    correctAnswer: 'A',
+    explanation: 'Firewall bertindak sebagai pos pemeriksaan keamanan untuk menyaring lalu lintas jaringan yang mencurigakan.'
+  },
+  {
+    id: 'tkq-28',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Sistem Operasi',
+    difficulty: 'Sedang',
+    question: 'Perintah Linux untuk menghentikan proses yang sedang berjalan berdasarkan ID proses (PID) adalah...',
+    options: [
+      { id: 'A', text: 'kill <PID>' },
+      { id: 'B', text: 'stop <PID>' },
+      { id: 'C', text: 'rm -rf <PID>' },
+      { id: 'D', text: 'halt <PID>' }
+    ],
+    correctAnswer: 'A',
+    explanation: 'Perintah `kill` (atau `kill -9`) mengirimkan sinyal penghentian ke proses berdasarkan Process ID.'
+  },
+  {
+    id: 'tkq-29',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Jaringan',
+    difficulty: 'Sedang',
+    question: 'Alamat MAC (Media Access Control) pada kartu jaringan (NIC) memiliki panjang bit sepanjang...',
+    options: [
+      { id: 'A', text: '32 bit' },
+      { id: 'B', text: '48 bit' },
+      { id: 'C', text: '64 bit' },
+      { id: 'D', text: '128 bit' }
+    ],
+    correctAnswer: 'B',
+    explanation: 'Alamat MAC adalah alamat fisik unik sepanjang 48 bit (biasanya ditulis dalam 6 pasangan heksadesimal).'
+  },
+  {
+    id: 'tkq-30',
+    subjectId: 'teknik_komputer',
+    topicTag: 'Arsitektur Komputer',
+    difficulty: 'Sedang',
+    question: 'Jenis arsitektur komputer di mana memori data dan memori instruksi program disatukan dalam satu ruang memori fisik disebut arsitektur...',
+    options: [
+      { id: 'A', text: 'Von Neumann' },
+      { id: 'B', text: 'Harvard' },
+      { id: 'C', text: 'RISC' },
+      { id: 'D', text: 'CISC' }
+    ],
+    correctAnswer: 'A',
+    explanation: 'Arsitektur Von Neumann menggunakan bus tunggal dan ruang memori bersama untuk instruksi dan data.'
   }
 ];

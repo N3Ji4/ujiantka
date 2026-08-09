@@ -2,315 +2,328 @@ import { Topic } from '../types';
 
 export const teknikKomputerTopics: Topic[] = [
   {
-    id: 'tk-1',
-    title: 'Arsitektur Komputer, Gerbang Logika & Sistem Bilangan',
-    subheader: 'Struktur Von Neumann, CPU registers, logika Boolean, dan konversi basis biner/heksadesimal',
-    estimatedReadTime: '9 menit',
-    summary: 'Mempelajari organisasi komponen CPU (ALU, CU, Register, Cache L1/L2/L3), siklus Fetch-Decode-Execute, hukum logika De Morgan pada gerbang logika digital, serta konversi bilangan Biner, Desimal, dan Heksadesimal.',
-    keyConcepts: [
-      {
-        title: 'Siklus Instruksi CPU (Fetch, Decode, Execute)',
-        explanation: '1. Fetch: Mengambil instruksi dari RAM ke Instruction Register via Program Counter (PC). 2. Decode: Control Unit (CU) menerjemahkan kode operasi (Opcode). 3. Execute: Arithmetic Logic Unit (ALU) memproses perhitungan dan menyimpan output ke memori/register.',
-        formulaOrKey: 'PC → MAR → MDR → IR → CU/ALU → Akumulator'
-      },
-      {
-        title: 'Gerbang Logika Universal (NAND & NOR)',
-        explanation: 'Gerbang NAND dan NOR disebut universal gates karena kombinasi rangkaiannya dapat membentuk gerbang logika apa pun (AND, OR, NOT, XOR, XNOR). Sifat XOR: Output 1 hanya jika kedua input berbeda (0,1 atau 1,0).',
-        formulaOrKey: 'XOR = A ⊕ B = A\'B + AB\' | NAND = (A · B)\''
-      },
-      {
-        title: 'Konversi Bilangan Biner & Heksadesimal',
-        explanation: 'Tiap 1 digit Heksadesimal (0-9, A=10, B=11, C=12, D=13, E=14, F=15) merepresentasikan tepat 4 bit Biner (nibble). Contoh: 0x2F = 0010 1111b.',
-        formulaOrKey: '1 Hex digit = 4 Bits Biner | 2 Hex digits = 1 Byte (8 bits)'
-      }
+    id: 'tk1',
+    title: 'Subnetting IPv4 & CIDR Master Guide (Trik Cepat)',
+    categoryTag: 'Jaringan & Subnetting',
+    summary: 'Metode kilat menghitung Subnet Mask, Netmask Prefix /24 sampai /30, Network ID, Broadcast ID, Host Valid pertama & terakhir, serta pembagian rentang IP kelas C/B.',
+    conceptExplanation: 'Subnetting adalah teknik membagi satu jaringan komputer besar menjadi beberapa sub-jaringan (subnet) yang lebih kecil dan efisien. Hal ini mencegah pemborosan alamat IP publik/privat dan membatasi broadcast domain agar performa jaringan tetap kencang.',
+    keyPoints: [
+      'Alamat IPv4 terdiri dari 32 bit biner yang dibagi menjadi 4 oktet (masing-masing 8 bit) dipisahkan titik.',
+      'Notasi CIDR (Classless Inter-Domain Routing): Ditulis dengan garis miring (/), contoh /24 = 24 bit network bernilai 1 biner (255.255.255.0).',
+      'Rumus Jumlah Total IP per Subnet = 2^(32 - Prefix).',
+      'Rumus Jumlah Host Valid yang Bisa Dipakai = [2^(32 - Prefix)] - 2 (dikurangi 2 karena 1 IP untuk Network ID dan 1 IP untuk Broadcast ID).',
+      'Tabel Sakti Prefix Kelas C (/24 - /30):\n- /24: Mask 255.255.255.0 → Total IP = 256 → Host Valid = 254\n- /25: Mask 255.255.255.128 → Total IP = 128 → Host Valid = 126\n- /26: Mask 255.255.255.192 → Total IP = 64 → Host Valid = 62\n- /27: Mask 255.255.255.224 → Total IP = 32 → Host Valid = 30\n- /28: Mask 255.255.255.240 → Total IP = 16 → Host Valid = 14\n- /29: Mask 255.255.255.248 → Total IP = 8 → Host Valid = 6\n- /30: Mask 255.255.255.252 → Total IP = 4 → Host Valid = 2 (Khusus link point-to-point antar Router).'
     ],
     stepByStepGuides: [
       {
-        title: 'Konversi Bilangan Desimal ke Biner dan Heksadesimal',
-        problem: 'Konversikan bilangan desimal 157₁₀ ke dalam bentuk Biner dan Heksadesimal.',
+        title: 'Cara Cepat 10 Detik Menghitung Network ID & Broadcast ID',
+        description: 'Trik praktis tanpa konversi biner panjang untuk soal ujian.',
         steps: [
-          {
-            stepNumber: 1,
-            instruction: 'Bagi 157 dengan 16 untuk mencari Heksadesimal',
-            calculationOrDetail: '157 ÷ 16 = 9 sisa 13. Angka 13 dalam heksadesimal diwakili huruf D. Hasil Heksadesimal = 9D₁₆.'
-          },
-          {
-            stepNumber: 2,
-            instruction: 'Konversi tiap digit heksadesimal ke 4 bit biner',
-            calculationOrDetail: 'Digit 9 = 1001₂. Digit D (13) = 1101₂.'
-          },
-          {
-            stepNumber: 3,
-            instruction: 'Gabungkan bit-bit biner menjadi satu byte',
-            calculationOrDetail: '157₁₀ = 10011101₂ (128 + 16 + 8 + 4 + 1 = 157).'
-          }
+          'Langkah 1: Cari Nilai Blok Subnet = 256 dikurangi angka terakhir Subnet Mask (atau 2^(32-CIDR)). Contoh /26 → Mask 255.255.255.192 → Blok = 256 - 192 = 64.',
+          'Langkah 2: Buat kelipatan blok mulai dari 0: 0, 64, 128, 192, 256.',
+          'Langkah 3: Lihat oktet terakhir IP yang ditanyakan berada di rentang mana. Misal IP 192.168.1.100/26 berada di antara 64 dan 127.',
+          'Langkah 4: Network ID adalah angka awal rentang (192.168.1.64).',
+          'Langkah 5: Broadcast ID adalah angka terakhir rentang (192.168.1.127).',
+          'Langkah 6: Host Pertama = Network ID + 1 (192.168.1.65); Host Terakhir = Broadcast ID - 1 (192.168.1.126).'
         ],
-        solution: 'Biner = 10011101₂ dan Heksadesimal = 9D₁₆ (atau 0x9D).',
-        tip: 'Konversi ke heksadesimal terlebih dahulu seringkali jauh lebih cepat daripada membagi dua berulang-ulang 8 kali!'
+        tips: 'Ingat rumus sakti blok: Angka Blok Subnet = 256 - Nilai Mask Terakhir!'
       }
     ],
-    practicalExamples: [
+    formulaDetails: [
       {
-        title: 'Kode Warna Web Hexadecimal (RGB)',
-        context: 'Format warna CSS #FF8000.',
-        solution: 'FF₁₆ = 255 (Red maksimal), 80₁₆ = 128 (Green separuh), 00₁₆ = 0 (Blue kosong), menghasilkan warna oranye cerah.',
-        takeaway: 'Heksadesimal adalah cara manusia membaca bit-bit byte biner komputer dengan ringkas.'
+        title: 'Rumus Jumlah Host Valid Subnet',
+        formula: '\\text{Jumlah Host} = 2^{32 - \\text{CIDR}} - 2',
+        explanation: 'Selalu dikurangi 2 untuk alamat Network ID (alamat awal) dan Broadcast ID (alamat akhir).',
+        variables: [
+          { symbol: 'CIDR', meaning: 'Panjang prefix bit network (misal 24, 26, 27, 30)' },
+          { symbol: '32 - CIDR', meaning: 'Jumlah bit host (sisa bit nol)' }
+        ]
+      },
+      {
+        title: 'Rumus Blok Subnet',
+        formula: '\\text{Blok Kelipatan} = 256 - \\text{Nilai Oktet Mask Terakhir}',
+        explanation: 'Menentukan titik awal dan akhir kelipatan setiap subnet.',
+        variables: [
+          { symbol: '256', meaning: 'Kapasitas maksimal 8-bit dalam 1 oktet (0 s.d 255)' }
+        ],
+        quickTip: 'Prefix /30 selalu memiliki blok 4 dengan 2 host valid (cocok untuk kabel serial antar router)!'
+      }
+    ],
+    formulas: [
+      '\\text{Jumlah Host Valid} = 2^{32 - \\text{CIDR}} - 2',
+      '\\text{Blok Subnet} = 256 - \\text{Subnet Mask}',
+      '\\text{Host Pertama} = \\text{Network ID} + 1',
+      '\\text{Host Terakhir} = \\text{Broadcast ID} - 1'
+    ],
+    examples: [
+      {
+        problem: 'Diberikan alamat IP 192.168.10.75/27. Tentukan:\n1. Subnet Mask\n2. Network ID\n3. Broadcast ID\n4. Rentang IP Host Valid yang dapat digunakan oleh komputer client!',
+        given: 'IP = 192.168.10.75, Prefix = /27',
+        questionTarget: 'Subnet Mask, Network ID, Broadcast ID, dan Rentang Host',
+        steps: [
+          '1. Subnet Mask /27: Bit host = 32 - 27 = 5 bit. Nilai mask = 256 - 2⁵ = 256 - 32 = 224. Jadi Mask = 255.255.255.224.',
+          '2. Nilai Blok Subnet = 2⁵ = 32. Kelipatan blok: 0, 32, 64, 96, 128, dst.',
+          '3. Oktet terakhir IP adalah 75. Angka 75 berada di antara rentang blok 64 sampai 95 (karena blok berikutnya 96).',
+          '4. Network ID = 192.168.10.64.',
+          '5. Broadcast ID = 192.168.10.95.',
+          '6. Host Pertama = 192.168.10.65; Host Terakhir = 192.168.10.94.'
+        ],
+        solution: 'Mask: 255.255.255.224 | Network ID: 192.168.10.64 | Broadcast ID: 192.168.10.95 | Rentang Host: 192.168.10.65 s.d 192.168.10.94 (Total 30 Host).'
       }
     ],
     quickTips: [
-      'Bobot nilai biner 8 bit: 128 - 64 - 32 - 16 - 8 - 4 - 2 - 1.',
-      'SRAM lebih cepat dan mahal (dipakai untuk CPU Cache); DRAM lebih lambat dan butuh refresh berkala (dipakai untuk RAM utama).',
-      'XOR gate menghasilkan logika 1 jika jumlah bit bernilai 1 adalah ganjil (Parity Generator).'
-    ],
-    quickCheck: [
-      {
-        id: 'qc-tk1',
-        question: 'Nilai desimal dari bilangan biner 8-bit 11000110 adalah...',
-        options: ['182', '198', '214', '226'],
-        correctIndex: 1,
-        explanation: '128 + 64 + 0 + 0 + 0 + 4 + 2 + 0 = 198.'
-      }
+      'Alamat IP berakhiran .0 BELUM TENTU Network ID pada subnetting (contoh: pada /23, IP 192.168.1.0 adalah host valid)!',
+      'Alamat IP berakhiran .255 BELUM TENTU Broadcast ID pada subnetting (contoh: pada /23, IP 192.168.0.255 adalah host valid)!'
     ]
   },
   {
-    id: 'tk-2',
-    title: 'Jaringan Komputer, Model OSI & Perhitungan Subnetting IPv4',
-    subheader: '7 Layer OSI, TCP vs UDP, CIDR Subnetting (/24 - /30), dan protokol internet',
-    estimatedReadTime: '10 menit',
-    summary: 'Materi yang paling sering keluar di ujian teknik komputer: 7 Lapisan OSI vs 4 Layer TCP/IP, perbedaan protokol TCP (Connection-oriented) vs UDP (Connectionless), perhitungan cepat Subnet Mask, Network ID, Broadcast ID, dan Host Range.',
-    keyConcepts: [
-      {
-        title: '7 Layer OSI (Physical hingga Application)',
-        explanation: '1. Physical (Kabel, Bit), 2. Data Link (Frame, MAC Address, Switch), 3. Network (Packet, IP Address, Router), 4. Transport (Segment, TCP/UDP Port), 5. Session, 6. Presentation (Enkripsi, Kompresi), 7. Application (HTTP, DNS, SSH).',
-        formulaOrKey: 'Jembatan Keledai: Please Do Not Throw Sausage Pizza Away'
-      },
-      {
-        title: 'Rumus Cepat Subnetting IPv4 (CIDR /24 - /30)',
-        explanation: 'Prefix /n menyisakan host bit h = 32 - n. Jumlah Total IP = 2^h. Jumlah Host Valid yang bisa dipakai = 2^h - 2 (dikurangi 1 Network ID dan 1 Broadcast ID). Subnet Mask = 256 - 2^h pada oktet terakhir.',
-        formulaOrKey: 'Total IP = 2^(32 - prefix) ; Usable Host = 2^(32 - prefix) - 2'
-      },
-      {
-        title: 'TCP vs UDP',
-        explanation: 'TCP (Transmission Control Protocol) memakai 3-Way Handshake (SYN, SYN-ACK, ACK), menjamin urutan paket dan error recovery (contoh: HTTP, HTTPS, FTP). UDP tanpa jaminan koneksi, sangat cepat untuk streaming video dan game real-time (contoh: DNS query, VoIP, Live Video).',
-        formulaOrKey: 'TCP = Reliable & Ordered | UDP = Low-latency & Datagram'
-      }
+    id: 'tk2',
+    title: 'Model Referensi OSI 7 Layer & Protokol TCP/IP',
+    categoryTag: 'Protokol & Arsitektur',
+    summary: 'Fungsi rinci Lapisan OSI 1 sampai 7, enkapsulasi unit data (PDU: Data, Segment, Packet, Frame, Bits), perbedaan TCP vs UDP, serta port-port standar jaringan internet.',
+    conceptExplanation: 'Model Open Systems Interconnection (OSI) 7 Layer adalah standar konseptual komunikasi jaringan. Data dari aplikasi pengguna dibungkus (enkapsulasi) lapis demi lapis ke bawah hingga menjadi sinyal bit listrik/gelombang fisik, lalu diuraikan kembali (dekapsulasi) di komputer tujuan.',
+    keyPoints: [
+      'Layer 7 - Application: Antarmuka aplikasi dengan jaringan (HTTP/HTTPS, FTP, DNS, SMTP, SSH). PDU: Data.',
+      'Layer 6 - Presentation: Format data, kompresi, dan enkripsi/dekripsi (SSL/TLS, JPEG, ASCII, MP4). PDU: Data.',
+      'Layer 5 - Session: Membuka, memelihara, dan menutup sesi komunikasi antar aplikasi (NetBIOS, RPC, PPTP). PDU: Data.',
+      'Layer 4 - Transport: Pengiriman data ujung ke ujung (End-to-End), segmentasi, error checking, flow control (TCP, UDP). PDU: Segment.',
+      'Layer 3 - Network: Pengalamatan logis (IP Address) dan penentuan rute terbaik (Routing). Perangkat: Router. PDU: Packet.',
+      'Layer 2 - Data Link: Pengalamatan fisik (MAC Address 48-bit), deteksi error (CRC/FCS), framing. Perangkat: Switch L2, NIC. PDU: Frame.',
+      'Layer 1 - Physical: Transmisi bit biner mentah melalui media fisik (kabel UTP, Fiber Optic, Wi-Fi, Hub, Repeater). PDU: Bits.',
+      'Perbedaan TCP vs UDP: TCP bersifat Connection-Oriented, Reliable (ada 3-Way Handshake SYN-SYN/ACK-ACK & retransmisi data hilang); UDP bersifat Connectionless, Unreliable tetapi sangat cepat & minim overhead (cocok untuk Video Streaming, Game Online, DNS).'
     ],
     stepByStepGuides: [
       {
-        title: 'Menghitung Network, Broadcast, dan Host Valid pada IP 192.168.10.75/26',
-        problem: 'Diberikan alamat IP 192.168.10.75 dengan prefix /26. Tentukan Subnet Mask, Network ID, Broadcast ID, dan rentang host yang dapat digunakan.',
+        title: 'Cara Menghafal Urutan 7 Layer OSI & PDU dengan Mudah',
+        description: 'Jembatan keledai teruji untuk mengingat 7 lapisan dan PDU-nya.',
         steps: [
-          {
-            stepNumber: 1,
-            instruction: 'Hitung jumlah bit host dan ukuran blok (block size)',
-            calculationOrDetail: 'Prefix /26 menyisakan h = 32 - 26 = 6 bit host. Ukuran blok = 2⁶ = 64 IP per subnet. Subnet mask = 256 - 64 = 255.255.255.192.'
-          },
-          {
-            stepNumber: 2,
-            instruction: 'Tentukan kelipatan blok di mana IP 75 berada',
-            calculationOrDetail: 'Blok subnet oktet ke-4: Subnet 0 (0-63), Subnet 1 (64-127), Subnet 2 (128-191). IP 75 berada pada rentang 64 - 127.'
-          },
-          {
-            stepNumber: 3,
-            instruction: 'Identifikasi Network ID, Broadcast ID, dan Usable Host',
-            calculationOrDetail: 'Network ID = 192.168.10.64. Broadcast ID = 192.168.10.127. Host Valid = 192.168.10.65 sampai 192.168.10.126 (total 62 host).'
-          }
-        ],
-        solution: 'Network: 192.168.10.64, Broadcast: 192.168.10.127, Rentang Host: 192.168.10.65 - 192.168.10.126.',
-        tip: 'Ukuran blok = 256 - angka terakhir subnet mask. Nilai IP selalu berada di antara kelipatan blok tersebut.'
+          'Hafalan Layer dari Atas (Layer 7 ke 1): "Anak Pak Sholeh Tidak Nakal Dan Pintar" (Application, Presentation, Session, Transport, Network, Data Link, Physical).',
+          'Hafalan Layer dari Bawah (Layer 1 ke 7): "Please Do Not Throw Sausage Pizza Away" (Physical, Data Link, Network, Transport, Session, Presentation, Application).',
+          'Hafalan PDU dari Layer 7 ke 1: "Data - Data - Data - Segment - Packet - Frame - Bits" (Singkatan: "Don\'t Do Drugs, Some People Forget Basics").'
+        ]
       }
     ],
-    practicalExamples: [
+    formulaDetails: [
       {
-        title: 'Koneksi Point-to-Point Antar Router',
-        context: 'Menghubungkan dua port router tetangga tanpa membuang IP publik berharga.',
-        solution: 'Gunakan prefix /30 (menyediakan 4 IP: 1 Network, 2 Usable Host untuk kedua router, dan 1 Broadcast).',
-        takeaway: 'Prefix /30 adalah standar efisiensi tertinggi untuk link P2P IPv4.'
+        title: 'Tabel Port Protokol Standar Populer',
+        formula: '\\text{HTTP (80)} \\quad | \\quad \\text{HTTPS (443)} \\quad | \\quad \\text{SSH (22)} \\quad | \\quad \\text{DNS (53)} \\quad | \\quad \\text{DHCP (67/68)}',
+        explanation: 'Port jaringan digunakan layer Transport untuk mengarahkan paket ke aplikasi layanan yang tepat.',
+        variables: [
+          { symbol: 'Port 80', meaning: 'HTTP (Hypertext Transfer Protocol unencrypted)' },
+          { symbol: 'Port 443', meaning: 'HTTPS (HTTP Secure dengan enkripsi SSL/TLS)' },
+          { symbol: 'Port 22', meaning: 'SSH (Secure Shell remote command line)' },
+          { symbol: 'Port 53', meaning: 'DNS (Domain Name System penerjemah domain ke IP)' },
+          { symbol: 'Port 21', meaning: 'FTP Control (File Transfer Protocol)' },
+          { symbol: 'Port 25', meaning: 'SMTP (Simple Mail Transfer Protocol untuk kirim email)' }
+        ]
+      }
+    ],
+    formulas: [
+      '\\text{Enkapsulasi: Data} \\to \\text{Segment (L4)} \\to \\text{Packet (L3)} \\to \\text{Frame (L2)} \\to \\text{Bits (L1)}',
+      '\\text{TCP 3-Way Handshake: SYN} \\to \\text{SYN-ACK} \\to \\text{ACK}'
+    ],
+    examples: [
+      {
+        problem: 'Pada lapisan model OSI manakah proses penambahan alamat IP pengirim dan alamat IP tujuan (IP Header) berlangsung, dan apa sebutan unit data (PDU) pada lapisan tersebut?',
+        given: 'Penambahan IP Address pengirim dan tujuan',
+        questionTarget: 'Layer OSI dan Nama PDU',
+        steps: [
+          'Pengalamatan IP (logis) dan perutean adalah tugas dari Layer 3 (Network Layer).',
+          'Pada Layer 3, segment dari Layer 4 dibungkus dengan IP Header sehingga menjadi unit data bernama PACKET.',
+        ],
+        solution: 'Layer 3 (Network Layer) dan nama PDU-nya adalah Packet.'
       }
     ],
     quickTips: [
-      'CIDR /24 = 254 host, /25 = 126 host, /26 = 62 host, /27 = 30 host, /28 = 14 host, /29 = 6 host, /30 = 2 host.',
-      'Port protokol terkenal: HTTP (80), HTTPS (443), DNS (53), SSH (22), FTP (21), DHCP (67/68).',
-      'Router bekerja di Layer 3 (Network); Switch bekerja di Layer 2 (Data Link); Hub bekerja di Layer 1 (Physical).'
-    ],
-    quickCheck: [
-      {
-        id: 'qc-tk2',
-        question: 'Berapa banyak host valid yang dapat digunakan pada jaringan dengan subnet mask /28?',
-        options: ['6 host', '14 host', '30 host', '62 host'],
-        correctIndex: 1,
-        explanation: '32 - 28 = 4 bit host. Usable host = 2⁴ - 2 = 16 - 2 = 14 host.'
-      }
+      'Switch bekerja di Layer 2 (Data Link) berdasarkan MAC Address.',
+      'Router bekerja di Layer 3 (Network) berdasarkan IP Address.',
+      'Hub bekerja di Layer 1 (Physical) hanya meneruskan sinyal listrik tanpa membaca alamat.'
     ]
   },
   {
-    id: 'tk-3',
-    title: 'Sistem Operasi, Penjadwalan CPU & Manajemen Memori',
-    subheader: 'Proses vs Thread, algoritma Round Robin/FCFS/SJF, Virtual Memory & Paging',
-    estimatedReadTime: '8 menit',
-    summary: 'Membahas state siklus proses (New, Ready, Running, Waiting, Terminated), algoritma penjadwalan CPU (FCFS, Shortest Job First, Round Robin time quantum), kondisi Deadlock (4 syarat Coffman), serta Virtual Memory, Paging, dan Page Replacement (FIFO, LRU).',
-    keyConcepts: [
-      {
-        title: '4 Syarat Utama Terjadinya Deadlock (Coffman Conditions)',
-        explanation: 'Deadlock terjadi HANYA jika keempat syarat terpenuhi secara simultan: 1. Mutual Exclusion (resource non-shareable), 2. Hold and Wait, 3. No Preemption, 4. Circular Wait.',
-        formulaOrKey: 'Deadlock = Mutual Exclusion + Hold&Wait + No Preemption + Circular Wait'
-      },
-      {
-        title: 'Algoritma Penjadwalan CPU',
-        explanation: 'FCFS (First Come First Served), SJF (Shortest Job First - optimal meminimalkan average waiting time), Round Robin (preemptive dengan time quantum untuk mencegah proses monopoli CPU).',
-        formulaOrKey: 'Average Waiting Time = (Σ Waktu Tunggu Proses) / Jumlah Proses'
-      },
-      {
-        title: 'Manajemen Virtual Memory & Paging',
-        explanation: 'Paging membagi memori fisik menjadi Frame berukuran tetap dan memori logis menjadi Page. Jika proses mengakses page yang belum dimuat di RAM, terjadi Page Fault dan OS mengambilnya dari secondary storage (swap).',
-        formulaOrKey: 'Alamat Logis = Page Number (p) + Offset (d)'
-      }
+    id: 'tk3',
+    title: 'Routing Statis, Dinamis & Konfigurasi Jaringan',
+    categoryTag: 'Routing & Infrastruktur',
+    summary: 'Prinsip kerja tabel routing, konfigurasi routing statis & default route (0.0.0.0/0), protokol routing dinamis (OSPF, RIP, BGP), Administrative Distance (AD), serta Inter-VLAN Routing (Router-on-a-Stick).',
+    conceptExplanation: 'Routing adalah proses meneruskan paket data dari satu jaringan ke jaringan lain yang berbeda subnet/segmen. Router memeriksa tabel routing miliknya untuk mencocokkan IP tujuan dengan rute terbaik berdasarkan nilai Administrative Distance (AD) dan metric terendah.',
+    keyPoints: [
+      'Routing Statis: Administrator memasukkan jalur rute secara manual. Aman dan hemat resource CPU, namun tidak adaptif jika kabel/jalur putus. AD = 1.',
+      'Default Route: Rute gerbang utama (0.0.0.0/0 dengan gateway ISP) yang digunakan jika alamat tujuan tidak ditemukan dalam tabel routing spesifik.',
+      'Routing Dinamis: Router saling bertukar informasi tabel rute secara otomatis menggunakan protokol routing:',
+      '- RIP (Routing Information Protocol): Distance Vector, metric berdasarkan Hop Count (maksimal 15 hop, 16 hop = unreachable). AD = 120.',
+      '- OSPF (Open Shortest Path First): Link-State Protocol, metric berdasarkan Cost (Bandwidth interface), menggunakan algoritma Dijkstra SPF. AD = 110.',
+      '- BGP (Border Gateway Protocol): Path Vector Protocol yang digunakan untuk menghubungkan jaringan Autonomous System (AS) di seluruh dunia (tulang punggung Internet). AD eBGP = 20, iBGP = 200.',
+      'Urutan Prioritas Pemilihan Jalur:\n1. Longest Prefix Match (misal /28 lebih diprioritaskan dibanding /24)\n2. Nilai Administrative Distance (AD) terkecil\n3. Metric terkecil.'
     ],
     stepByStepGuides: [
       {
-        title: 'Menghitung Waktu Tunggu Rata-rata pada Penjadwalan SJF Non-preemptive',
-        problem: 'Proses P1 (Burst Time 6 ms), P2 (Burst Time 2 ms), P3 (Burst Time 8 ms), dan P4 (Burst Time 3 ms) tiba bersamaan pada waktu t=0. Hitung rata-rata waktu tunggu (Average Waiting Time).',
+        title: 'Cara Mengonfigurasi Routing Statis Dasar',
+        description: 'Langkah mendefinisikan rute statis pada router MikroTik atau Cisco.',
         steps: [
-          {
-            stepNumber: 1,
-            instruction: 'Urutkan proses berdasarkan burst time terpendek (SJF)',
-            calculationOrDetail: 'Urutan eksekusi: P2 (2 ms) → P4 (3 ms) → P1 (6 ms) → P3 (8 ms).'
-          },
-          {
-            stepNumber: 2,
-            instruction: 'Hitung waktu tunggu masing-masing proses',
-            calculationOrDetail: 'Waktu tunggu P2 = 0 ms. Waktu tunggu P4 = 2 ms. Waktu tunggu P1 = 2 + 3 = 5 ms. Waktu tunggu P3 = 2 + 3 + 6 = 11 ms.'
-          },
-          {
-            stepNumber: 3,
-            instruction: 'Hitung rata-rata waktu tunggu seluruh proses',
-            calculationOrDetail: 'Rata-rata = (0 + 2 + 5 + 11) / 4 = 18 / 4 = 4.5 ms.'
-          }
-        ],
-        solution: 'Average Waiting Time adalah 4.5 ms.',
-        tip: 'SJF selalu memberikan rata-rata waktu tunggu terkecil dibanding algoritma penjadwalan lainnya.'
+          'Identifikasi Subnet Jaringan Tujuan (Destination Network IP dan Subnet Mask / CIDR).',
+          'Tentukan IP Gateway berikutnya (Next-Hop IP) yaitu IP interface router tetangga yang langsung terhubung.',
+          'Pada MikroTik: `/ip route add dst-address=192.168.20.0/24 gateway=10.10.10.2`.',
+          'Pada Cisco: `Router(config)# ip route 192.168.20.0 255.255.255.0 10.10.10.2`.',
+          'Lakukan uji koneksi dengan perintah `ping` dan `traceroute`.'
+        ]
       }
     ],
-    practicalExamples: [
+    formulaDetails: [
       {
-        title: 'Thrashing pada Sistem Operasi yang Kekurangan RAM',
-        context: 'Laptop membuka 50 tab browser berat hingga sistem macet total.',
-        solution: 'Terjadi "Thrashing" di mana OS menghabiskan lebih dari 90% waktu CPU hanya untuk swap in/out page antara RAM dan disk ketimbang mengeksekusi instruksi aplikasi nyata.',
-        takeaway: 'Thrashing diatasi dengan menambah kapasitas RAM fisik atau membatasi derajat multiprogramming.'
+        title: 'Tabel Nilai Administrative Distance (AD)',
+        formula: '\\text{Connected (0)} < \\text{Static (1)} < \\text{eBGP (20)} < \\text{OSPF (110)} < \\text{RIP (120)}',
+        explanation: 'Semakin KECIL nilai AD, semakin DIPERCAYA dan DIPRIORITASKAN rute tersebut oleh router.',
+        variables: [
+          { symbol: 'Connected (0)', meaning: 'Interface yang terhubung langsung secara kabel fisik' },
+          { symbol: 'Static Route (1)', meaning: 'Rute manual buatan administrator' },
+          { symbol: 'OSPF (110)', meaning: 'Protokol dinamis link-state' },
+          { symbol: 'RIP (120)', meaning: 'Protokol dinamis distance-vector' }
+        ]
+      }
+    ],
+    formulas: [
+      '\\text{OSPF Cost} = \\frac{\\text{Reference Bandwidth (100 Mbps)}}{\\text{Interface Bandwidth}}',
+      '\\text{Default Route} = 0.0.0.0/0 \\quad \\text{via Next-Hop Gateway}'
+    ],
+    examples: [
+      {
+        problem: 'Sebuah router menerima dua rute menuju jaringan 172.16.0.0/16 yang sama: satu melalui OSPF (AD = 110) dan satu melalui RIP (AD = 120). Rute manakah yang akan dimasukkan ke dalam tabel routing aktif (Routing Table)?',
+        given: 'Jalur OSPF (AD = 110) vs Jalur RIP (AD = 120)',
+        questionTarget: 'Rute yang terpilih masuk ke tabel routing aktif',
+        steps: [
+          'Kedua rute memiliki panjang prefix yang sama persis (/16).',
+          'Router membandingkan nilai Administrative Distance (AD).',
+          'OSPF memiliki nilai AD 110 yang lebih kecil dibanding RIP yang bernilai AD 120.',
+          'Nilai AD yang lebih kecil menandakan jalur lebih tepercaya.'
+        ],
+        solution: 'Jalur OSPF (AD = 110) yang akan dipilih dan dimasukkan ke Routing Table.'
       }
     ],
     quickTips: [
-      'Thread berbagi address space memori yang sama dalam satu proses (ringan / lightweight process).',
-      'LRU (Least Recently Used) mengganti halaman memori yang paling lama tidak diakses.',
-      'Semaphore dan Mutex digunakan untuk mencegah Race Condition pada Critical Section.'
-    ],
-    quickCheck: [
-      {
-        id: 'qc-tk3',
-        question: 'Manakah dari syarat berikut yang BUKAN merupakan salah satu dari 4 syarat Coffman terjadinya Deadlock?',
-        options: ['Mutual Exclusion', 'Hold and Wait', 'Arbitrary Preemption', 'Circular Wait'],
-        correctIndex: 2,
-        explanation: 'Syarat Coffman adalah "No Preemption" (sumber daya tidak boleh dirampas paksa). Jika ada arbitrary preemption, deadlock tidak akan terjadi.'
-      }
+      'Default Gateway 0.0.0.0/0 cocok digunakan untuk mengarahkan seluruh lalu lintas internet klien ke modem ISP.',
+      'Pada OSPF, semua router area non-backbone (Area 1, 2, dst) WAJIB terhubung langsung ke Area 0 (Backbone Area)!'
     ]
   },
   {
-    id: 'tk-4',
-    title: 'Algoritma, Struktur Data & Query Basis Data SQL',
-    subheader: 'Big-O notation, Stack, Queue, Binary Search Tree, relasi tabel & SQL Join',
-    estimatedReadTime: '9 menit',
-    summary: 'Mempelajari kompleksitas waktu algoritma (O(1), O(log n), O(n), O(n log n)), struktur data linear (Stack LIFO, Queue FIFO, Linked List) vs non-linear (Tree, Graph), normalisasi database (1NF, 2NF, 3NF), serta penulisan query SQL (SELECT, JOIN, GROUP BY, HAVING).',
-    keyConcepts: [
-      {
-        title: 'Kompleksitas Algoritma (Big-O Notation)',
-        explanation: 'O(1): Akses index array / Hash table lookup. O(log n): Binary Search pada data terurut. O(n): Linear search traversal. O(n log n): Merge Sort & Quick Sort rata-rata. O(n²): Bubble Sort / nested loop.',
-        formulaOrKey: 'Urutan Efisiensi: O(1) < O(log n) < O(n) < O(n log n) < O(n²)'
-      },
-      {
-        title: 'Stack (LIFO) vs Queue (FIFO)',
-        explanation: 'Stack (Last In First Out) operasi Push dan Pop (contoh: tombol Undo/Redo, Call Stack fungsi rekursif). Queue (First In First Out) operasi Enqueue dan Dequeue (contoh: antrean cetak printer, buffer pesan Kafka).',
-        formulaOrKey: 'Stack: LIFO (Tumpukan) | Queue: FIFO (Antrean)'
-      },
-      {
-        title: 'SQL Join & Klausa GROUP BY / HAVING',
-        explanation: 'INNER JOIN (hanya baris yang cocok di kedua tabel), LEFT JOIN (semua baris tabel kiri + data cocok tabel kanan). Klausa WHERE menyaring baris individual sebelum pengelompokan; HAVING menyaring hasil fungsi agregat (COUNT, SUM, AVG) setelah GROUP BY.',
-        formulaOrKey: 'WHERE = Filter baris awal | HAVING = Filter agregat GROUP BY'
-      }
+    id: 'tk4',
+    title: 'VLAN, Switching & Keamanan Jaringan (Firewall & NAT)',
+    categoryTag: 'Switching & Security',
+    summary: 'Virtual LAN (VLAN ID 1-4094), IEEE 802.1Q frame tagging, mode Access vs Trunk, Spanning Tree Protocol (STP), Network Address Translation (NAT Masquerade, SNAT, DNAT), dan aturan Firewall filter.',
+    conceptExplanation: 'VLAN membagi switch fisik menjadi beberapa jaringan logis yang terisolasi untuk meningkatkan keamanan dan membatasi broadcast traffic. NAT memungkinkan ribuan komputer jaringan lokal privat mengakses internet publik hanya dengan satu IP publik.',
+    keyPoints: [
+      'VLAN Access Port: Port switch yang terhubung ke perangkat akhir (PC, printer, laptop). Paket data tidak diberi tag VLAN (untagged).',
+      'VLAN Trunk Port: Port penghubung antar switch atau dari switch ke router yang membawa paket dari BANYAK VLAN sekaligus. Paket disisipi tag 4-byte IEEE 802.1Q.',
+      'STP (Spanning Tree Protocol 802.1D): Mencegah terjadinya looping jaringan (Broadcast Storm) saat ada jalur kabel ganda/redundant dengan cara memblokir sementara salah satu port (Blocking State).',
+      'NAT Masquerade / PAT: Mengubah IP privat sumber dari banyak klien menjadi satu IP publik router secara dinamis menggunakan nomor port unik.',
+      'DNAT / Port Forwarding: Meneruskan koneksi dari IP publik luar ke server lokal privat (misal membuka web server lokal port 80 ke publik).',
+      'Firewall Filter Chain MikroTik:\n- Input: Paket yang ditujukan langsung KE router itu sendiri (misal akses Winbox / SSH).\n- Output: Paket yang berasal DARI router keluar.\n- Forward: Paket yang hanya LEWAT melintasi router dari klien ke internet.'
     ],
     stepByStepGuides: [
       {
-        title: 'Analisis Output Query SQL dengan Klausa HAVING',
-        problem: 'Diberikan tabel `pesanan` (id, pelanggan_id, total_belanja). Apa fungsi dari query: `SELECT pelanggan_id, COUNT(*) FROM pesanan GROUP BY pelanggan_id HAVING COUNT(*) >= 5;`?',
+        title: 'Cara Membedakan Chain Input vs Chain Forward pada Firewall',
+        description: 'Trik memilih aturan filter firewall agar tidak salah konfigurasi.',
         steps: [
-          {
-            stepNumber: 1,
-            instruction: 'Pahami fungsi GROUP BY',
-            calculationOrDetail: 'GROUP BY pelanggan_id mengelompokkan baris transaksi berdasarkan masing-masing pelanggan.'
-          },
-          {
-            stepNumber: 2,
-            instruction: 'Pahami fungsi agregasi COUNT(*)',
-            calculationOrDetail: 'COUNT(*) menghitung frekuensi jumlah transaksi pesanan per pelanggan.'
-          },
-          {
-            stepNumber: 3,
-            instruction: 'Pahami filter HAVING COUNT(*) >= 5',
-            calculationOrDetail: 'HAVING menyaring grup sehingga hanya menampilkan pelanggan yang memiliki total transaksi 5 kali atau lebih.'
-          }
-        ],
-        solution: 'Query menampilkan ID pelanggan yang telah melakukan transaksi pesanan minimal 5 kali beserta jumlah pesanannya.',
-        tip: 'Jangan pernah meletakkan fungsi agregat (seperti COUNT atau SUM) di dalam klausa WHERE; selalu gunakan klausa HAVING setelah GROUP BY.'
+          'Tanyakan: "Ke mana tujuan akhir dari paket data tersebut?"',
+          'Jika tujuannya adalah ROUTER ITU SENDIRI (misal mengamankan port Winbox router dari hacker luar) → GUNAKAN CHAIN = INPUT.',
+          'Jika tujuannya adalah INTERNET / KOMPUTER LAIN dan hanya melewati router (misal memblokir situs judi untuk klien LAN) → GUNAKAN CHAIN = FORWARD.',
+          'Jika paket dibuat oleh sistem router sendiri (misal router melakukan ping ke Google) → GUNAKAN CHAIN = OUTPUT.'
+        ]
       }
     ],
-    practicalExamples: [
+    formulaDetails: [
       {
-        title: 'Pencarian Binary Search pada Array 1 Juta Elemen',
-        context: 'Mencari satu kata pada kamus terurut 1.000.000 kata.',
-        solution: 'Linear search butuh hingga 1.000.000 komparasi; Binary search (O(log₂ n)) hanya membutuhkan maksimal 20 kali perbandingan (2²⁰ ≈ 1.048.576).',
-        takeaway: 'Struktur data terurut memungkinkan akselerasi pencarian eksponensial.'
+        title: 'Struktur Tagging VLAN IEEE 802.1Q',
+        formula: '\\text{Ethernet Frame} + \\mathbf{802.1Q \\text{ Tag (4 Bytes)}} \\quad (\\text{VLAN ID: } 1 - 4094)',
+        explanation: 'Tag disisipkan antara Source MAC dan Type/Length pada Ethernet Frame.',
+        variables: [
+          { symbol: 'VLAN ID', meaning: 'Nomor identitas unik VLAN (12-bit, nilai 1 s.d 4094)' },
+          { symbol: 'Priority (PCP)', meaning: '3-bit Quality of Service (QoS) level prioritas traffic' }
+        ]
+      }
+    ],
+    formulas: [
+      '\\text{NAT Masquerade: IP Lokal Privat (192.168.x.x)} \\to \\text{IP Publik Router}',
+      '\\text{Port Forwarding: IP Publik:Port Eksternal} \\to \\text{IP Server Lokal:Port Internal}'
+    ],
+    examples: [
+      {
+        problem: 'Administrator ingin memblokir akses internet bagi klien di kantor agar tidak bisa membuka website tertentu pada jam kerja. Chain firewall manakah yang harus dikonfigurasi pada router MikroTik?',
+        given: 'Lalu lintas data dari klien LAN menuju internet melewati router',
+        questionTarget: 'Chain Firewall yang tepat (Input / Forward / Output)',
+        steps: [
+          'Paket data berasal dari komputer klien LAN.',
+          'Tujuan akhir paket adalah server website di internet, bukan router itu sendiri.',
+          'Router hanya bertindak sebagai perantara yang meneruskan (forward) paket tersebut.',
+          'Oleh karena itu, aturan firewall filtering wajib diletakkan pada CHAIN = FORWARD.'
+        ],
+        solution: 'Chain = FORWARD.'
       }
     ],
     quickTips: [
-      'Struktur data Tree Traversal: In-Order (Kiri, Akar, Kanan), Pre-Order (Akar, Kiri, Kanan), Post-Order (Kiri, Kanan, Akar).',
-      'Normalisasi 1NF: Tidak ada kolom multi-nilai (atomik); 2NF: Menghilangkan dependensi parsial terhadap Primary Key gabungan; 3NF: Menghilangkan dependensi transitif.',
-      'Foreign Key memastikan Integritas Referensial antar dua tabel dalam database relasional.'
+      'Gunakan Action = DROP pada firewall untuk diam-diam membuang paket tanpa memberi tahu pengirim (paling aman dari hacker).',
+      'Action = REJECT membuang paket sambil mengirim pesan balasan ICMP unreachable (memberi tahu pengirim bahwa port ditutup).'
+    ]
+  },
+  {
+    id: 'tk5',
+    title: 'Sistem Operasi Linux & Perintah Esensial Shell CLI',
+    categoryTag: 'Sistem Operasi & Server',
+    summary: 'Struktur direktori Linux (FHS), sistem hak akses file angka oktal (chmod 755/644, chown), manajemen proses (ps, top, kill), konfigurasi jaringan CLI (ip a, systemctl), dan manipulasi teks (grep, cat, nano).',
+    conceptExplanation: 'Linux adalah sistem operasi open-source standar industri server cloud dan perangkat jaringan. Menguasai command line interface (CLI) dan manajemen hak akses permission adalah kompetensi utama teknisi sistem dan jaringan.',
+    keyPoints: [
+      'Struktur File Linux (Root /):\n- `/etc`: File konfigurasi sistem & software\n- `/var/log`: Log catatan aktivitas sistem dan error server\n- `/home`: Direktori pribadi user\n- `/bin` & `/sbin`: Perintah biner eksekusi sistem.',
+      'Sistem Hak Akses File (Permissions: rwx):\n- Read (r) = Nilai 4\n- Write (w) = Nilai 2\n- Execute (x) = Nilai 1\n- Nilai 7 = 4 + 2 + 1 (Read + Write + Execute)\n- Nilai 6 = 4 + 2 (Read + Write)\n- Nilai 5 = 4 + 1 (Read + Execute)\n- Format 3 digit: [Owner] [Group] [Others]. Contoh: `chmod 755 file.sh` artinya Owner full (7), Group bisa baca & eksekusi (5), Others bisa baca & eksekusi (5).',
+      'Perintah Esensial:\n- `ls -la`: Melihat seluruh file beserta atribut hak akses dan file tersembunyi\n- `grep "error" file.log`: Mencari teks spesifik di dalam file\n- `systemctl restart nginx`: Merestart layanan server web\n- `ps aux | grep node`: Melihat proses aplikasi node yang sedang berjalan\n- `kill -9 <PID>`: Menghentikan paksa proses berdasarkan Process ID (PID)\n- `chown user:group file`: Mengubah kepemilikan user dan group file.'
     ],
-    quickCheck: [
+    stepByStepGuides: [
       {
-        id: 'qc-tk4',
-        question: 'Struktur data manakah yang paling ideal untuk mengimplementasikan fitur tombol "Undo" pada aplikasi pengolah kata teks?',
-        options: ['Queue (FIFO)', 'Stack (LIFO)', 'Binary Search Tree', 'Circular Linked List'],
-        correctIndex: 1,
-        explanation: 'Fitur "Undo" membutuhkan aksi terakhir yang diketik untuk dibatalkan pertama kali, yang merupakan karakteristik utama struktur data Stack (Last In, First Out).'
+        title: 'Cara Menghitung Angka Oktal Hak Akses Linux (chmod)',
+        description: 'Trik cepat menghitung nilai angka permission rwx.',
+        steps: [
+          'Ingat nilai dasar 3 huruf: r = 4, w = 2, x = 1.',
+          'Hitung digit ke-1 (User / Pemilik): Misal ingin r+w+x → 4+2+1 = 7.',
+          'Hitung digit ke-2 (Group): Misal ingin r+x → 4+0+1 = 5.',
+          'Hitung digit ke-3 (Others / Publik): Misal ingin r+x → 4+0+1 = 5.',
+          'Gabungkan menjadi: `chmod 755 nama_file`.',
+          'Untuk file dokumen sensitif (hanya owner yang boleh baca & tulis, lainnya dilarang): `chmod 600 config.env` (Owner: 4+2=6, Group: 0, Others: 0).'
+        ]
       }
-    ]
-  }
-];
-
-export const teknikKomputerCheatSheet = [
-  {
-    category: 'Subnetting IPv4 & Jaringan',
-    items: [
-      { label: 'Prefix /24', formula: 'Netmask: 255.255.255.0 → 254 Usable Hosts', note: 'Blok size: 256' },
-      { label: 'Prefix /26', formula: 'Netmask: 255.255.255.192 → 62 Usable Hosts', note: 'Blok size: 64' },
-      { label: 'Prefix /28', formula: 'Netmask: 255.255.255.240 → 14 Usable Hosts', note: 'Blok size: 16' },
-      { label: 'Prefix /30', formula: 'Netmask: 255.255.255.252 → 2 Usable Hosts', note: 'P2P Link antar router' }
-    ]
-  },
-  {
-    category: 'Arsitektur & Konversi Biner Hex',
-    items: [
-      { label: '1 Digit Hex', formula: '4 Bit Biner (0x0 = 0000b hingga 0xF = 1111b)', note: '0xA=10, 0xB=11, 0xC=12, 0xD=13, 0xE=14, 0xF=15' },
-      { label: 'XOR Gate', formula: 'Y = A ⊕ B (Bernilai 1 jika bit input berbeda)', note: '0⊕0=0, 0⊕1=1, 1⊕0=1, 1⊕1=0' },
-      { label: 'De Morgan', formula: '(A · B)\' = A\' + B\' ; (A + B)\' = A\' · B\'', note: 'Penyederhanaan aljabar Boolean' }
-    ]
-  },
-  {
-    category: 'Sistem Operasi & Database',
-    items: [
-      { label: 'Syarat Deadlock', formula: 'Mutual Exclusion, Hold & Wait, No Preemption, Circular Wait', note: '4 syarat Coffman' },
-      { label: 'Kompleksitas Binary Search', formula: 'O(log n) pada array terurut', note: 'Jauh lebih cepat dari linear search O(n)' },
-      { label: 'HAVING vs WHERE', formula: 'WHERE (sebelum group by) vs HAVING (sesudah group by untuk agregat)', note: 'HAVING COUNT(*) > 10' }
+    ],
+    formulaDetails: [
+      {
+        title: 'Rumus Nilai Hak Akses Linux',
+        formula: '\\text{Permission Oktal} = \\mathbf{r}(4) + \\mathbf{w}(2) + \\mathbf{x}(1)',
+        explanation: 'Kombinasi angka menghasilkan total dari 0 (tidak ada akses) hingga 7 (akses penuh).',
+        variables: [
+          { symbol: 'Read (r)', meaning: 'Membaca isi file / melihat daftar folder (bobot 4)' },
+          { symbol: 'Write (w)', meaning: 'Mengedit, menghapus, membuat file baru (bobot 2)' },
+          { symbol: 'Execute (x)', meaning: 'Menjalankan script atau masuk ke folder (bobot 1)' }
+        ]
+      }
+    ],
+    formulas: [
+      '\\text{chmod 777} = \\text{rwxrwxrwx (Akses Penuh Semua User)}',
+      '\\text{chmod 755} = \\text{rwxr-xr-x (Standar Folder & Executable Script)}',
+      '\\text{chmod 644} = \\text{rw-r--r-- (Standar File Web / Konfigurasi Biasa)}',
+      '\\text{chmod 600} = \\text{rw------- (File Rahasia Private Key SSH / .env)}'
+    ],
+    examples: [
+      {
+        problem: 'Sebuah file script bernama `deploy.sh` memiliki permission `-rw-r--r--`. Administrator ingin agar pemilik file (owner) dapat mengeksekusi script tersebut, sementara group dan others hanya boleh membaca dan mengeksekusi tanpa boleh mengedit/mengubah isinya. Perintah chmod berapakah yang harus diketikkan?',
+        given: 'Owner: Read, Write, Execute | Group: Read, Execute | Others: Read, Execute',
+        questionTarget: 'Perintah chmod dengan notasi oktal',
+        steps: [
+          'Owner = r + w + x = 4 + 2 + 1 = 7.',
+          'Group = r + x = 4 + 1 = 5.',
+          'Others = r + x = 4 + 1 = 5.',
+          'Maka nilai perizinannya adalah 755.'
+        ],
+        solution: 'chmod 755 deploy.sh'
+      }
+    ],
+    quickTips: [
+      'Jangan pernah memberi `chmod 777` di server produksi karena membahayakan keamanan (siapa pun bisa menyisipkan malware)!',
+      'Gunakan perintah `tail -f /var/log/syslog` untuk memantau log sistem secara live real-time.'
     ]
   }
 ];

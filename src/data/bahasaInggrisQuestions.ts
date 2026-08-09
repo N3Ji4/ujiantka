@@ -2,246 +2,420 @@ import { Question } from '../types';
 
 export const bahasaInggrisQuestions: Question[] = [
   {
-    id: 'eng-q1',
-    number: 1,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Reading Comprehension',
+    id: 'biq-1',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Grammar',
     difficulty: 'Sedang',
-    question: 'Read the excerpt:\n"Recent advances in quantum computing have triggered both excitement and skepticism. While enthusiasts highlight the unprecedented processing speed for cryptography, critics emphasize the high error rates and cryogenic cooling requirements."\n\nWhat is the primary topic of the passage?',
+    question: 'Choose the correct sentence with proper subjunctive mood:',
     options: [
-      { id: 'A', text: 'The complete obsolescence of classical computer hardware' },
-      { id: 'B', text: 'The dual perspectives on emerging quantum computing capabilities' },
-      { id: 'C', text: 'The precise refrigeration methods used in modern data centers' },
-      { id: 'D', text: 'The history of mathematical cryptography algorithms' }
+      { id: 'A', text: 'The board recommended that the CEO resign immediately.' },
+      { id: 'B', text: 'The board recommended that the CEO resigns immediately.' },
+      { id: 'C', text: 'The board recommended the CEO to resign immediately.' },
+      { id: 'D', text: 'The board recommended that the CEO resigning immediately.' }
     ],
-    correctAnswer: 'B',
-    explanation: 'Paragraf tersebut membahas dua sisi: kegembiraan para pendukung (unprecedented processing speed) dan skeptisisme dari para pengkritik (error rates & cooling requirements). Pilihan B secara akurat merangkum kedua perspektif tersebut.',
-    keyConcept: 'Identifying the Main Topic & Duality of Perspectives',
-    tkaExamTip: 'Carilah opsi yang merangkum keseluruhan sudut pandang, bukan yang hanya mewakili satu kubu saja.'
+    correctAnswer: 'A',
+    explanation: 'After verbs of recommendation/demand (recommend, suggest, insist), the subjunctive base form (resign) is required without -s or -ing.'
   },
   {
-    id: 'eng-q2',
-    number: 2,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Contextual Vocabulary',
+    id: 'biq-2',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Error Recognition',
+    difficulty: 'Sulit',
+    question: 'Identify the error or correct form in: "Neither the professor nor her assistants was aware of the scheduling conflict."',
+    options: [
+      { id: 'A', text: 'Change "was" to "were"' },
+      { id: 'B', text: 'Change "nor" to "or"' },
+      { id: 'C', text: 'Change "her" to "their"' },
+      { id: 'D', text: 'No error' }
+    ],
+    correctAnswer: 'A',
+    explanation: 'With neither/nor, the verb agrees with the closer subject ("assistants", plural). Therefore, "was" must be changed to "were".'
+  },
+  {
+    id: 'biq-3',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Reading',
     difficulty: 'Mudah',
-    question: 'In the sentence: "To mitigate the devastating effects of the drought, the local agricultural agency distributed drought-resistant seeds to smallholder farmers," the word "mitigate" is closest in meaning to...',
+    question: 'Contextual Vocabulary: "Despite the meticulous planning, unforeseen logistical hurdles impeded the expedition."',
+    contextSnippet: 'What does "impeded" most nearly mean in this sentence?',
     options: [
-      { id: 'A', text: 'Exacerbate' },
-      { id: 'B', text: 'Alleviate' },
-      { id: 'C', text: 'Ignore' },
-      { id: 'D', text: 'Accelerate' },
+      { id: 'A', text: 'Facilitated' },
+      { id: 'B', text: 'Hindered or delayed' },
+      { id: 'C', text: 'Accelerated' },
+      { id: 'D', text: 'Funded' }
     ],
     correctAnswer: 'B',
-    explanation: '"Mitigate" berarti mengurangi keparahan atau dampak buruk dari sesuatu (to lessen or make less severe). Sinonim yang tepat adalah "Alleviate" (meringankan). "Exacerbate" adalah antonimnya (memperparah).',
-    keyConcept: 'Academic Vocabulary & Context Clues',
-    tkaExamTip: 'Kata "mitigate" sangat sering muncul pada teks bertema lingkungan, mitigasi bencana, dan ekonomi.'
+    explanation: '"Impeded" means delayed, obstructed, or hindered progress.'
   },
   {
-    id: 'eng-q3',
-    number: 3,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Grammar in Context',
-    difficulty: 'Tinggi',
-    question: 'Choose the correct inverted sentence structure:\n"_____ so many technological breakthroughs in such a concise span of human history."',
-    options: [
-      { id: 'A', text: 'Never before we have witnessed' },
-      { id: 'B', text: 'Never before have we witnessed' },
-      { id: 'C', text: 'We have never before witnessed have' },
-      { id: 'D', text: 'Before never did we witnessed' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'Ketika kalimat diawali dengan frasa adverbia negatif/pembatas seperti "Never before", terjadi pembalikan (inversion) antara auxiliary verb ("have") dan subjek ("we"): Negative Adverb + Auxiliary + Subject + Main Verb (have we witnessed).',
-    keyConcept: 'Negative Inversion in Formal English',
-    tkaExamTip: 'Susunan kalimat inversi menyerupai susunan kalimat tanya, namun diakhiri tanda titik.'
-  },
-  {
-    id: 'eng-q4',
-    number: 4,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Grammar in Context',
+    id: 'biq-4',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Structure',
     difficulty: 'Sedang',
-    question: 'Complete the sentence:\n"_____ the urgent memo yesterday, the logistics team would have redirected the cargo shipments immediately."',
+    question: 'Complete the sentence: "____ by strong winds, the vessel managed to dock safely."',
     options: [
-      { id: 'A', text: 'If they received' },
-      { id: 'B', text: 'Had they received' },
-      { id: 'C', text: 'Should they receive' },
-      { id: 'D', text: 'Were they receiving' }
+      { id: 'A', text: 'Buffeted' },
+      { id: 'B', text: 'Buffeting' },
+      { id: 'C', text: 'To buffet' },
+      { id: 'D', text: 'Having buffet' }
     ],
-    correctAnswer: 'B',
-    explanation: 'Klausa hasil menggunakan "would have redirected" (Conditional Type 3 - situasi lampau yang tidak terjadi). Bentuk inversi tanpa "if" untuk Type 3 adalah: "Had + Subject + V3" (Had they received), yang ekuivalen dengan "If they had received".',
-    keyConcept: 'Inverted Third Conditional (Past Unreal)',
-    tkaExamTip: 'Gunakan "Had + S + V3" untuk menyatakan pengandaian masa lampau tanpa kata "if".'
+    correctAnswer: 'A',
+    explanation: 'Reduced passive participle clause: "Although it was buffeted by strong winds" becomes "Buffeted by strong winds".'
   },
   {
-    id: 'eng-q5',
-    number: 5,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Text Organization',
+    id: 'biq-5',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Grammar',
     difficulty: 'Sedang',
-    question: 'Select the most appropriate transition word:\n"Urban vertical farming maximizes limited metropolitan real estate; _____, high energy costs for artificial illumination remain a significant obstacle to long-term profitability."',
+    question: 'Select the sentence demonstrating correct parallel structure:',
     options: [
-      { id: 'A', text: 'Furthermore' },
-      { id: 'B', text: 'Consequently' },
-      { id: 'C', text: 'Nevertheless' },
-      { id: 'D', text: 'Likewise' }
+      { id: 'A', text: 'She enjoys hiking, to read novels, and swimming.' },
+      { id: 'B', text: 'She enjoys hiking, reading novels, and swimming.' },
+      { id: 'C', text: 'She enjoys to hike, reading, and swim.' },
+      { id: 'D', text: 'She enjoys hiking, reading, and to swim.' }
+    ],
+    correctAnswer: 'B',
+    explanation: 'Parallel structure requires matching grammatical forms in a series: hiking, reading, and swimming (all gerunds).'
+  },
+  {
+    id: 'biq-6',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Conditionals',
+    difficulty: 'Sedang',
+    question: 'Choose the correct conditional form: "If she ____ about the traffic congestion, she would have taken the subway."',
+    options: [
+      { id: 'A', text: 'knows' },
+      { id: 'B', text: 'knew' },
+      { id: 'C', text: 'had known' },
+      { id: 'D', text: 'would know' }
     ],
     correctAnswer: 'C',
-    explanation: 'Kalimat pertama menyampaikan keuntungan (memaksimalkan lahan sempit), sedangkan kalimat kedua menyampaikan tantangan finansial (biaya energi tinggi untuk lampu buatan). Hubungan ini adalah kontras konsesi, sehingga "Nevertheless" (namun demikian) adalah transisi yang paling tepat.',
-    keyConcept: 'Concessive & Contrast Transition Signals',
-    tkaExamTip: '"Furthermore" menambah argumen sejalan, sedangkan "Nevertheless" memperkenalkan tantangan/kontras.'
+    explanation: 'Third conditional (past hypothetical): If + past perfect (had known), would have + past participle.'
   },
   {
-    id: 'eng-q6',
-    number: 6,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Inference & Author\'s Tone',
-    difficulty: 'Sedang',
-    question: 'Read the short excerpt:\n"Although proponents argue that deep-sea mining will secure vital battery minerals, the irreversible destruction of hydrothermal ecosystems suggests that rushing into commercial extraction is reckless and shortsighted."\n\nThe author\'s attitude toward deep-sea mining can best be described as...',
+    id: 'biq-7',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Inversion',
+    difficulty: 'Sulit',
+    question: 'Choose the correctly inverted sentence:',
     options: [
-      { id: 'A', text: 'Enthusiastic and celebratory' },
-      { id: 'B', text: 'Critical and cautionary' },
-      { id: 'C', text: 'Completely indifferent' },
-      { id: 'D', text: 'Unconditionally supportive' }
+      { id: 'A', text: 'Never before has the company experienced such rapid growth.' },
+      { id: 'B', text: 'Never before the company has experienced such rapid growth.' },
+      { id: 'C', text: 'Never before experienced the company such rapid growth.' },
+      { id: 'D', text: 'Never before did the company has experienced such growth.' }
+    ],
+    correctAnswer: 'A',
+    explanation: 'Negative adverbial at the start ("Never before") triggers subject-auxiliary inversion: "has the company experienced".'
+  },
+  {
+    id: 'biq-8',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Vocabulary',
+    difficulty: 'Mudah',
+    question: 'Synonym test: The CEO’s speech was concise, delivering all key points in under five minutes.',
+    options: [
+      { id: 'A', text: 'Verbose' },
+      { id: 'B', text: 'Succinct' },
+      { id: 'C', text: 'Ambiguous' },
+      { id: 'D', text: 'Tedious' }
     ],
     correctAnswer: 'B',
-    explanation: 'Penggunaan kata-kata bermuatan evaluatif seperti "irreversible destruction", "reckless" (ceroboh), dan "shortsighted" (berpandangan sempit) dengan jelas menunjukkan nada kritis dan memberi peringatan (critical and cautionary).',
-    keyConcept: 'Determining Author\'s Tone through Diction',
-    tkaExamTip: 'Perhatikan kata sifat bermuatan nilai (evaluative adjectives) untuk mendeteksi sikap penulis.'
+    explanation: '"Concise" means brief and clear; "succinct" is its direct synonym.'
   },
   {
-    id: 'eng-q7',
-    number: 7,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Grammar in Context',
+    id: 'biq-9',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Passive Voice',
     difficulty: 'Sedang',
-    question: 'Identify the grammatically correct completion:\n"The advisory board recommended that the senior analyst _____ the economic forecasting model prior to the quarterly summit."',
+    question: 'Convert to passive: "They are currently reviewing the architectural blueprints."',
     options: [
-      { id: 'A', text: 'revises' },
-      { id: 'B', text: 'revised' },
-      { id: 'C', text: 'revise' },
-      { id: 'D', text: 'will revise' }
+      { id: 'A', text: 'The architectural blueprints are reviewed currently.' },
+      { id: 'B', text: 'The architectural blueprints are being reviewed currently.' },
+      { id: 'C', text: 'The architectural blueprints were being reviewed.' },
+      { id: 'D', text: 'The architectural blueprints have been reviewed.' }
+    ],
+    correctAnswer: 'B',
+    explanation: 'Present continuous active ("are reviewing") becomes present continuous passive ("are being reviewed").'
+  },
+  {
+    id: 'biq-10',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Relative Clause',
+    difficulty: 'Sedang',
+    question: 'Choose the correct relative pronoun: "The scientist ____ research breakthrough revolutionized renewable energy was awarded the prize."',
+    options: [
+      { id: 'A', text: 'who' },
+      { id: 'B', text: 'whom' },
+      { id: 'C', text: 'whose' },
+      { id: 'D', text: 'which' }
     ],
     correctAnswer: 'C',
-    explanation: 'Setelah kata kerja rekomendasi/permintaan seperti "recommended that", digunakan pola Subjunctive Mood dalam bahasa Inggris standar formal. Pola ini mensyaratkan kata kerja dasar (bare infinitive) "revise", bukan bentuk orang ketiga tunggal "revises" atau past tense "revised".',
-    keyConcept: 'Subjunctive Mood with Mandative Verbs',
-    tkaExamTip: 'Kata kerja suggest/recommend/insist/demand yang diikuti "that" selalu menggunakan bentuk kata kerja dasar (V1 tanpa -s).'
+    explanation: 'Showing possession ("research belonging to the scientist") requires the relative pronoun "whose".'
   },
   {
-    id: 'eng-q8',
-    number: 8,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Contextual Vocabulary',
+    id: 'biq-11',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Grammar',
     difficulty: 'Sedang',
-    question: 'In academic writing, which of the following is the most natural collocation?',
+    question: 'Complete the sentence: "Hardly had the meeting started ____ the projector malfunctioned."',
     options: [
-      { id: 'A', text: 'To perform an error' },
-      { id: 'B', text: 'To commit a conclusion' },
-      { id: 'C', text: 'To draw a conclusion' },
-      { id: 'D', text: 'To produce an investigation' }
+      { id: 'A', text: 'when' },
+      { id: 'B', text: 'than' },
+      { id: 'C', text: 'then' },
+      { id: 'D', text: 'before' }
+    ],
+    correctAnswer: 'A',
+    explanation: 'The correlative conjunction pair is "Hardly / Scarcely ... when" (or "No sooner ... than").'
+  },
+  {
+    id: 'biq-12',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Error Recognition',
+    difficulty: 'Sulit',
+    question: 'Identify the error in: "Each of the candidates are required to submit their portfolio before Friday."',
+    options: [
+      { id: 'A', text: 'Change "Each" to "All"' },
+      { id: 'B', text: 'Change "are" to "is"' },
+      { id: 'C', text: 'Change "their" to "his or her"' },
+      { id: 'D', text: 'Both B and C' }
+    ],
+    correctAnswer: 'D',
+    explanation: '"Each" is singular, so it requires singular verb ("is") and traditional singular pronoun agreement (though singular "their" is common in modern casual English, formal TKA strictly tests singular verb agreement and pronoun consistency).'
+  },
+  {
+    id: 'biq-13',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Reading',
+    difficulty: 'Sedang',
+    question: 'Contextual Inference: "The critic dismissed the modern art installation as derivative and devoid of originality."',
+    contextSnippet: 'What does "derivative" imply about the art installation?',
+    options: [
+      { id: 'A', text: 'It is highly innovative and groundbreaking.' },
+      { id: 'B', text: 'It imitates earlier styles without adding new ideas.' },
+      { id: 'C', text: 'It relies heavily on mathematical equations.' },
+      { id: 'D', text: 'It is extremely valuable and rare.' }
+    ],
+    correctAnswer: 'B',
+    explanation: '"Derivative" means unoriginal, copied, or closely imitating previous works.'
+  },
+  {
+    id: 'biq-14',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Grammar',
+    difficulty: 'Sedang',
+    question: 'Choose the correct preposition: "Her success in the scientific field is attributed ____ rigorous dedication and peer collaboration."',
+    options: [
+      { id: 'A', text: 'in' },
+      { id: 'B', text: 'to' },
+      { id: 'C', text: 'for' },
+      { id: 'D', text: 'with' }
+    ],
+    correctAnswer: 'B',
+    explanation: 'The phrasal verb/idiom is "attribute something TO something".'
+  },
+  {
+    id: 'biq-15',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Conjunctions',
+    difficulty: 'Mudah',
+    question: 'Complete the sentence: "____ graduating top of her class, she received numerous fellowship offers."',
+    options: [
+      { id: 'A', text: 'Because of' },
+      { id: 'B', text: 'Although' },
+      { id: 'C', text: 'Upon' },
+      { id: 'D', text: 'Unless' }
     ],
     correctAnswer: 'C',
-    explanation: 'Dalam bahasa Inggris standar akademik, pasangan kata (collocation) yang tepat untuk menarik kesimpulan adalah "to draw a conclusion" atau "to reach a conclusion".',
-    keyConcept: 'Academic Verb-Noun Collocations',
-    tkaExamTip: 'Hafalkan pasangan umum: draw a conclusion, conduct research, pose a risk, raise awareness.'
+    explanation: '"Upon graduating" means immediately after graduating, acting as a temporal prepositional phrase.'
   },
   {
-    id: 'eng-q9',
-    number: 9,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Reading Comprehension',
-    difficulty: 'Sedang',
-    question: 'Read the sentence:\n"The widespread integration of automated translation tools has facilitated cross-border e-commerce; however, nuanced colloquialisms still evade algorithmic accuracy."\n\nWhat can be inferred from the statement?',
+    id: 'biq-16',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Vocabulary',
+    difficulty: 'Sulit',
+    question: 'Choose the antonym for "ephemeral":',
     options: [
-      { id: 'A', text: 'Automated translation is completely useless for business transactions.' },
-      { id: 'B', text: 'Informal cultural idioms remain challenging for computer translation algorithms.' },
-      { id: 'C', text: 'Cross-border commerce has declined due to software limitations.' },
-      { id: 'D', text: 'Human translators are no longer employed in international trade.' }
+      { id: 'A', text: 'Transient' },
+      { id: 'B', text: 'Permanent' },
+      { id: 'C', text: 'Fleeting' },
+      { id: 'D', text: 'Momentary' }
     ],
     correctAnswer: 'B',
-    explanation: '"Nuanced colloquialisms" merujuk pada ungkapan percakapan/idiom informal yang kaya nuansa budaya. Frasa "evade algorithmic accuracy" menunjukkan bahwa hal-hal tersebut masih sulit diterjemahkan secara akurat oleh algoritma otomatis.',
-    keyConcept: 'Making Inferences from Academic Excerpts',
-    tkaExamTip: 'Jangan memilih opsi ekstrem yang menggunakan kata "completely", "never", atau "always" jika teks aslinya lebih bernuansa.'
+    explanation: '"Ephemeral" means lasting for a very short time (fleeting, transient). Its antonym is "permanent".'
   },
   {
-    id: 'eng-q10',
-    number: 10,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Grammar in Context',
+    id: 'biq-17',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Grammar',
     difficulty: 'Sedang',
-    question: 'Choose the correct participial phrase completion:\n"_____ by centuries of volcanic activity, the soil in the central valley boasts remarkable agricultural fertility."',
+    question: 'Choose the correct sentence structure:',
     options: [
-      { id: 'A', text: 'Enriching' },
-      { id: 'B', text: 'Enriched' },
-      { id: 'C', text: 'Having enriched' },
-      { id: 'D', text: 'To enrich' }
+      { id: 'A', text: 'Not only did he complete the report, but he also presented it.' },
+      { id: 'B', text: 'Not only he completed the report, but he also presented it.' },
+      { id: 'C', text: 'Not only did he completed the report, but also presented.' },
+      { id: 'D', text: 'Not only he did complete the report, and presented it.' }
+    ],
+    correctAnswer: 'A',
+    explanation: '"Not only" at the beginning of the clause requires auxiliary inversion ("did he complete"), followed by "but also".'
+  },
+  {
+    id: 'biq-18',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Reading',
+    difficulty: 'Sedang',
+    question: 'Contextual Vocabulary: "The ambassador maintained an amicable demeanor throughout the tense negotiations."',
+    contextSnippet: 'What does "amicable" mean?',
+    options: [
+      { id: 'A', text: 'Hostile and aggressive' },
+      { id: 'B', text: 'Friendly and peaceful' },
+      { id: 'C', text: 'Indifferent and cold' },
+      { id: 'D', text: 'Suspicious and guarded' }
     ],
     correctAnswer: 'B',
-    explanation: 'Tanah (the soil) menerima perlakuan pasif dari aktivitas vulkanik (tanah diperkaya oleh abu/mineral vulkanik). Oleh karena itu, digunakan klausa partisipial pasif bentuk Past Participle (V3): "Enriched by centuries of volcanic activity...".',
-    keyConcept: 'Passive Participial Phrase Modifiers',
-    tkaExamTip: 'Tentukan apakah subjek utama melakukan aksi (aktif: V-ing) atau menerima aksi (pasif: V3).'
+    explanation: '"Amicable" means characterized by friendliness and absence of animosity.'
   },
   {
-    id: 'eng-q11',
-    number: 11,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Error Identification',
+    id: 'biq-19',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Grammar',
     difficulty: 'Sedang',
-    question: 'Identify the part of the sentence that contains an error:\n"(A) The number of renewable energy projects (B) have increased significantly (C) across developing nations (D) over the past decade."',
+    question: 'Complete the sentence: "It is crucial that every employee ____ safety protocols strictly."',
     options: [
-      { id: 'A', text: '(A) The number of' },
-      { id: 'B', text: '(B) have increased' },
-      { id: 'C', text: '(C) across developing' },
-      { id: 'D', text: '(D) over the past' }
+      { id: 'A', text: 'follows' },
+      { id: 'B', text: 'follow' },
+      { id: 'C', text: 'followed' },
+      { id: 'D', text: 'is following' }
     ],
     correctAnswer: 'B',
-    explanation: 'Frasa "The number of..." merupakan subjek tunggal (singular subject) yang merujuk pada kuantitas total, sehingga harus menggunakan kata kerja tunggal "has increased", bukan "have increased". Berbeda dengan "A number of..." yang bermakna "sejumlah/banyak" dan menggunakan kata kerja jamak.',
-    keyConcept: 'Subject-Verb Agreement: "The Number of" vs "A Number of"',
-    tkaExamTip: 'The number of + plural noun = Singular Verb (has/is). A number of + plural noun = Plural Verb (have/are).'
+    explanation: 'Subjunctive mood after impersonal expression ("It is crucial that...") requires the base form of the verb ("follow").'
   },
   {
-    id: 'eng-q12',
-    number: 12,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Contextual Vocabulary',
-    difficulty: 'Sedang',
-    question: 'The word "lucid" in "The professor provided a lucid explanation of complex thermodynamic principles" means...',
+    id: 'biq-20',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Structure',
+    difficulty: 'Sulit',
+    question: 'Identify the error in: "Scarcely had we stepped outside when the torrential rain began falling."',
     options: [
-      { id: 'A', text: 'Ambiguous and vague' },
-      { id: 'B', text: 'Clear and easy to understand' },
-      { id: 'C', text: 'Excessively lengthy' },
-      { id: 'D', text: 'Unrelated to the syllabus' }
+      { id: 'A', text: 'Change "Scarcely" to "No sooner"' },
+      { id: 'B', text: 'Change "when" to "than"' },
+      { id: 'C', text: 'Change "began" to "had begun"' },
+      { id: 'D', text: 'No error' }
+    ],
+    correctAnswer: 'D',
+    explanation: 'The sentence is entirely correct: "Scarcely had [subject] [past participle] when [subject] [simple past]".'
+  },
+  {
+    id: 'biq-21',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Vocabulary',
+    difficulty: 'Mudah',
+    question: 'Choose the word that best fits: "The scientist offered a plausible explanation supported by empirical data."',
+    options: [
+      { id: 'A', text: 'Credible and believable' },
+      { id: 'B', text: 'Fictional and imaginary' },
+      { id: 'C', text: 'Absurd and ridiculous' },
+      { id: 'D', text: 'Ambiguous and vague' }
+    ],
+    correctAnswer: 'A',
+    explanation: '"Plausible" means seeming reasonable or probable (credible).'
+  },
+  {
+    id: 'biq-22',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Grammar',
+    difficulty: 'Sedang',
+    question: 'Choose the correct form: "Had I known about the delay, I ____ alternative arrangements."',
+    options: [
+      { id: 'A', text: 'will make' },
+      { id: 'B', text: 'would make' },
+      { id: 'C', text: 'would have made' },
+      { id: 'D', text: 'had made' }
+    ],
+    correctAnswer: 'C',
+    explanation: 'Inverted third conditional ("Had I known" = "If I had known"), main clause requires "would have made".'
+  },
+  {
+    id: 'biq-23',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Error Recognition',
+    difficulty: 'Sedang',
+    question: 'Identify the error in: "Despite of the adverse weather conditions, the flight arrived on schedule."',
+    options: [
+      { id: 'A', text: 'Change "Despite of" to "Despite" or "In spite of"' },
+      { id: 'B', text: 'Change "adverse" to "averse"' },
+      { id: 'C', text: 'Change "arrived" to "has arrived"' },
+      { id: 'D', text: 'No error' }
+    ],
+    correctAnswer: 'A',
+    explanation: '"Despite" does not take "of" (unlike "in spite of"). Therefore, "Despite of" is incorrect.'
+  },
+  {
+    id: 'biq-24',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Reading',
+    difficulty: 'Sedang',
+    question: 'Contextual Inference: "The novel’s ambiguous ending left readers debating the protagonist’s true fate."',
+    contextSnippet: 'What does "ambiguous" mean?',
+    options: [
+      { id: 'A', text: 'Clear and definitive' },
+      { id: 'B', text: 'Open to multiple interpretations' },
+      { id: 'C', text: 'Tragic and depressing' },
+      { id: 'D', text: 'Predictable and dull' }
     ],
     correctAnswer: 'B',
-    explanation: '"Lucid" berarti jelas, gamblang, dan mudah dipahami (expressed clearly; easy to understand).',
-    keyConcept: 'Academic Adjective Precision',
-    tkaExamTip: 'Kata kunci lawan kata: lucid ≠ ambiguous / obscure.'
+    explanation: '"Ambiguous" means having more than one possible meaning or interpretation.'
   },
   {
-    id: 'eng-q13',
-    number: 13,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Text Organization',
+    id: 'biq-25',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Grammar',
     difficulty: 'Sedang',
-    question: 'Which sentence would be the most effective concluding statement for a paragraph advocating for digital privacy education in secondary schools?',
+    question: 'Complete the sentence: "She is one of those managers who always ____ their team during crises."',
     options: [
-      { id: 'A', text: 'Furthermore, laptop batteries have improved substantially in recent years.' },
-      { id: 'B', text: 'Equipping adolescents with data literacy is therefore not merely a technical skill, but a vital civic safeguard in the modern era.' },
-      { id: 'C', text: 'Many teachers prefer paper textbooks because they do not require internet access.' },
-      { id: 'D', text: 'Social media platforms were initially developed for university students in North America.' }
+      { id: 'A', text: 'supports' },
+      { id: 'B', text: 'support' },
+      { id: 'C', text: 'supporting' },
+      { id: 'D', text: 'is supporting' }
     ],
     correctAnswer: 'B',
-    explanation: 'Pilihan B memberikan sintesis argumen yang kuat, mengikat konsep literasi data/privasi dengan perlindungan sipil yang esensial, serta menggunakan kata transisi konklusif "therefore". Opsi lainnya keluar dari fokus argumen.',
-    keyConcept: 'Evaluating Effective Concluding Sentences',
-    tkaExamTip: 'Kalimat kesimpulan harus menegaskan kembali tesis utama tanpa memperkenalkan topik baru yang menyimpang.'
+    explanation: 'In the structure "one of those [plural noun] who...", the relative pronoun "who" refers to the plural noun "managers", so the verb must be plural ("support").'
   },
   {
-    id: 'eng-q14',
-    number: 14,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Grammar in Context',
+    id: 'biq-26',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Vocabulary',
+    difficulty: 'Mudah',
+    question: 'Choose the synonym for "ubiquitous":',
+    options: [
+      { id: 'A', text: 'Rare' },
+      { id: 'B', text: 'Omnipresent / Found everywhere' },
+      { id: 'C', text: 'Hidden' },
+      { id: 'D', text: 'Ancient' }
+    ],
+    correctAnswer: 'B',
+    explanation: '"Ubiquitous" means present, appearing, or found everywhere.'
+  },
+  {
+    id: 'biq-27',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Structure',
+    difficulty: 'Sulit',
+    question: 'Choose the correct sentence:',
+    options: [
+      { id: 'A', text: 'No sooner had we arrived at the station than the train departed.' },
+      { id: 'B', text: 'No sooner had we arrived at the station when the train departed.' },
+      { id: 'C', text: 'No sooner we arrived at the station than the train departed.' },
+      { id: 'D', text: 'No sooner did we arrived than the train departed.' }
+    ],
+    correctAnswer: 'A',
+    explanation: '"No sooner" requires past perfect inversion ("had we arrived") and is paired with "than".'
+  },
+  {
+    id: 'biq-28',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Grammar',
     difficulty: 'Sedang',
-    question: 'Fill in the blank:\n"Neither the chief executive officer nor the branch managers _____ satisfied with the preliminary audit results."',
+    question: 'Complete the sentence: "Neither the supervisor nor the technicians ____ responsible for the equipment failure."',
     options: [
       { id: 'A', text: 'was' },
       { id: 'B', text: 'were' },
@@ -249,296 +423,37 @@ export const bahasaInggrisQuestions: Question[] = [
       { id: 'D', text: 'has been' }
     ],
     correctAnswer: 'B',
-    explanation: 'Pada susunan korelasi "Neither ... nor ...", kata kerja harus menyesuaikan dengan subjek yang posisinya paling dekat dengan kata kerja (Rule of Proximity). Di sini subjek terdekat adalah "the branch managers" (jamak), sehingga kata kerja yang tepat dalam konteks lampau adalah "were".',
-    keyConcept: 'Correlative Conjunction Agreement (Rule of Proximity)',
-    tkaExamTip: 'Pada Either...or dan Neither...nor, sesuaikan kata kerja dengan subjek setelah "nor/or".'
+    explanation: 'With neither/nor, the verb agrees with the closer subject ("technicians", plural). Therefore, past tense plural "were" is correct.'
   },
   {
-    id: 'eng-q15',
-    number: 15,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Reading Comprehension',
+    id: 'biq-29',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Reading',
     difficulty: 'Sedang',
-    question: 'What is the purpose of the author in using the phrase "a double-edged sword" when describing social media algorithms?',
+    question: 'Contextual Vocabulary: "The startup’s innovative business model proved resilient against market volatility."',
+    contextSnippet: 'What does "resilient" mean?',
     options: [
-      { id: 'A', text: 'To emphasize that the technology is exclusively dangerous and must be banned' },
-      { id: 'B', text: 'To indicate that the technology provides valuable benefits while also carrying substantial drawbacks' },
-      { id: 'C', text: 'To praise the hardware manufacturers for their sharpness and precision' },
-      { id: 'D', text: 'To claim that users are completely powerless against online advertising' }
+      { id: 'A', text: 'Fragile and easily broken' },
+      { id: 'B', text: 'Able to recover quickly from tough conditions' },
+      { id: 'C', text: 'Stagnant and unchanging' },
+      { id: 'D', text: 'Overpriced' }
     ],
     correctAnswer: 'B',
-    explanation: 'Idiom "a double-edged sword" (pedang bermata dua) digunakan secara luas dalam bahasa Inggris untuk menggambarkan situasi atau teknologi yang memiliki manfaat sekaligus risiko/kerugian dalam waktu bersamaan.',
-    keyConcept: 'Idiomatic Expressions in Academic Contexts',
-    tkaExamTip: 'Pedang bermata dua = dual nature (keuntungan sekaligus kerugian).'
+    explanation: '"Resilient" means able to withstand or recover quickly from difficult situations.'
   },
   {
-    id: 'eng-q16',
-    number: 16,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Contextual Vocabulary',
-    difficulty: 'Tinggi',
-    question: 'Choose the synonym of the underlined word:\n"The archaeological findings provided `compelling` evidence that sophisticated irrigation networks existed two millennia ago."',
+    id: 'biq-30',
+    subjectId: 'bahasa_inggris',
+    topicTag: 'Grammar',
+    difficulty: 'Sedang',
+    question: 'Choose the correct adjective form: "The presentation was far ____ than anyone had anticipated."',
     options: [
-      { id: 'A', text: 'Flimsy' },
-      { id: 'B', text: 'Persuasive' },
-      { id: 'C', text: 'Questionable' },
-      { id: 'D', text: 'Repetitive' }
+      { id: 'A', text: 'engaging' },
+      { id: 'B', text: 'more engaging' },
+      { id: 'C', text: 'most engaging' },
+      { id: 'D', text: 'as engaging' }
     ],
     correctAnswer: 'B',
-    explanation: '"Compelling" dalam konteks bukti ilmiah berarti sangat meyakinkan, kuat, dan tak terbantahkan (evoking interest or conviction in a powerfully irresistible way). Sinonimnya adalah "Persuasive" atau "Convincing".',
-    keyConcept: 'Academic Word Choice & Collocations',
-    tkaExamTip: '"Compelling evidence" adalah frasa kolokasi paten dalam teks ilmiah.'
-  },
-  {
-    id: 'eng-q17',
-    number: 17,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Grammar in Context',
-    difficulty: 'Sedang',
-    question: 'Choose the correct form to complete the sentence:\n"Had the laboratory secured sufficient funding last quarter, the clinical trial _____ completed ahead of schedule."',
-    options: [
-      { id: 'A', text: 'would be' },
-      { id: 'B', text: 'would have been' },
-      { id: 'C', text: 'will have been' },
-      { id: 'D', text: 'had been' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'Struktur "Had the laboratory secured..." adalah Inverted Conditional Type 3. Klausa utamanya harus menggunakan format pasif lampau: "would have been + V3" (would have been completed).',
-    keyConcept: 'Passive Third Conditional Main Clause',
-    tkaExamTip: 'Pastikan pola pasangan: Had + S + V3 pasangannya adalah S + would have been + V3.'
-  },
-  {
-    id: 'eng-q18',
-    number: 18,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Error Identification',
-    difficulty: 'Sedang',
-    question: 'Find the grammatical error:\n"(A) Despite of (B) the heavy turbulence during the flight, (C) the experienced pilot landed (D) the aircraft smoothly."',
-    options: [
-      { id: 'A', text: '(A) Despite of' },
-      { id: 'B', text: '(B) the heavy turbulence' },
-      { id: 'C', text: '(C) the experienced pilot' },
-      { id: 'D', text: '(D) the aircraft smoothly' }
-    ],
-    correctAnswer: 'A',
-    explanation: 'Kata "Despite" tidak pernah diikuti oleh preposisi "of". Bentuk yang benar adalah "Despite the heavy turbulence" ATAU "In spite of the heavy turbulence".',
-    keyConcept: 'Prepositional Phrases: Despite vs In Spite Of',
-    tkaExamTip: 'Ingat: Despite TIDAK boleh pakai "of", sedangkan In spite HARUS pakai "of".'
-  },
-  {
-    id: 'eng-q19',
-    number: 19,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Text Organization',
-    difficulty: 'Sedang',
-    question: 'Which transition best completes the excerpt?\n"Microalgae cultivation requires significantly less arable land than conventional terrestrial crops. _____, it can utilize brackish or wastewater, preserving scarce freshwater resources."',
-    options: [
-      { id: 'A', text: 'In contrast' },
-      { id: 'B', text: 'Moreover' },
-      { id: 'C', text: 'On the contrary' },
-      { id: 'D', text: 'Nonetheless' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'Kalimat pertama menyampaikan keuntungan (hemat lahan tanah). Kalimat kedua menambahkan keuntungan lain yang sejalan (bisa menggunakan air limbah). Kata transisi penambahan yang tepat adalah "Moreover" (terlebih lagi / selain itu).',
-    keyConcept: 'Additive Transitions in Scientific Argumentation',
-    tkaExamTip: '"Moreover" dan "Furthermore" digunakan saat menambahkan argumen penguat positif ke arah yang sama.'
-  },
-  {
-    id: 'eng-q20',
-    number: 20,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Reading Comprehension',
-    difficulty: 'Sedang',
-    question: 'Read the sentence:\n"The researchers acknowledged that their sample size was confined to urban demographics; consequently, generalizing the behavioral conclusions to rural communities would be premature."\n\nWhat is the main point of this sentence?',
-    options: [
-      { id: 'A', text: 'Rural populations behave identically to urban populations.' },
-      { id: 'B', text: 'The study\'s findings cannot yet be automatically applied to rural settings.' },
-      { id: 'C', text: 'Urban research is inherently invalid and unscientific.' },
-      { id: 'D', text: 'Demographic data collection should be discontinued.' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'Frasa "generalizing ... would be premature" berarti menyimpulkan hasil tersebut ke masyarakat pedesaan masih terlalu dini / belum dapat digeneralisasi karena sampel hanya berasal dari masyarakat perkotaan.',
-    keyConcept: 'Interpreting Limitations in Research Passages',
-    tkaExamTip: 'Kata "premature" sering mengindikasikan bahwa suatu kesimpulan belum cukup bukti untuk digeneralisasi.'
-  },
-  {
-    id: 'eng-q21',
-    number: 21,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Grammar in Context',
-    difficulty: 'Sedang',
-    question: 'Choose the correct form:\n"The committee requested that every delegate _____ their voting credentials prior to entering the convention hall."',
-    options: [
-      { id: 'A', text: 'presents' },
-      { id: 'B', text: 'present' },
-      { id: 'C', text: 'presented' },
-      { id: 'D', text: 'is presenting' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'Setelah kata kerja "requested that", klausa nomina menggunakan Subjunctive Mood (bare infinitive: "present"), tanpa tambahan akhiran "-s" meskipun subjeknya "every delegate".',
-    keyConcept: 'Subjunctive Mood with "Request That"',
-    tkaExamTip: 'Semua kata kerja perintah/permintaan (ask, require, demand, request) menggunakan bare infinitive.'
-  },
-  {
-    id: 'eng-q22',
-    number: 22,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Contextual Vocabulary',
-    difficulty: 'Sedang',
-    question: 'The term "plausible" in "The astrophysicist proposed a plausible explanation for the unusual gamma-ray bursts" is closest in meaning to...',
-    options: [
-      { id: 'A', text: 'Implausible' },
-      { id: 'B', text: 'Credible' },
-      { id: 'C', text: 'Absurd' },
-      { id: 'D', text: 'Defective' }
-    ],
-    correctAnswer: 'B',
-    explanation: '"Plausible" berarti masuk akal, beralasan, dan dapat dipercaya (reasonable, believable, credible).',
-    keyConcept: 'Academic Vocabulary Synonyms',
-    tkaExamTip: 'Plausible = Credible / Feasible / Reasonable.'
-  },
-  {
-    id: 'eng-q23',
-    number: 23,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Grammar in Context',
-    difficulty: 'Sedang',
-    question: 'Complete the sentence:\n"Scarcely had the keynote speaker stepped off the podium _____ the audience erupted into a standing ovation."',
-    options: [
-      { id: 'A', text: 'than' },
-      { id: 'B', text: 'when' },
-      { id: 'C', text: 'that' },
-      { id: 'D', text: 'then' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'Pasangan frasa inversi waktu:\n- "Scarcely had ... WHEN ..."\n- "Hardly had ... WHEN ..."\n- "No sooner had ... THAN ..."\nKarena di awal kalimat menggunakan "Scarcely", penghubung yang benar adalah "when".',
-    keyConcept: 'Correlative Inversion Pairs: Scarcely/Hardly ... When',
-    tkaExamTip: 'Ingat: No sooner berpasangan dengan THAN; Hardly dan Scarcely berpasangan dengan WHEN.'
-  },
-  {
-    id: 'eng-q24',
-    number: 24,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Reading Comprehension',
-    difficulty: 'Sedang',
-    question: 'An article comparing autonomous electric vehicles and high-speed rail networks opens by discussing congestion, compares lifecycle emissions, and finishes by recommending integrated transit hubs.\n\nHow is the passage primarily organized?',
-    options: [
-      { id: 'A', text: 'Chronological narrative from ancient to modern transport' },
-      { id: 'B', text: 'Problem, comparative evaluation, and proposed integration' },
-      { id: 'C', text: 'Biographical tribute to transportation engineers' },
-      { id: 'D', text: 'Fictional dialogue between commuters' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'Struktur teks mengikuti alur: memaparkan masalah kemacetan (problem), mengevaluasi perbandingan emisi kedua moda (comparative evaluation), dan diakhiri usulan solusi integrasi transit (proposed integration).',
-    keyConcept: 'Analyzing Rhetorical Text Patterns',
-    tkaExamTip: 'Identifikasi alur berpikir penulis dari paragraf awal (masalah), tengah (analisis), hingga akhir (solusi).'
-  },
-  {
-    id: 'eng-q25',
-    number: 25,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Error Identification',
-    difficulty: 'Sedang',
-    question: 'Choose the underlined segment that contains a grammatical error:\n"(A) Not only the architectural blueprints (B) were inspected by the city engineers, (C) but also the structural foundation (D) was evaluated thoroughly."',
-    options: [
-      { id: 'A', text: '(A) Not only the architectural blueprints were' },
-      { id: 'B', text: '(B) were inspected' },
-      { id: 'C', text: '(C) but also the structural' },
-      { id: 'D', text: '(D) was evaluated' }
-    ],
-    correctAnswer: 'A',
-    explanation: 'Ketika frasa "Not only" diletakkan di awal kalimat penuh sebelum klausa, harus terjadi pembalikan (inversion): "Not only were the architectural blueprints inspected...", bukan "Not only the blueprints were...".',
-    keyConcept: 'Inversion with Fronted "Not Only"',
-    tkaExamTip: 'Jika "Not only" berada di depan kalimat, kata kerja bantu (were/did/is) harus mendahului subjek.'
-  },
-  {
-    id: 'eng-q26',
-    number: 26,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Contextual Vocabulary',
-    difficulty: 'Sedang',
-    question: 'In the sentence: "The candidate presented a pragmatic framework that prioritized immediate job creation over ideological debates," the word "pragmatic" means...',
-    options: [
-      { id: 'A', text: 'Theoretical and abstract' },
-      { id: 'B', text: 'Practical and results-oriented' },
-      { id: 'C', text: 'Rigid and dogmatic' },
-      { id: 'D', text: 'Impulsive and reckless' }
-    ],
-    correctAnswer: 'B',
-    explanation: '"Pragmatic" berarti praktis, realistis, dan berorientasi pada hasil nyata yang dapat diterapkan (dealing with things sensibly and realistically based on practical rather than theoretical considerations).',
-    keyConcept: 'Contextual Meaning of Academic Traits',
-    tkaExamTip: 'Pragmatic = Practical / Realistic / Feasible.'
-  },
-  {
-    id: 'eng-q27',
-    number: 27,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Grammar in Context',
-    difficulty: 'Sedang',
-    question: 'Complete the sentence:\n"The newly formulated polymer is superior _____ conventional plastics in terms of tensile strength and recyclability."',
-    options: [
-      { id: 'A', text: 'than' },
-      { id: 'B', text: 'to' },
-      { id: 'C', text: 'from' },
-      { id: 'D', text: 'as' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'Kata sifat serapan Latin yang berakhiran "-ior" seperti superior, inferior, senior, junior, dan prior selalu dipasangkan dengan preposisi "to", bukan "than" (e.g., superior to, inferior to).',
-    keyConcept: 'Latin Comparative Adjectives with Preposition "To"',
-    tkaExamTip: 'Ingat: Superior TO, Inferior TO, Prior TO, Senior TO (jangan pernah gunakan "than" setelah kata-kata ini).'
-  },
-  {
-    id: 'eng-q28',
-    number: 28,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Inference & Synthesis',
-    difficulty: 'Sedang',
-    question: 'Read the statement:\n"While artificial intelligence accelerates genomic data analysis, human pathologists remain indispensable for interpreting ambiguous biopsies and contextualizing patient history."\n\nWhat is the underlying assumption?',
-    options: [
-      { id: 'A', text: 'Machine algorithms can independently perform all medical diagnoses without error.' },
-      { id: 'B', text: 'Human clinical judgment possesses nuanced interpretation skills that current AI lacks.' },
-      { id: 'C', text: 'Pathologists will be completely replaced by technology in the next decade.' },
-      { id: 'D', text: 'Genomic data analysis is too slow when assisted by computational algorithms.' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'Pernyataan tersebut menyoroti bahwa patologis manusia tetap "indispensable" (tidak dapat digantikan) untuk kasus ambigu dan riwayat pasien, yang mengasumsikan bahwa penilaian klinis manusia memiliki kemampuan interpretasi bernuansa yang belum dimiliki AI.',
-    keyConcept: 'Identifying Implicit Assumptions',
-    tkaExamTip: 'Cari asumsi yang menjadi fondasi logis mengapa manusia tetap dibutuhkan.'
-  },
-  {
-    id: 'eng-q29',
-    number: 29,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Grammar in Context',
-    difficulty: 'Sedang',
-    question: 'Choose the correct reduced relative clause:\n"Articles _____ in peer-reviewed scientific journals undergo rigorous methodological scrutiny."',
-    options: [
-      { id: 'A', text: 'publishing' },
-      { id: 'B', text: 'published' },
-      { id: 'C', text: 'which published' },
-      { id: 'D', text: 'were published' }
-    ],
-    correctAnswer: 'B',
-    explanation: 'Kalimat asal: "Articles which are published in peer-reviewed journals...". Ketika klausa relatif pasif direduksi (reduced relative clause), kata ganti penghubung dan to be dihilangkan, menyisakan Past Participle (V3): "Articles published in...".',
-    keyConcept: 'Reduced Relative Clauses (Passive)',
-    tkaExamTip: 'Reduksi klausa relatif pasif (which are published → published).'
-  },
-  {
-    id: 'eng-q30',
-    number: 30,
-    subjectId: 'bahasa-inggris',
-    topicTag: 'Text Organization',
-    difficulty: 'Sedang',
-    question: 'Which of the following phrases is most suitable for introducing an empirical example in academic writing?',
-    options: [
-      { id: 'A', text: 'To exemplify this phenomenon' },
-      { id: 'B', text: 'By the way' },
-      { id: 'C', text: 'As a random thought' },
-      { id: 'D', text: 'In another story' }
-    ],
-    correctAnswer: 'A',
-    explanation: '"To exemplify this phenomenon" adalah frasa transisi formal akademik yang tepat untuk memperkenalkan contoh empiris yang mendukung argumen. Opsi lainnya terlalu santai atau kolokuial untuk penulisan ilmiah.',
-    keyConcept: 'Academic Exemplification Signals',
-    tkaExamTip: 'Gunakan frasa formal seperti "To illustrate", "To exemplify", "For instance" dalam wacana akademik.'
+    explanation: 'Comparative degree for a multi-syllable adjective ("engaging") preceded by intensifier "far" requires "more engaging".'
   }
 ];

@@ -2,314 +2,344 @@ import { Topic } from '../types';
 
 export const bahasaInggrisTopics: Topic[] = [
   {
-    id: 'eng-1',
-    title: 'Reading Comprehension & Main Idea Strategies',
-    subheader: 'Mengidentifikasi gagasan pokok, tujuan penulis, dan struktur paragraf secara cepat',
-    estimatedReadTime: '8 menit',
-    summary: 'TKA Bahasa Inggris menuntut kemampuan menyaring ide sentral dari teks akademik panjang, menentukan main idea, author\'s tone (sikap/nada penulis), serta tujuan komunikatif (purpose) teks dalam waktu singkat.',
-    keyConcepts: [
-      {
-        title: 'Skimming & Topik Sentral',
-        explanation: 'Topik adalah subjek payung (1-3 kata), sedangkan Main Idea adalah kalimat lengkap yang merangkum pesan utama penulis tentang topik tersebut. Sering ditemukan di kalimat pertama/terakhir paragraf (deduktif/induktif).',
-        formulaOrKey: 'Main Idea = Topic + Author\'s Controlling Idea / Point'
-      },
-      {
-        title: 'Author\'s Tone & Attitude',
-        explanation: 'Karakter nada teks akademik: Objektif/Netral (critical, informative, analytical), Positif (optimistic, approving), Negatif (skeptical, cynical, concerned, disapproving). Hindari opsi ekstrem seperti "furious" pada artikel ilmiah.',
-        formulaOrKey: 'Tone Indicators: Adjective choices & hedging words (may, suggests, however)'
-      },
-      {
-        title: 'Author\'s Purpose / Objective',
-        explanation: 'Kata kerja tujuan: to elucidate/explain (menjelaskan), to argue/advocate (berargumen), to contrast (membandingkan), to warn (memperingatkan), to evaluate (mengevaluasi dampak).',
-        formulaOrKey: 'Purpose = Verb (to clarify/argue) + Target Issue'
-      }
+    id: 'bi1',
+    title: 'Mastering English Tenses & Timeline Formulas',
+    categoryTag: 'Grammar & Tenses',
+    summary: 'Memahami 16 pola tenses esensial dalam bahasa Inggris, kata keterangan waktu (time signals), fungsi spesifik, serta cara cepat menentukan tense yang tepat dalam soal ujian.',
+    conceptExplanation: 'Tenses adalah perubahan bentuk kata kerja (verb) yang menunjukkan waktu terjadinya peristiwa. Tenses dibangun dari 4 aspek waktu (Present, Past, Future, Past Future) dan 4 bentuk aktivitas (Simple, Continuous, Perfect, Perfect Continuous).',
+    keyPoints: [
+      'Simple Present: Fakta umum, kebiasaan (habitual action), jadwal pasti. S + V1(-s/-es) / do/does.',
+      'Present Continuous: Sedang berlangsung saat ini. S + am/is/are + V-ing. (Time signal: right now, at the moment).',
+      'Present Perfect: Peristiwa yang telah selesai di masa lampau namun dampaknya masih terasa sekarang, atau pengalaman hidup. S + have/has + V3. (Time signal: already, yet, just, since, for, ever).',
+      'Simple Past: Peristiwa yang terjadi dan selesai di masa lampau pada waktu spesifik. S + V2 / did. (Time signal: yesterday, last week, ago, in 1995).',
+      'Past Continuous: Sedang berlangsung di masa lampau ketika peristiwa lain menyela (When + Simple Past, While + Past Continuous). S + was/were + V-ing.',
+      'Past Perfect: Terjadi LEBIH DULU sebelum peristiwa masa lampau lainnya (Before/After). S + had + V3.',
+      'Future Tense: Prediksi atau rencana mendatang. S + will + V1 atau S + is/am/are going to + V1.'
     ],
     stepByStepGuides: [
       {
-        title: 'Menjawab Soal "What is the primary purpose of the passage?"',
-        problem: 'Sebuah teks membahas bahaya mikroplastik di lautan, memaparkan data riset terbaru, dan diakhiri dengan desakan regulasi internasional.',
+        title: 'Trik Cepat Menentukan Tense dalam Soal Pilihan Ganda',
+        description: '3 langkah praktis menganalisis kalimat soal bahasa Inggris.',
         steps: [
-          {
-            stepNumber: 1,
-            instruction: 'Cari kata kunci tesis pada kalimat pembuka dan paragraf penutup',
-            calculationOrDetail: 'Paragraf 1 memperkenalkan akumulasi mikroplastik. Paragraf terakhir menyatakan perlunya intervensi kebijakan global.'
-          },
-          {
-            stepNumber: 2,
-            instruction: 'Eliminasi pilihan jawaban yang terlalu spesifik atau terlalu luas',
-            calculationOrDetail: 'Opsi yang hanya menyebut "metode filtrasi laboratorium" terlalu sempit; opsi "menyelamatkan seluruh planet bumi" terlalu luas.'
-          },
-          {
-            stepNumber: 3,
-            instruction: 'Pilih opsi yang mencakup masalah + ajakan bertindak',
-            calculationOrDetail: 'Pilihan tepat: "To highlight the ecological risks of microplastics and advocate for regulatory action".'
-          }
+          'Langkah 1: Cari Kata Keterangan Waktu (Time Signal) seperti "yesterday", "since 2020", "right now", atau "tomorrow".',
+          'Langkah 2: Jika tidak ada time signal jelas, perhatikan klausa penghubung (conjunction) seperti "when", "while", "after", atau "before".',
+          'Langkah 3: Periksa keselarasan subjek (Subject-Verb Agreement): subjek tunggal (He/She/It) menggunakan V1+s/es, is, was, has; subjek jamak (They/We/You) menggunakan V1, are, were, have.'
         ],
-        solution: 'Jawaban yang benar merangkum esensi masalah beserta kesimpulan penulis.',
-        tip: 'Jangan memilih jawaban yang hanya merupakan detail pendukung dari satu paragraf saja!'
+        tips: 'Ingat pola When/While: "While I was studying (Past Continuous), the phone rang (Simple Past)".'
+      },
+      {
+        title: 'Perbedaan "Since" vs "For" pada Present Perfect',
+        description: 'Menghindari kesalahan umum penggunaan kata penunjuk waktu.',
+        steps: [
+          'Gunakan "SINCE" untuk titik awal mula waktu (starting point), contoh: since 2018, since Monday, since 8 AM, since he arrived.',
+          'Gunakan "FOR" untuk durasi atau rentang waktu (period of time), contoh: for 3 years, for 2 hours, for a long time, for 5 days.'
+        ]
       }
     ],
-    practicalExamples: [
+    formulaDetails: [
       {
-        title: 'Analisis Paragraf Teks Ilmiah Iklim',
-        context: '"While renewable energy subsidies have surged, grid infrastructure bottlenecks continue to stall transition efforts..."',
-        solution: 'Kata transisi "While" menandakan konsesi. Gagasan pokoknya bukan sekadar lonjakan subsidi, melainkan hambatan infrastruktur jaringan listrik.',
-        takeaway: 'Perhatikan kata transisi kontras (However, Although, While, Yet) karena gagasan utama sering berada setelah kata kontras tersebut.'
+        title: 'Present Perfect Tense Formula',
+        formula: 'S + \\text{have/has} + V_3 + O',
+        explanation: 'Digunakan untuk aksi yang sudah selesai atau pengalaman hidup tanpa menyebut waktu lampau spesifik.',
+        variables: [
+          { symbol: 'Have', meaning: 'Digunakan untuk subjek I, You, We, They, dan Plural Noun' },
+          { symbol: 'Has', meaning: 'Digunakan untuk subjek He, She, It, dan Singular Noun' },
+          { symbol: 'V3', meaning: 'Past Participle form of verb (e.g. eaten, written, visited)' }
+        ]
+      },
+      {
+        title: 'Past Perfect Before / After Pattern',
+        formula: '\\text{Past Perfect (had + } V_3\\text{) } + \\text{before} + \\text{Simple Past (} V_2 \\text{)}',
+        explanation: 'Aksi yang memakai had + V3 terjadi paling pertama (kronologi lebih tua).',
+        variables: [
+          { symbol: 'had + V3', meaning: 'Aksi ke-1 (First event in the past)' },
+          { symbol: 'V2', meaning: 'Aksi ke-2 (Second event in the past)' }
+        ],
+        quickTip: 'Ingat rumus jitu: "Had + V3 selalu terjadi DULUAN sebelum V2"!'
+      }
+    ],
+    formulas: [
+      '\\text{Simple Present: } S + V_1(s/es) + O',
+      '\\text{Present Continuous: } S + \\text{am/is/are} + V_{\\text{ing}}',
+      '\\text{Present Perfect: } S + \\text{have/has} + V_3',
+      '\\text{Simple Past: } S + V_2 + O',
+      '\\text{Past Continuous: } S + \\text{was/were} + V_{\\text{ing}}',
+      '\\text{Past Perfect: } S + \\text{had} + V_3'
+    ],
+    examples: [
+      {
+        problem: 'By the time the police arrived at the bank, the robbers ______ with the vault cash.',
+        given: 'Klausa 1: "the police arrived" (Simple Past / V2), time signal: "By the time" (menandakan aksi lain selesai sebelumnya)',
+        questionTarget: 'Bentuk kata kerja yang tepat (escaped / had escaped / have escaped / was escaping)',
+        steps: [
+          'Identifikasi urutan peristiwa: Perampok kabur LEBIH DULU sebelum polisi tiba.',
+          'Aksi yang terjadi lebih dulu di masa lampau wajib menggunakan Past Perfect (had + V3).',
+          'Maka bentuk yang benar adalah: had escaped.'
+        ],
+        solution: 'had escaped (By the time the police arrived, the robbers had escaped with the vault cash).'
       }
     ],
     quickTips: [
-      'Gunakan metode Skim (baca cepat ide pokok) dan Scan (cari kata kunci spesifik angka/nama).',
-      'Jika ditanya paragraf pendahulu (preceding paragraph), baca 1-2 kalimat awal teks.',
-      'Jika ditanya paragraf berikutnya (following paragraph), baca 1-2 kalimat terakhir teks.'
-    ],
-    quickCheck: [
-      {
-        id: 'qc-e1',
-        question: 'Which word best describes the tone of an author who presents both advantages and drawbacks of AI with balanced statistical evidence?',
-        options: ['Biased', 'Objective', 'Hostile', 'Indifferent'],
-        correctIndex: 1,
-        explanation: '"Objective" berarti tidak memihak dan menyajikan fakta seimbang berdasarkan bukti nyata.'
-      }
+      'Stative verbs (seperti love, know, understand, believe, want) TIDAK boleh digunakan dalam continuous (-ing) tense!',
+      'Jika ada kata "every day / always / usually", hampir pasti jawabannya adalah Simple Present.'
     ]
   },
   {
-    id: 'eng-2',
-    title: 'Contextual Vocabulary, Synonyms & Collocations',
-    subheader: 'Memahami makna kata berdasarkan konteks kalimat dan pasangan kata alami',
-    estimatedReadTime: '7 menit',
-    summary: 'Soal kosakata TKA tidak menguji hafalan kamus semata, melainkan kemampuan menebak arti kata sulit (unfamiliar words) melalui petunjuk konteks (clues), sinonim terdekat, antonim, dan kolokasi frasa akademik.',
-    keyConcepts: [
-      {
-        title: 'Context Clues (Petunjuk Konteks)',
-        explanation: 'Gunakan 4 jenis petunjuk dalam kalimat: Definition/Restatement (that is, in other words), Contrast (unlike, in contrast to), Example (such as, for instance), dan Cause-Effect (consequently, due to).',
-        formulaOrKey: 'Clue Markers: Punctuation (dashes, commas), Transitions (unlike, namely)'
-      },
-      {
-        title: 'Academic Collocations (Pasangan Kata)',
-        explanation: 'Kata dalam bahasa Inggris berpasangan secara natural: conduct an experiment (bukan make an experiment), pose a threat, raise awareness, exert influence, draw a conclusion.',
-        formulaOrKey: 'Verb + Noun: pose a threat | Adjective + Noun: striking resemblance'
-      },
-      {
-        title: 'Prefix & Root Words (Morfologi Kata)',
-        explanation: 'Pahami imbuhan: un-/in-/dis- (negasi), over- (berlebih), sub- (di bawah), inter- (antar), -able (dapat), -ify (menjadikan), -ous (bersifat).',
-        formulaOrKey: 'Root + Affixes = Unprecedented (belum pernah ada sebelumnya)'
-      }
+    id: 'bi2',
+    title: 'Passive Voice Across All Tenses & Modals',
+    categoryTag: 'Grammar & Structure',
+    summary: 'Aturan mengubah kalimat aktif menjadi kalimat pasif (Passive Voice), penyesuaian auxiliary "to be" di setiap tense, penggunaan by-phrase, dan bentuk pasif dengan kata kerja modal.',
+    conceptExplanation: 'Kalimat pasif menekankan objek atau tindakan yang diterima subjek, bukan siapa yang melakukan tindakan tersebut. Ciri mutlak kalimat pasif adalah selalu mengandung rumus dasar: BE + V3 (Past Participle).',
+    keyPoints: [
+      'Rumus Universal Pasif: S + BE (sesuai tense & subjek baru) + V3 + (by Agent).',
+      'Simple Present Passive: is / am / are + V3. (e.g., "The car is washed every day").',
+      'Simple Past Passive: was / were + V3. (e.g., "The novel was written in 1920").',
+      'Continuous Passive: is/am/are/was/were + BEING + V3. (e.g., "A new bridge is being built").',
+      'Perfect Passive: have / has / had + BEEN + V3. (e.g., "The report has been submitted").',
+      'Modal Passive: modal + BE + V3. (can be done, must be submitted, should be checked).'
     ],
     stepByStepGuides: [
       {
-        title: 'Menebak Arti Kata Asing "Pernicious"',
-        problem: 'Dalam kalimat: "The pervasive smog posed a pernicious threat to public health, causing irreversible lung damage across the metropolitan area."',
+        title: '3 Langkah Mengubah Kalimat Aktif Menjadi Pasif',
+        description: 'Metode sistematis mengubah active sentence ke passive sentence.',
         steps: [
-          {
-            stepNumber: 1,
-            instruction: 'Identifikasi efek atau konsekuensi di kalimat lanjutan',
-            calculationOrDetail: 'Frasa "causing irreversible lung damage" (kerusakan paru-paru permanen) menunjukkan dampak yang sangat berbahaya/merusak.'
-          },
-          {
-            stepNumber: 2,
-            instruction: 'Evaluasi pilihan sinonim yang tersedia',
-            calculationOrDetail: 'A. Beneficial (salah), B. Temporary (salah), C. Harmful / Destructive (benar), D. Minor (salah).'
-          },
-          {
-            stepNumber: 3,
-            instruction: 'Verifikasi kecocokan makna pada kalimat',
-            calculationOrDetail: 'Pernicious berarti "having a harmful effect, especially in a gradual or subtle way".'
-          }
+          'Langkah 1: Pindahkan Objek dari kalimat aktif menjadi Subjek di kalimat pasif.',
+          'Langkah 2: Tentukan tense dari kalimat aktif dan pasang bentuk "To Be" yang sesuai dengan Subjek Baru tersebut.',
+          'Langkah 3: Ubah kata kerja utama menjadi kata kerja bentuk ketiga (V3 / Past Participle).',
+          'Langkah 4 (Opsional): Tambahkan "by + Pelaku" di akhir kalimat jika pelakunya penting diketahui.'
         ],
-        solution: 'Sinonim terdekat adalah "harmful" atau "destructive".',
-        tip: 'Lihat kata keterangan atau kata sifat yang mengelilingi kata target untuk mendeteksi konotasi positif atau negatif.'
+        tips: 'Hanya kalimat dengan kata kerja transitif (yang memiliki objek langsung) yang bisa dipasifkan!'
       }
     ],
-    practicalExamples: [
+    formulaDetails: [
       {
-        title: 'Memilih Kolokasi Formal yang Tepat',
-        context: 'Para ilmuwan ingin "melakukan penelitian" komprehensif.',
-        solution: 'Bentuk formal akademik: "conduct research" atau "carry out an investigation", bukan "do research" dalam konteks teks resmi TKA.',
-        takeaway: 'Kolokasi formal meningkatkan akurasi dalam soal fill-in-the-blank teks bacaan.'
+        title: 'Bentuk Umum Passive Voice',
+        formula: '\\text{Subject (Former Object)} + \\mathbf{BE} + \\mathbf{V_3} + (\\text{by Agent})',
+        explanation: 'Bentuk To Be berubah sesuai waktu dan jumlah subjek baru.',
+        variables: [
+          { symbol: 'BE', meaning: 'is, am, are, was, were, been, being, be' },
+          { symbol: 'V3', meaning: 'Past participle form of the main verb' }
+        ]
+      },
+      {
+        title: 'Modal Passive Formula',
+        formula: 'S + \\text{Modal (can/must/should/will)} + \\mathbf{be} + V_3',
+        explanation: 'Setelah modal auxiliary, gunakan kata "be" murni lalu diikuti V3.',
+        variables: [
+          { symbol: 'Modal', meaning: 'can, could, may, might, must, should, will, would' }
+        ]
+      }
+    ],
+    formulas: [
+      '\\text{Simple Present: } S + \\text{is/am/are} + V_3',
+      '\\text{Simple Past: } S + \\text{was/were} + V_3',
+      '\\text{Present Continuous: } S + \\text{is/am/are} + \\mathbf{being} + V_3',
+      '\\text{Present Perfect: } S + \\text{have/has} + \\mathbf{been} + V_3',
+      '\\text{Modal Passive: } S + \\text{Modal} + \\mathbf{be} + V_3'
+    ],
+    examples: [
+      {
+        problem: 'Ubahlah kalimat aktif berikut ke pasif: "The committee is reviewing the scholarship applications right now."',
+        given: 'Kalimat aktif dalam Present Continuous (is reviewing), Subjek = The committee, Objek = the scholarship applications (jamak)',
+        questionTarget: 'Bentuk kalimat pasif',
+        steps: [
+          'Objek "the scholarship applications" menjadi subjek baru (plural/jamak).',
+          'Karena tenses Present Continuous dan subjeknya jamak, to be yang digunakan adalah "are being".',
+          'Ubah verb "review" ke bentuk V3 yaitu "reviewed".',
+          'Gabungkan: "The scholarship applications are being reviewed by the committee right now."'
+        ],
+        solution: 'The scholarship applications are being reviewed by the committee right now.'
       }
     ],
     quickTips: [
-      'Sinonim kata "mitigate" yang sering keluar: alleviate, reduce, lessen, ease.',
-      'Sinonim kata "ubiquitous": omnipresent, widespread, prevalent.',
-      'Sinonim kata "lucid": clear, coherent, easily understood.'
-    ],
-    quickCheck: [
-      {
-        id: 'qc-e2',
-        question: 'The word "ubiquitous" in the sentence "Smartphones have become ubiquitous in modern society" is closest in meaning to...',
-        options: ['Rare', 'Omnipresent', 'Expensive', 'Outdated'],
-        correctIndex: 1,
-        explanation: '"Ubiquitous" berarti ada di mana-mana (omnipresent/widespread).'
-      }
+      'Jika ada kata "being + V3", itu pasti bentuk pasif dari Continuous Tense!',
+      'Jika ada kata "been + V3", itu pasti bentuk pasif dari Perfect Tense!'
     ]
   },
   {
-    id: 'eng-3',
-    title: 'Advanced Grammar in Context & Sentence Patterns',
-    subheader: 'Penguasaan struktur kalimat kompleks, inversi, klausa partisipial, dan pengandaian',
-    estimatedReadTime: '9 menit',
-    summary: 'Membahas tata bahasa tingkat tinggi yang menjadi pembeda skor di TKA: Inversion (kondisi pembalikan subjek-predikat), Reduced Relative Clauses (participial phrases), Conditional Sentences Type 1-3 & Inverted Conditionals, serta Subjunctive mood.',
-    keyConcepts: [
-      {
-        title: 'Inversion (Pembalikan Kalimat)',
-        explanation: 'Bila kalimat diawali adverbia negatif/restriktif (Seldom, Rarely, Scarcely, Not only, Under no circumstances, Hardly), susunan kata dibalik seperti kalimat tanya: Negative Word + Auxiliary + Subject + Verb.',
-        formulaOrKey: 'Seldom + did + he + realize ... | Not only + was + she + talented ...'
-      },
-      {
-        title: 'Inverted Conditionals (Pengandaian Tanpa If)',
-        explanation: 'Type 1: Should you need assistance (If you should need). Type 2: Were I in your position (If I were). Type 3: Had we known the schedule (If we had known).',
-        formulaOrKey: 'Type 3 Inverted: Had + Subject + V3, Subject + would have + V3'
-      },
-      {
-        title: 'Participial Phrases (Reduksi Klausa)',
-        explanation: 'Aktif menggunakan V-ing: "Having finished the report, she submitted it". Pasif menggunakan V3: "Written in plain English, the manual is easy to follow".',
-        formulaOrKey: 'Active: V-ing ... | Passive: V3 / Being + V3 ...'
-      }
+    id: 'bi3',
+    title: 'Conditional Sentences (Type 0, 1, 2, 3 & Inversion)',
+    categoryTag: 'Grammar & Structure',
+    summary: 'Kondisional tipe 0 (kebenaran umum), tipe 1 (kemungkinan masa depan), tipe 2 (pengandaian masa kini/unreal present), tipe 3 (penyesalan masa lampau/unreal past), serta inversi tanpa kata if.',
+    conceptExplanation: 'Conditional sentence (kalimat pengandaian) terdiri dari If-Clause (klausa syarat) dan Main Clause (klausa hasil). Setiap tipe memiliki makna fakta tersendiri (real fact) yang berlawanan dengan klausanya pada Type 2 dan Type 3.',
+    keyPoints: [
+      'Type 0 (General Truth): If + Simple Present, Simple Present. (e.g., If you heat ice, it melts).',
+      'Type 1 (Real Future Possibility): If + Simple Present, S + will + V1. (e.g., If it rains tomorrow, we will stay home).',
+      'Type 2 (Unreal Present): If + Simple Past (V2 / were), S + would + V1. Faktanya: Simple Present bertanda sebaliknya! (e.g., If I were rich, I would travel = Fact: I am not rich).',
+      'Type 3 (Unreal Past / Regret): If + Past Perfect (had + V3), S + would have + V3. Faktanya: Simple Past bertanda sebaliknya! (e.g., If he had studied, he would have passed = Fact: He didn\'t study, so he didn\'t pass).',
+      'Inversi Tanpa "If": Type 1 (Should you need help...), Type 2 (Were I you...), Type 3 (Had he known...).'
     ],
     stepByStepGuides: [
       {
-        title: 'Menganalisis Kalimat Inversi Tipe 3',
-        problem: 'Pilihlah bentuk yang benar: "_____ the weather forecast earlier, the expedition team would not have been stranded on the mountain."',
+        title: 'Cara Cepat Menemukan Fakta (Fact) dari Conditional Type 2 & 3',
+        description: 'Trik menjawab soal "What is the fact of the sentence?" dalam ujian.',
         steps: [
-          {
-            stepNumber: 1,
-            instruction: 'Perhatikan klausa hasil (main clause)',
-            calculationOrDetail: '"would not have been stranded" adalah pola Conditional Type 3 (past unreal condition).'
-          },
-          {
-            stepNumber: 2,
-            instruction: 'Kenali bentuk inversi tanpa kata "If"',
-            calculationOrDetail: 'Bentuk normal: "If they had checked...". Bentuk inversi menghilangkan "If" dan memajukan "Had": "Had they checked...".'
-          },
-          {
-            stepNumber: 3,
-            instruction: 'Pilih opsi yang memiliki susunan Had + Subject + V3',
-            calculationOrDetail: 'Opsi yang benar adalah: "Had they checked".'
-          }
+          'Jika kalimat soal Conditional Type 2 (memuat If + V2/were, would + V1) → Faktanya PASTI berbentuk SIMPLE PRESENT (V1 / is / am / are) dengan makna berlawanan (positif jadi negatif, negatif jadi positif).',
+          'Jika kalimat soal Conditional Type 3 (memuat If + had + V3, would have + V3) → Faktanya PASTI berbentuk SIMPLE PAST (V2 / did not / was / were) dengan makna berlawanan.'
         ],
-        solution: 'Bentuk kalimat lengkap: "Had they checked the weather forecast earlier..."',
-        tip: 'Jangan pernah menggunakan "If had they..." secara bersamaan; pilih salah satu: pakai "If" biasa atau "Had" inversi.'
+        tips: 'Ingat pada Type 2 formal, SEMUA subjek (termasuk I, he, she, it) menggunakan "were", bukan "was"!'
       }
     ],
-    practicalExamples: [
+    formulaDetails: [
       {
-        title: 'Subjunctive Mood setelah Kata Kerja Saran/Perintah',
-        context: 'The director insisted that all project milestones _____ (meet) on schedule.',
-        solution: 'Gunakan bare infinitive (be met) setelah kata kerja insist/recommend/suggest/require: "insisted that all project milestones be met on schedule".',
-        takeaway: 'Subjunctive mood pada that-clause selalu menggunakan kata kerja dasar (bare infinitive / be), terlepas dari bentuk waktu masa lalu.'
+        title: 'Conditional Type 2 (Unreal Present)',
+        formula: '\\text{If} + S + V_2 / \\text{were}, \\quad S + \\text{would / could} + V_1',
+        explanation: 'Mengandaikan situasi saat ini yang berlawanan dengan kenyataan aktual.',
+        variables: [
+          { symbol: 'were', meaning: 'Digunakan untuk semua subjek dalam bahasa Inggris formal (If I were you)' },
+          { symbol: 'would + V1', meaning: 'Hasil yang akan terjadi seandainya kondisi terpenuhi' }
+        ]
+      },
+      {
+        title: 'Conditional Type 3 (Unreal Past)',
+        formula: '\\text{If} + S + \\text{had} + V_3, \\quad S + \\text{would have} + V_3',
+        explanation: 'Mengandaikan peristiwa masa lalu yang sudah tidak bisa diubah (penyesalan).',
+        variables: [
+          { symbol: 'had + V3', meaning: 'Syarat di masa lampau' },
+          { symbol: 'would have + V3', meaning: 'Hasil yang seharusnya terjadi di masa lampau' }
+        ],
+        quickTip: 'Inversi Type 3: Hapus kata "If" dan tukar posisi "Had" ke depan: "Had I known the truth..."'
+      }
+    ],
+    formulas: [
+      '\\text{Type 0: } \\text{If} + S + V_1, \\quad S + V_1',
+      '\\text{Type 1: } \\text{If} + S + V_1, \\quad S + \\text{will} + V_1',
+      '\\text{Type 2: } \\text{If} + S + V_2/\\text{were}, \\quad S + \\text{would} + V_1',
+      '\\text{Type 3: } \\text{If} + S + \\text{had} + V_3, \\quad S + \\text{would have} + V_3',
+      '\\text{Inversion Type 3: } \\text{Had} + S + V_3, \\quad S + \\text{would have} + V_3'
+    ],
+    examples: [
+      {
+        problem: 'What is the real fact of the sentence: "If Sarah had left earlier, she wouldn\'t have missed her flight"?',
+        given: 'Kalimat Conditional Type 3: "If Sarah had left (had + V3), she wouldn\'t have missed (would have + V3)"',
+        questionTarget: 'Fakta sebenarnya dari kalimat tersebut',
+        steps: [
+          'Kalimat adalah Conditional Type 3, sehingga faktanya adalah peristiwa lampau (Simple Past / V2).',
+          'Klausa "If Sarah had left earlier" (positif) artinya faktanya negatif: Sarah did NOT leave earlier.',
+          'Klausa "she wouldn\'t have missed" (negatif) artinya faktanya positif: She MISSED her flight.',
+          'Gabungkan: Sarah did not leave earlier, so she missed her flight.'
+        ],
+        solution: 'Sarah was late / did not leave earlier, so she missed her flight.'
       }
     ],
     quickTips: [
-      'Neither ... nor mengikuti subjek kedua (yang paling dekat dengan kata kerja).',
-      'A number of + plural noun + plural verb (A number of students ARE).',
-      'The number of + plural noun + singular verb (The number of students IS).'
-    ],
-    quickCheck: [
-      {
-        id: 'qc-e3',
-        question: '"Rarely _____ such dedication to environmental preservation in modern corporate culture."',
-        options: ['we see', 'do we see', 'we did see', 'we are seeing'],
-        correctIndex: 1,
-        explanation: 'Kalimat diawali kata keterangan negatif "Rarely", sehingga subjek dan auxiliary harus dibalik (inversi): "Rarely do we see".'
-      }
+      'Jika melihat pola "Had he...", itu adalah bentuk singkatan dari "If he had..." (Inversi).',
+      'Jangan pernah memasukkan kata "would" di dalam klausa yang ada kata "If"-nya!'
     ]
   },
   {
-    id: 'eng-4',
-    title: 'Text Organization, Cohesion & Logical Transition Signals',
-    subheader: 'Konektor logika antar paragraf, urutan ide, dan kohesi wacana ilmiah',
-    estimatedReadTime: '8 menit',
-    summary: 'Mempelajari hubungan logis antar kalimat dan paragraf (Addition, Contrast, Cause-Effect, Exemplification, Concession), penyusunan ulang kalimat acak (reordering), serta penentuan kalimat yang tidak relevan (sentence insertion / removal).',
-    keyConcepts: [
-      {
-        title: 'Kategori Kata Transisi Logis',
-        explanation: 'Kontras: However, Nevertheless, On the contrary, Conversely. Penambahan: Furthermore, Moreover, In addition. Sebab-Akibat: Consequently, Hence, Therefore, As a result. Konsesi: Although, Albeit, In spite of.',
-        formulaOrKey: 'Cause-Effect: Therefore, Thus | Contrast: However, Nonetheless'
-      },
-      {
-        title: 'Kohesi Referensial (Pronoun & Determiner Clues)',
-        explanation: 'Cari rujukan kata ganti (this phenomenon, such approaches, these findings). Kalimat yang mengandung "these findings" pasti diletakkan SETELAH kalimat yang pertama kali menyebutkan hasil temuan/penelitian.',
-        formulaOrKey: 'Noun introduced → Later referenced by "This/These + Noun"'
-      },
-      {
-        title: 'Pola Organisasi Teks Akademik',
-        explanation: 'Struktur umum: Problem - Solution, Cause - Effect, Chronological Process, Claim - Evidence - Counterargument.',
-        formulaOrKey: 'Structure: Claim → Empirical Data → Implication'
-      }
+    id: 'bi4',
+    title: 'Participles & Reduced Relative Clauses',
+    categoryTag: 'Advanced Grammar',
+    summary: 'Penggunaan Present Participle (Active -ing) vs Past Participle (Passive -ed/V3), pemendekan anak kalimat (Reduced Relative Clauses), dan adverbial participial phrases.',
+    conceptExplanation: 'Participle adalah bentuk kata kerja yang difungsikan sebagai kata sifat (adjective) atau pemendek klausa untuk membuat kalimat lebih ringkas dan elegan dalam teks akademik.',
+    keyPoints: [
+      'Present Participle (V-ing): Memiliki makna AKTIF (melakukan tindakan). Contoh: "The man standing near the door is my teacher" (asal: the man who is standing).',
+      'Past Participle (V3 / -ed): Memiliki makna PASIF (dikenai tindakan). Contoh: "The book published in 2024 became a bestseller" (asal: the book which was published).',
+      'Reduced Adverbial Clause: "Having finished the report, he went to sleep" = After he had finished the report.',
+      'Dangling Modifier Trap: Subjek dari participial phrase di awal kalimat HARUS SAMA dengan subjek klausa utama setelah tanda koma!'
     ],
     stepByStepGuides: [
       {
-        title: 'Menentukan Kalimat yang Hilang (Sentence Insertion)',
-        problem: 'Di manakah kalimat "Consequently, researchers shifted their focus toward alternative battery chemistries" paling tepat disisipkan?',
+        title: 'Cara Cepat Memilih Verb-ing vs Verb-3 pada Modifying Clause',
+        description: 'Trik membedakan apakah kata sifat membutuhkan -ing atau V3.',
         steps: [
-          {
-            stepNumber: 1,
-            instruction: 'Analisis kata transisi penghubung kalimat target',
-            calculationOrDetail: '"Consequently" menandakan kalimat ini adalah akibat atau respons terhadap suatu masalah atau kegagalan sebelumnya.'
-          },
-          {
-            stepNumber: 2,
-            instruction: 'Cari kalimat yang memaparkan keterbatasan metode lama',
-            calculationOrDetail: 'Temukan kalimat yang membahas "The scarcity and high extraction costs of lithium created severe bottlenecks...".'
-          },
-          {
-            stepNumber: 3,
-            instruction: 'Letakkan kalimat target tepat setelah pemaparan masalah',
-            calculationOrDetail: 'Masalah biaya lithium → Akibatnya periset beralih ke kimia baterai alternatif.'
-          }
-        ],
-        solution: 'Kalimat target disisipkan tepat setelah kalimat yang memaparkan hambatan ekstraksi lithium.',
-        tip: 'Selalu periksa kalimat sebelum dan sesudah titik sisipan untuk memastikan aliran ide tidak terputus.'
+          'Periksa kata benda (noun) yang dijelaskan oleh participle tersebut.',
+          'Tanyakan: "Apakah benda tersebut MELAKUKAN tindakan (Aktif) atau MENGALAMI tindakan (Pasif)?"',
+          'Jika MELAKUKAN (Aktif) → Pilih bentuk V-ing (Present Participle). Contoh: The boy (running) in the park.',
+          'Jika MENGALAMI (Pasif) → Pilih bentuk V3 (Past Participle). Contoh: The car (damaged) in the accident.'
+        ]
       }
     ],
-    practicalExamples: [
+    formulaDetails: [
       {
-        title: 'Membedakan "In spite of" vs "Although"',
-        context: '_____ the torrential rain, the marathon proceeded without delay.',
-        solution: 'Gunakan "In spite of" atau "Despite" karena diikuti oleh frasa nomina ("the torrential rain"), bukan klausa utuh (subjek + predikat).',
-        takeaway: 'In spite of / Despite + Noun Phrase ; Although / Even though + Subject + Verb.'
+        title: 'Reduced Relative Clause Formula',
+        formula: '\\text{Noun} + \\text{who/which is} + V_{\\text{ing}} \\implies \\text{Noun} + V_{\\text{ing}} \\quad (\\text{Active})',
+        explanation: 'Hapus relative pronoun (who/which) dan to be, sisakan V-ing.',
+        variables: [
+          { symbol: 'V-ing', meaning: 'Active modifier describing the noun' }
+        ]
+      }
+    ],
+    formulas: [
+      '\\text{Active: } \\text{Noun} + V_{\\text{ing}} \\quad (\\text{e.g., the crying baby})',
+      '\\text{Passive: } \\text{Noun} + V_3 \\quad (\\text{e.g., the broken glass})',
+      '\\text{Perfect Participle: } \\text{Having} + V_3, \\quad S + V_2'
+    ],
+    examples: [
+      {
+        problem: 'The scientific research ______ by the international university yielded surprising discoveries in clean energy.',
+        given: 'Subjek = The scientific research (penelitian ilmiah), Tindakan = conduct (melakukan)',
+        questionTarget: 'Bentuk yang tepat (conducting / conducted / is conducted / conducts)',
+        steps: [
+          'Subjek "research" tidak melakukan tindakan sendiri melainkan dilakukan/diteliti oleh universitas (makna pasif).',
+          'Kalimat sudah memiliki kata kerja utama yaitu "yielded".',
+          'Maka yang dibutuhkan adalah reduced adjective clause bermakna pasif (Past Participle / V3) yaitu "conducted" (asal kalimat: which was conducted).',
+        ],
+        solution: 'conducted (The scientific research conducted by the international university yielded...)'
       }
     ],
     quickTips: [
-      '"Furthermore" digunakan untuk menambah argumen yang sejalan, bukan untuk mengubah arah topik.',
-      '"On the other hand" harus didahului atau berpasangan dengan sudut pandang "On the one hand".',
-      'Kata "Namely" dan "Specifically" digunakan untuk merinci pernyataan umum sebelumnya.'
+      'Waspada: Jika kalimat sudah ada verb utama (seperti yielded, resulted, is), jangan pilih verb penuh lagi agar tidak terjadi double-verb error!'
+    ]
+  },
+  {
+    id: 'bi5',
+    title: 'Reading Comprehension & Critical Strategy',
+    categoryTag: 'Reading & Analysis',
+    summary: 'Strategi Skimming & Scanning, menentukan ide pokok (Main Idea), sikap penulis (Author’s Tone), kesimpulan tersirat (Inference), dan makna kata berdasarkan konteks (Contextual Meaning).',
+    conceptExplanation: 'Membaca kritis untuk ujian tidak memerlukan penerjemahan kata demi kata, melainkan memahami struktur paragraf, kalimat topik (Topic Sentence), kata transisi, dan inti argumen yang disampaikan penulis.',
+    keyPoints: [
+      'Main Idea / Topic: Biasanya terletak di awal paragraf (deduktif) atau di akhir paragraf (induktif).',
+      'Skimming: Membaca cepat untuk menangkap garis besar dan ide pokok dalam 30-60 detik.',
+      'Scanning: Mencari informasi spesifik (angka, nama orang, tahun, istilah teknis) dengan menggerakkan mata secara cepat ke kata kunci.',
+      'Transitional Words: Kontras (However, Although, On the contrary), Sebab-Akibat (Therefore, Consequently, Due to), Tambahan (Furthermore, In addition).',
+      'Author\'s Tone: Objektif (informative, neutral), Kritis (critical, skeptical), Mendukung (supportive, optimistic).'
     ],
-    quickCheck: [
+    stepByStepGuides: [
       {
-        id: 'qc-e4',
-        question: 'Which transition word best fills the blank? "Electric vehicles produce zero direct tailpipe emissions; _____, their overall environmental impact depends heavily on the electrical grid\'s power source."',
-        options: ['Therefore', 'However', 'Furthermore', 'Similarly'],
-        correctIndex: 1,
-        explanation: '"However" adalah pilihan tepat karena menunjukkan kontras antara keunggulan emisi knalpot nol dengan ketergantungan pada sumber pembangkit listrik.'
+        title: 'Langkah Taktis Menemukan Ide Pokok (Main Idea) Teks Panjang',
+        description: 'Cara menjawab soal "What is the main idea of the passage?" tanpa membaca seluruh teks berulang kali.',
+        steps: [
+          'Baca 1-2 kalimat pertama dan kalimat terakhir pada Paragraf 1 untuk menemukan topik umum.',
+          'Baca kalimat pertama pada setiap paragraf berikutnya untuk melihat perkembangan argumen.',
+          'Cari kata atau sinonim yang paling sering diulang di seluruh bacaan (Keyword repetition).',
+          'Eliminasi pilihan jawaban yang: (1) Terlalu sempit/hanya membahas 1 detail kecil (Too narrow), (2) Terlalu luas melampaui isi teks (Too broad), atau (3) Bertentangan dengan teks.'
+        ],
+        tips: 'Jawaban yang tepat untuk Main Idea harus merangkum SELURUH isi bacaan, bukan hanya paragraf tertentu.'
       }
-    ]
-  }
-];
-
-export const bahasaInggrisCheatSheet = [
-  {
-    category: 'Grammar Inversi & Pola Khusus',
-    items: [
-      { label: 'Negative Inversion', formula: 'Negative Word (Seldom/Never/Rarely) + Aux + Subj + Verb', note: 'Contoh: Never have I witnessed such phenomena' },
-      { label: 'Inverted Conditionals (Type 3)', formula: 'Had + S + V3, S + would have + V3', note: 'Menghilangkan "If", memajukan "Had"' },
-      { label: 'Subjunctive Mood', formula: 'Demand/Suggest/Insist that + S + (be / bare infinitive)', note: 'Bentuk kata kerja tanpa akhiran -s atau bentuk masa lalu' }
-    ]
-  },
-  {
-    category: 'Hubungan Transisi Logis',
-    items: [
-      { label: 'Kontras & Oposisi', formula: 'However, Nevertheless, Conversely, In contrast', note: 'Menghubungkan dua ide yang bertentangan' },
-      { label: 'Sebab Akibat', formula: 'Consequently, Hence, Therefore, As a result', note: 'Kalimat kedua merupakan konsekuensi dari yang pertama' },
-      { label: 'Konsesi (Meskipun)', formula: 'Despite / In spite of + Noun ; Although + S + V', note: 'Perhatikan apakah diikuti frasa benda atau klausa' }
-    ]
-  },
-  {
-    category: 'Kosakata Akademik Sering Keluar',
-    items: [
-      { label: 'Mitigate', formula: 'Alleviate, lessen, attenuate', note: 'Meringankan atau mengurangi dampak buruk' },
-      { label: 'Pervasive', formula: 'Widespread, ubiquitous, prevalent', note: 'Merata atau tersebar luas' },
-      { label: 'Plausible', formula: 'Credible, reasonable, feasible', note: 'Masuk akal atau dapat diterima secara logis' }
+    ],
+    formulaDetails: [
+      {
+        title: 'Struktur Analisis Teks Akademik',
+        formula: '\\text{Thesis Statement (Intro)} + \\text{Supporting Arguments (Body)} + \\text{Reiteration / Conclusion}',
+        explanation: 'Pola baku Analytical & Hortatory Exposition yang sering diujikan.',
+        variables: [
+          { symbol: 'Thesis', meaning: 'Gagasan atau posisi utama penulis terhadap isu' },
+          { symbol: 'Arguments', meaning: 'Bukti, data, dan alasan pendukung di paragraf isi' }
+        ]
+      }
+    ],
+    formulas: [
+      '\\text{Main Idea} = \\text{Topic (Subject)} + \\text{Author\'s Point of View}',
+      '\\text{Inference} = \\text{Text Clues} + \\text{Logical Reasoning}'
+    ],
+    examples: [
+      {
+        problem: 'Bagaimana cara menentukan arti kata sulit dalam kalimat: "The doctor prescribed a potent medicine that completely cured the stubborn infection within hours"?',
+        given: 'Kata "potent", konteks: "completely cured the stubborn infection within hours"',
+        questionTarget: 'Makna kata "potent"',
+        steps: [
+          'Lihat petunjuk konteks (context clues): obat tersebut berhasil menyembuhkan infeksi membandel hanya dalam hitungan beberapa jam.',
+          'Secara logika, obat yang bekerja sangat cepat dan menyembuhkan penyakit membandel pasti memiliki khasiat yang sangat kuat / ampuh.',
+          'Maka arti dari "potent" adalah powerful / effective (sangat kuat/berdaya guna).'
+        ],
+        solution: 'Potent = powerful / highly effective.'
+      }
+    ],
+    quickTips: [
+      'Soal "According to the passage, which of the following is NOT TRUE?" → Gunakan teknik Scanning kata kunci di setiap pilihan jawaban langsung ke dalam teks!',
+      'Kata ekstrem seperti "always", "never", "only", "completely" di pilihan jawaban sering kali merupakan pilihan yang salah/jebakan.'
     ]
   }
 ];

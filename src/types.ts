@@ -1,69 +1,77 @@
-export type SubjectId = 'matematika' | 'bahasa-inggris' | 'pkwu' | 'teknik-komputer';
+export type SubjectId = 'matematika' | 'bahasa_inggris' | 'pkwu' | 'teknik_komputer';
 
-export type Difficulty = 'Mudah' | 'Sedang' | 'Tinggi';
+export type Difficulty = 'Mudah' | 'Sedang' | 'Sulit';
 
-export interface KeyConcept {
-  title: string;
-  explanation: string;
-  formulaOrKey?: string;
-}
-
-export interface StepByStepGuide {
-  title: string;
-  problem: string;
-  steps: { stepNumber: number; instruction: string; calculationOrDetail: string }[];
-  solution: string;
-  tip: string;
-}
-
-export interface PracticalExample {
-  title: string;
-  context: string;
-  solution: string;
-  takeaway: string;
-}
-
-export interface QuickCheck {
-  id: string;
-  question: string;
-  options: string[];
-  correctIndex: number;
-  explanation: string;
-}
-
-export interface Topic {
-  id: string;
-  title: string;
-  subheader: string;
-  estimatedReadTime: string;
-  summary: string;
-  keyConcepts: KeyConcept[];
-  stepByStepGuides: StepByStepGuide[];
-  practicalExamples: PracticalExample[];
-  quickTips: string[];
-  quickCheck: QuickCheck[];
-}
-
-export interface QuestionOption {
+export interface Option {
   id: 'A' | 'B' | 'C' | 'D';
   text: string;
 }
 
 export interface Question {
   id: string;
-  number: number;
   subjectId: SubjectId;
   topicTag: string;
   difficulty: Difficulty;
   question: string;
   contextSnippet?: string;
   mathFormula?: string;
-  codeSnippet?: string;
-  options: QuestionOption[];
+  options: Option[];
   correctAnswer: 'A' | 'B' | 'C' | 'D';
   explanation: string;
-  keyConcept: string;
-  tkaExamTip: string;
+}
+
+export interface FormulaVariable {
+  symbol: string;
+  meaning: string;
+}
+
+export interface FormulaDetail {
+  title?: string;
+  formula: string;
+  explanation?: string;
+  variables?: FormulaVariable[];
+  quickTip?: string;
+}
+
+export interface StepByStepGuide {
+  title: string;
+  description?: string;
+  steps: string[];
+  tips?: string;
+}
+
+export interface WorkedExample {
+  problem: string;
+  given?: string;
+  questionTarget?: string;
+  steps?: string[];
+  solution: string;
+  tip?: string;
+}
+
+export interface Topic {
+  id: string;
+  title: string;
+  categoryTag?: string;
+  summary: string;
+  keyPoints: string[];
+  conceptExplanation?: string;
+  stepByStepGuides?: StepByStepGuide[];
+  formulas?: string[];
+  formulaDetails?: FormulaDetail[];
+  examples?: WorkedExample[];
+  quickTips?: string[];
+}
+
+export interface Subject {
+  id: SubjectId;
+  title: string;
+  shortTitle: string;
+  description: string;
+  iconName: string;
+  accentColor: string;
+  badgeBg: string;
+  topics: Topic[];
 }
 
 export interface UserAnswer {
@@ -74,36 +82,5 @@ export interface UserAnswer {
   timestamp: number;
 }
 
-export interface Subject {
-  id: SubjectId;
-  title: string;
-  shortTitle: string;
-  category: string;
-  subtitle: string;
-  description: string;
-  accentColor: string;
-  badgeBg: string;
-  badgeText: string;
-  lightBg: string;
-  iconName: string;
-  topics: Topic[];
-  cheatSheet: {
-    category: string;
-    items: { label: string; formula: string; note: string }[];
-  }[];
-}
-
-export interface QuizState {
-  subjectId: SubjectId;
-  currentIndex: number;
-  answers: Record<string, UserAnswer>;
-  flaggedQuestionIds: string[];
-  startTime: number;
-  endTime?: number;
-  isFinished: boolean;
-  mode: 'all' | 'missed_only';
-  customQuestionIds?: string[];
-}
-
-export type ThemeMode = 'light' | 'paper' | 'dark';
-export type ActiveView = 'home' | 'materials' | 'quiz' | 'summary' | 'about';
+export type AppView = 'home' | 'quiz' | 'summary' | 'materials';
+export type ThemeMode = 'light' | 'dark';

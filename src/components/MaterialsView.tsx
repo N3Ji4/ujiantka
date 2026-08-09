@@ -1,450 +1,559 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { 
   BookOpen, 
-  ArrowLeft, 
-  ArrowRight, 
+  Search, 
+  ChevronRight, 
   CheckCircle2, 
-  Clock, 
-  FileText, 
-  HelpCircle, 
+  ArrowLeft, 
+  Calculator, 
   Lightbulb, 
-  Sparkles, 
+  ListOrdered, 
+  HelpCircle, 
   Copy, 
   Check, 
-  ChevronRight,
-  AlertTriangle
+  Sparkles,
+  Filter,
+  Layers,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
-import { Subject, Topic } from '../types';
-import { sound } from '../utils/audio';
+import { Subject, SubjectId, Topic } from '../types';
 
 interface MaterialsViewProps {
-  subject: Subject;
-  initialTopicId?: string;
-  onNavigateHome: () => void;
-  onStartQuiz: (subject: Subject) => void;
-  onOpenCheatSheet: (subject: Subject) => void;
+  subjects: Subject[];
+  initialSubjectId?: SubjectId;
+  onBackToHome: () => void;
+  onStartQuiz: (subjectId: SubjectId) => void;
 }
 
+type TabFilter = 'all' | 'guides' | 'formulas' | 'examples';
+
 export const MaterialsView: React.FC<MaterialsViewProps> = ({
-  subject,
-  initialTopicId,
-  onNavigateHome,
-  onStartQuiz,
-  onOpenCheatSheet
+  subjects,
+  initialSubjectId = 'matematika',
+  onBackToHome,
+  onStartQuiz
 }) => {
-  const [selectedTopicId, setSelectedTopicId] = useState<string>(
-    initialTopicId || subject.topics[0]?.id || ''
-  );
-  const [copiedKey, setCopiedKey] = useState<string | null>(null);
-  
-  // Quick check answers state: topicId -> { selectedIndex, isSubmitted }
-  const [quickCheckState, setQuickCheckState] = useState<Record<string, { selected: number; submitted: boolean }>>({});
+  const [selectedSubjectId, setSelectedSubjectId] = useState<SubjectId>(initialSubjectId);
+  const [selectedCategory, setSelectedCategory] = useState<string>('Semua');
+  const [activeTabFilter, setActiveTabFilter] = useState<TabFilter>('all');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [copiedFormula, setCopiedFormula] = useState<string | null>(null);
+  const [expandedTopicIds, setExpandedTopicIds] = useState<Record<string, boolean>>({});
 
-  const currentTopic = subject.topics.find((t) => t.id === selectedTopicId) || subject.topics[0];
-  const currentTopicIndex = subject.topics.findIndex((t) => t.id === currentTopic?.id);
+  const currentSubject = subjects.find(s => s.id === selectedSubjectId) || subjects[0];
 
-  const handleCopy = (text: string, key: string) => {
-    navigator.clipboard.writeText(text);
-    setCopiedKey(key);
-    setTimeout(() => setCopiedKey(null), 2000);
+  // Extract distinct category tags
+  const categories = useMemo(() => {
+    const cats = new Set<string>();
+    currentSubject.topics.forEach(t => {
+      if (t.categoryTag) cats.add(t.categoryTag);
+    });
+    return ['Semua', ...Array.from(cats)];
+  }, [currentSubject]);
+
+  // Filter topics
+  const filteredTopics = useMemo(() => {
+    return currentSubject.topics.filter(t => {
+      const matchesSearch = 
+        t.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        t.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        t.keyPoints.some(kp => kp.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (t.conceptExplanation && t.conceptExplanation.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (t.stepByStepGuides && t.stepByStepGuides.some(g => g.title.toLowerCase().includes(searchQuery.toLowerCase()) || g.steps.some(s => s.toLowerCase().includes(searchQuery.toLowerCase())))) ||
+        (t.formulaDetails && t.formulaDetails.some(f => f.formula.toLowerCase().includes(searchQuery.toLowerCase()) || (f.title && f.title.toLowerCase().includes(searchQuery.toLowerCase()))));
+
+      const matchesCategory = selectedCategory === 'Semua' || t.categoryTag === selectedCategory;
+
+      return matchesSearch && matchesCategory;
+    });
+  }, [currentSubject, searchQuery, selectedCategory]);
+
+  const handleCopyFormula = (formulaText: string) => {
+    navigator.clipboard.writeText(formulaText);
+    setCopiedFormula(formulaText);
+    setTimeout(() => {
+      setCopiedFormula(null);
+    }, 2000);
   };
 
-  const handleQuickCheckSelect = (topicId: string, optIndex: number, correctIndex: number) => {
-    setQuickCheckState((prev) => ({
+  const toggleExpandTopic = (id: string) => {
+    setExpandedTopicIds(prev => ({
       ...prev,
-      [topicId]: { selected: optIndex, submitted: true }
+      [id]: prev[id] === undefined ? false : !prev[id]
     }));
-
-    if (optIndex === correctIndex) {
-      sound.playCorrectSound();
-    } else {
-      sound.playIncorrectSound();
-    }
   };
 
-  if (!currentTopic) return null;
+  const isTopicExpanded = (id: string) => {
+    return expandedTopicIds[id] !== false; // default expanded
+  };
+
+  const expandAll = () => {
+    const allExp: Record<string, boolean> = {};
+    filteredTopics.forEach(t => { allExp[t.id] = true; });
+    setExpandedTopicIds(allExp);
+  };
+
+  const collapseAll = () => {
+    const allCol: Record<string, boolean> = {};
+    filteredTopics.forEach(t => { allCol[t.id] = false; });
+    setExpandedTopicIds(allCol);
+  };
 
   return (
-    <div className="space-y-6 pb-20">
-      {/* Top Breadcrumb & Navigation Actions */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200/80 dark:border-zinc-800 pb-4">
-        <div className="flex items-center gap-3">
+    <div className="space-y-8 pb-28 max-w-5xl mx-auto">
+      {/* Top Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200/80 dark:border-zinc-800 pb-5">
+        <div>
           <button
-            id="btn-materials-back-home"
-            onClick={onNavigateHome}
-            className="p-2 rounded-xl text-zinc-500 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
-            title="Kembali ke Beranda"
+            onClick={onBackToHome}
+            className="flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-zinc-900 dark:hover:text-white mb-2 transition-colors cursor-pointer"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-3.5 h-3.5" /> Kembali ke Beranda
           </button>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${subject.badgeBg}`}>
-                {subject.shortTitle}
-              </span>
-              <h1 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">
-                {subject.title}
-              </h1>
-            </div>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
-              {subject.subtitle}
-            </p>
-          </div>
+          <h1 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+            <BookOpen className="w-6 h-6 text-emerald-600 dark:text-emerald-400" /> Ringkasan Materi & Rumus Komprehensif
+          </h1>
+          <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mt-1">
+            Pelajari konsep fundamental, bank rumus dengan makna variabel, cara pengerjaan langkah demi langkah, dan contoh soal teruji.
+          </p>
         </div>
 
-        <div className="flex items-center gap-2">
-          <button
-            id="btn-materials-open-cheatsheet"
-            onClick={() => onOpenCheatSheet(subject)}
-            className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl text-zinc-700 dark:text-zinc-300 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
-          >
-            <FileText className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-            <span>Rumus & Cheat Sheet</span>
-          </button>
-
-          <button
-            id="btn-materials-start-quiz-top"
-            onClick={() => onStartQuiz(subject)}
-            className="flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white rounded-xl shadow-xs transition-opacity hover:opacity-90"
-            style={{ backgroundColor: subject.accentColor }}
-          >
-            <span>Mulai 30 Soal</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </button>
-        </div>
+        <button
+          onClick={() => onStartQuiz(currentSubject.id)}
+          className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-zinc-900 dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 transition-opacity shadow-xs self-start sm:self-auto cursor-pointer"
+        >
+          Mulai Ujian {currentSubject.shortTitle}
+        </button>
       </div>
 
-      {/* Topic Tabs Horizontal Selector */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
-        {subject.topics.map((t, idx) => {
-          const isActive = t.id === currentTopic.id;
+      {/* Subject Selector Tabs */}
+      <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
+        {subjects.map((sub) => {
+          const isSelected = selectedSubjectId === sub.id;
           return (
             <button
-              key={t.id}
-              onClick={() => setSelectedTopicId(t.id)}
-              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
-                isActive
-                  ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 shadow-xs'
-                  : 'bg-zinc-100/80 dark:bg-zinc-800/80 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/80 dark:hover:bg-zinc-700'
+              key={sub.id}
+              onClick={() => {
+                setSelectedSubjectId(sub.id);
+                setSelectedCategory('Semua');
+              }}
+              className={`px-4 py-2.5 rounded-2xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer flex items-center gap-2 ${
+                isSelected
+                  ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 shadow-md'
+                  : 'bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 border border-zinc-200 dark:border-zinc-800'
               }`}
             >
-              <span className="w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-bold bg-white/20 dark:bg-zinc-800/40">
-                {idx + 1}
+              <span>{sub.title}</span>
+              <span className={`px-2 py-0.5 rounded-full text-[10px] ${
+                isSelected ? 'bg-white/20 dark:bg-zinc-900/20 text-white dark:text-zinc-900' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500'
+              }`}>
+                {sub.topics.length} Bab
               </span>
-              <span>{t.title.split(',')[0]}</span>
             </button>
           );
         })}
       </div>
 
-      {/* Main Topic Content Card */}
-      <div className="rounded-3xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/90 shadow-xs overflow-hidden">
-        {/* Topic Header */}
-        <div className="p-6 sm:p-8 border-b border-zinc-100 dark:border-zinc-800/80 space-y-3 bg-zinc-50/40 dark:bg-zinc-900/40">
-          <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400">
-            <span className="font-semibold text-zinc-700 dark:text-zinc-300">
-              Topik #{currentTopicIndex + 1} dari {subject.topics.length}
+      {/* Filter & Search Bar */}
+      <div className="space-y-3 bg-white dark:bg-zinc-900 p-4 sm:p-5 rounded-3xl border border-zinc-200/80 dark:border-zinc-800 shadow-xs">
+        <div className="flex flex-col sm:flex-row gap-3">
+          <div className="relative flex-1">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
+            <input
+              type="text"
+              placeholder="Cari materi, rumus, langkah pengerjaan, atau kata kunci..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-2.5 rounded-2xl text-xs bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            />
+          </div>
+
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
+            <button
+              onClick={() => setActiveTabFilter('all')}
+              className={`px-3 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
+                activeTabFilter === 'all'
+                  ? 'bg-emerald-600 text-white shadow-xs'
+                  : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200'
+              }`}
+            >
+              Semua Bagian
+            </button>
+            <button
+              onClick={() => setActiveTabFilter('guides')}
+              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
+                activeTabFilter === 'guides'
+                  ? 'bg-emerald-600 text-white shadow-xs'
+                  : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200'
+              }`}
+            >
+              <ListOrdered className="w-3.5 h-3.5" /> Cara & Langkah
+            </button>
+            <button
+              onClick={() => setActiveTabFilter('formulas')}
+              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
+                activeTabFilter === 'formulas'
+                  ? 'bg-emerald-600 text-white shadow-xs'
+                  : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200'
+              }`}
+            >
+              <Calculator className="w-3.5 h-3.5" /> Rumus
+            </button>
+            <button
+              onClick={() => setActiveTabFilter('examples')}
+              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
+                activeTabFilter === 'examples'
+                  ? 'bg-emerald-600 text-white shadow-xs'
+                  : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200'
+              }`}
+            >
+              <HelpCircle className="w-3.5 h-3.5" /> Contoh Soal
+            </button>
+          </div>
+        </div>
+
+        {/* Categories Pills */}
+        {categories.length > 2 && (
+          <div className="flex items-center gap-1.5 overflow-x-auto pt-2 border-t border-zinc-100 dark:border-zinc-800 text-xs no-scrollbar">
+            <span className="text-zinc-400 font-semibold flex items-center gap-1 mr-1">
+              <Filter className="w-3 h-3" /> Kategori:
             </span>
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-2.5 py-1 rounded-lg font-medium transition-colors whitespace-nowrap cursor-pointer ${
+                  selectedCategory === cat
+                    ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900'
+                    : 'bg-zinc-50 dark:bg-zinc-950 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 border border-zinc-200 dark:border-zinc-800'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        )}
+
+        <div className="flex items-center justify-between pt-1 text-[11px] text-zinc-400">
+          <span>Menampilkan <strong>{filteredTopics.length}</strong> bab materi pembelajaran</span>
+          <div className="flex items-center gap-2">
+            <button onClick={expandAll} className="hover:text-zinc-700 dark:hover:text-zinc-200 cursor-pointer">Buka Semua</button>
             <span>•</span>
-            <span className="flex items-center gap-1">
-              <Clock className="w-3.5 h-3.5" />
-              Estimasi baca: {currentTopic.estimatedReadTime}
-            </span>
+            <button onClick={collapseAll} className="hover:text-zinc-700 dark:hover:text-zinc-200 cursor-pointer">Tutup Semua</button>
           </div>
-
-          <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50">
-            {currentTopic.title}
-          </h2>
-
-          <p className="text-xs sm:text-sm font-medium text-zinc-600 dark:text-zinc-400">
-            {currentTopic.subheader}
-          </p>
-
-          <p className="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed pt-1">
-            {currentTopic.summary}
-          </p>
         </div>
+      </div>
 
-        <div className="p-6 sm:p-8 space-y-8">
-          {/* Section 1: Konsep Kunci & Rumus Utama */}
-          <section className="space-y-4">
-            <div className="flex items-center gap-2 text-sm font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-wider">
-              <Sparkles className="w-4 h-4 text-amber-500" />
-              <span>Konsep Kunci & Formula Wajib TKA</span>
-            </div>
+      {/* Topics List */}
+      <div className="space-y-6">
+        {filteredTopics.map((topic, topicIdx) => {
+          const isExpanded = isTopicExpanded(topic.id);
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {currentTopic.keyConcepts.map((concept, cIdx) => {
-                const uniqueKey = `concept-${cIdx}`;
-                return (
-                  <div
-                    key={cIdx}
-                    className="p-4 rounded-2xl border border-zinc-200/70 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-950/50 space-y-3 flex flex-col justify-between"
-                  >
-                    <div className="space-y-2">
-                      <h4 className="text-xs font-bold text-zinc-900 dark:text-zinc-100">
-                        {concept.title}
-                      </h4>
-                      <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                        {concept.explanation}
-                      </p>
-                    </div>
-
-                    {concept.formulaOrKey && (
-                      <div className="pt-2 border-t border-zinc-200/50 dark:border-zinc-800 flex items-center justify-between gap-2">
-                        <code className="text-[11px] font-mono font-semibold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-1 rounded-md truncate">
-                          {concept.formulaOrKey}
-                        </code>
-                        <button
-                          id={`btn-copy-concept-${cIdx}`}
-                          onClick={() => handleCopy(concept.formulaOrKey || '', uniqueKey)}
-                          className="p-1 rounded text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
-                          title="Salin formula"
-                        >
-                          {copiedKey === uniqueKey ? (
-                            <Check className="w-3.5 h-3.5 text-emerald-600" />
-                          ) : (
-                            <Copy className="w-3.5 h-3.5" />
-                          )}
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-
-          {/* Section 2: Panduan Perhitungan Langkah demi Langkah */}
-          {currentTopic.stepByStepGuides.length > 0 && (
-            <section className="space-y-4">
-              <div className="flex items-center gap-2 text-sm font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-wider">
-                <BookOpen className="w-4 h-4 text-emerald-500" />
-                <span>Panduan Solusi Langkah demi Langkah</span>
-              </div>
-
-              {currentTopic.stepByStepGuides.map((guide, gIdx) => (
-                <div
-                  key={gIdx}
-                  className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-950/60 p-5 sm:p-6 space-y-5"
-                >
-                  <div className="space-y-1.5">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
-                      Contoh Bedah Soal & Kasus
+          return (
+            <div
+              key={topic.id}
+              className="rounded-3xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden shadow-xs transition-all duration-200"
+            >
+              {/* Topic Header Card */}
+              <div 
+                onClick={() => toggleExpandTopic(topic.id)}
+                className="p-6 sm:p-7 flex items-start justify-between gap-4 cursor-pointer hover:bg-zinc-50/60 dark:hover:bg-zinc-800/40 transition-colors border-b border-zinc-100 dark:border-zinc-800/60"
+              >
+                <div className="space-y-1.5 min-w-0 flex-1">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="w-6 h-6 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-bold text-xs flex items-center justify-center">
+                      {topicIdx + 1}
                     </span>
-                    <h3 className="text-sm sm:text-base font-bold text-zinc-900 dark:text-zinc-100">
-                      {guide.title}
-                    </h3>
-                    <div className="p-3 rounded-xl bg-zinc-100/70 dark:bg-zinc-800/50 text-xs font-mono text-zinc-800 dark:text-zinc-200">
-                      {guide.problem}
-                    </div>
-                  </div>
-
-                  {/* Steps */}
-                  <div className="space-y-3">
-                    {guide.steps.map((step) => (
-                      <div
-                        key={step.stepNumber}
-                        className="flex items-start gap-3 p-3 rounded-xl bg-zinc-50/70 dark:bg-zinc-900/60 border border-zinc-200/50 dark:border-zinc-800"
-                      >
-                        <div className="w-6 h-6 rounded-full bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
-                          {step.stepNumber}
-                        </div>
-                        <div className="space-y-1 min-w-0">
-                          <div className="text-xs font-bold text-zinc-800 dark:text-zinc-200">
-                            {step.instruction}
-                          </div>
-                          <div className="text-xs text-zinc-600 dark:text-zinc-400 font-mono">
-                            {step.calculationOrDetail}
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Solution & Tip */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                    <div className="p-3.5 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-800/60 text-xs space-y-1">
-                      <div className="font-bold text-emerald-800 dark:text-emerald-300 flex items-center gap-1.5">
-                        <CheckCircle2 className="w-4 h-4" />
-                        Kesimpulan Jawaban
-                      </div>
-                      <p className="text-emerald-900 dark:text-emerald-200 font-medium">
-                        {guide.solution}
-                      </p>
-                    </div>
-
-                    <div className="p-3.5 rounded-xl bg-amber-50/60 dark:bg-amber-950/30 border border-amber-200/60 dark:border-amber-800/60 text-xs space-y-1">
-                      <div className="font-bold text-amber-800 dark:text-amber-300 flex items-center gap-1.5">
-                        <Lightbulb className="w-4 h-4" />
-                        Tips Kecepatan Ujian
-                      </div>
-                      <p className="text-amber-900 dark:text-amber-200">
-                        {guide.tip}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </section>
-          )}
-
-          {/* Section 3: Praktik Nyata & Tips Cepat */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Practical Examples */}
-            {currentTopic.practicalExamples.length > 0 && (
-              <section className="space-y-3">
-                <div className="flex items-center gap-2 text-xs font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-wider">
-                  <Lightbulb className="w-4 h-4 text-sky-500" />
-                  <span>Aplikasi Dunia Nyata</span>
-                </div>
-
-                <div className="space-y-3">
-                  {currentTopic.practicalExamples.map((ex, eIdx) => (
-                    <div
-                      key={eIdx}
-                      className="p-4 rounded-2xl border border-zinc-200/70 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-950/50 space-y-2"
-                    >
-                      <h4 className="text-xs font-bold text-zinc-900 dark:text-zinc-100">
-                        {ex.title}
-                      </h4>
-                      <p className="text-xs text-zinc-600 dark:text-zinc-400">
-                        <strong className="text-zinc-800 dark:text-zinc-200">Konteks:</strong> {ex.context}
-                      </p>
-                      <p className="text-xs text-zinc-700 dark:text-zinc-300">
-                        <strong className="text-zinc-800 dark:text-zinc-200">Solusi:</strong> {ex.solution}
-                      </p>
-                      <div className="text-[11px] font-medium text-sky-700 dark:text-sky-300 bg-sky-50 dark:bg-sky-950/40 p-2 rounded-lg">
-                        {ex.takeaway}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {/* Quick Tips & Pitfalls */}
-            <section className="space-y-3">
-              <div className="flex items-center gap-2 text-xs font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-wider">
-                <AlertTriangle className="w-4 h-4 text-amber-500" />
-                <span>Tips Cepat & Jebakan Soal</span>
-              </div>
-
-              <div className="p-4 rounded-2xl border border-amber-200/60 dark:border-amber-900/40 bg-amber-50/30 dark:bg-amber-950/20 space-y-2.5">
-                {currentTopic.quickTips.map((tip, tIdx) => (
-                  <div key={tIdx} className="flex items-start gap-2 text-xs text-zinc-700 dark:text-zinc-300">
-                    <span className="text-amber-500 font-bold">•</span>
-                    <span>{tip}</span>
-                  </div>
-                ))}
-              </div>
-            </section>
-          </div>
-
-          {/* Section 4: Interactive Quick Check (Active Recall Widget) */}
-          {currentTopic.quickCheck.length > 0 && (
-            <section className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-linear-to-br from-zinc-50 to-emerald-50/20 dark:from-zinc-950 dark:to-emerald-950/10 p-5 sm:p-6 space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <HelpCircle className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-100">
-                    Uji Pemahaman Singkat (Active Recall)
-                  </h3>
-                </div>
-                <span className="text-[11px] text-zinc-500">1 Soal Cepat</span>
-              </div>
-
-              {currentTopic.quickCheck.map((qc) => {
-                const state = quickCheckState[qc.id];
-                const hasAnswered = state?.submitted;
-
-                return (
-                  <div key={qc.id} className="space-y-3">
-                    <p className="text-xs sm:text-sm font-semibold text-zinc-900 dark:text-zinc-100 leading-relaxed">
-                      {qc.question}
-                    </p>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {qc.options.map((opt, optIdx) => {
-                        const isSelected = state?.selected === optIdx;
-                        const isCorrect = optIdx === qc.correctIndex;
-
-                        let btnStyle = 'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 hover:border-zinc-400';
-                        if (hasAnswered) {
-                          if (isCorrect) {
-                            btnStyle = 'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-500 text-emerald-900 dark:text-emerald-200 font-bold';
-                          } else if (isSelected && !isCorrect) {
-                            btnStyle = 'bg-rose-50 dark:bg-rose-950/60 border-rose-500 text-rose-900 dark:text-rose-200';
-                          }
-                        }
-
-                        return (
-                          <button
-                            key={optIdx}
-                            id={`btn-qc-${qc.id}-opt-${optIdx}`}
-                            onClick={() => handleQuickCheckSelect(qc.id, optIdx, qc.correctIndex)}
-                            disabled={hasAnswered}
-                            className={`p-3 rounded-xl border text-xs text-left transition-all ${btnStyle}`}
-                          >
-                            <span className="font-bold mr-1.5">{String.fromCharCode(65 + optIdx)}.</span>
-                            {opt}
-                          </button>
-                        );
-                      })}
-                    </div>
-
-                    {hasAnswered && (
-                      <div className="p-3 rounded-xl bg-zinc-100 dark:bg-zinc-800/80 text-xs space-y-1 text-zinc-700 dark:text-zinc-300 animate-in fade-in duration-200">
-                        <span className="font-bold text-zinc-900 dark:text-zinc-100">
-                          {state.selected === qc.correctIndex ? 'Tepat Sekali!' : 'Belum Tepat.'}
-                        </span>
-                        <p>{qc.explanation}</p>
-                      </div>
+                    {topic.categoryTag && (
+                      <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60">
+                        {topic.categoryTag}
+                      </span>
                     )}
                   </div>
-                );
-              })}
-            </section>
-          )}
+                  <h3 className="text-base sm:text-lg font-bold text-zinc-900 dark:text-zinc-100">
+                    {topic.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                    {topic.summary}
+                  </p>
+                </div>
 
-          {/* Bottom Topic Switcher Navigation */}
-          <div className="flex items-center justify-between pt-6 border-t border-zinc-200/80 dark:border-zinc-800">
-            {currentTopicIndex > 0 ? (
-              <button
-                id="btn-prev-topic"
-                onClick={() => setSelectedTopicId(subject.topics[currentTopicIndex - 1].id)}
-                className="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-zinc-700 dark:text-zinc-300 rounded-xl bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
-              >
-                <ArrowLeft className="w-3.5 h-3.5" />
-                <span>Topik Sebelumnya</span>
-              </button>
-            ) : (
-              <div />
-            )}
+                <div className="p-2 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-500 shrink-0">
+                  {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                </div>
+              </div>
 
-            {currentTopicIndex < subject.topics.length - 1 ? (
-              <button
-                id="btn-next-topic"
-                onClick={() => setSelectedTopicId(subject.topics[currentTopicIndex + 1].id)}
-                className="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-white rounded-xl shadow-xs transition-opacity hover:opacity-90"
-                style={{ backgroundColor: subject.accentColor }}
-              >
-                <span>Topik Selanjutnya</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            ) : (
-              <button
-                id="btn-goto-practice-bottom"
-                onClick={() => onStartQuiz(subject)}
-                className="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-white rounded-xl shadow-xs transition-opacity hover:opacity-90"
-                style={{ backgroundColor: subject.accentColor }}
-              >
-                <span>Siap! Mulai 30 Soal</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            )}
+              {/* Collapsible Content */}
+              {isExpanded && (
+                <div className="p-6 sm:p-8 space-y-8 animate-in fade-in duration-150">
+                  {/* Concept Explanation (Easy to understand intro) */}
+                  {topic.conceptExplanation && (activeTabFilter === 'all' || activeTabFilter === 'guides') && (
+                    <div className="p-5 rounded-2xl bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200/80 dark:border-zinc-800 space-y-2">
+                      <h4 className="text-xs font-bold text-zinc-500 uppercase tracking-wider flex items-center gap-1.5">
+                        <Sparkles className="w-3.5 h-3.5 text-amber-500" /> Konsep Dasar & Pemahaman Mudah
+                      </h4>
+                      <p className="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                        {topic.conceptExplanation}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Key Points */}
+                  {(activeTabFilter === 'all' || activeTabFilter === 'guides') && (
+                    <div className="space-y-3">
+                      <h4 className="text-xs font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> Poin Penting & Aturan Utama
+                      </h4>
+                      <div className="grid grid-cols-1 gap-2.5">
+                        {topic.keyPoints.map((kp, idx) => (
+                          <div key={idx} className="flex items-start gap-2.5 p-3 rounded-2xl bg-zinc-50/70 dark:bg-zinc-950/40 border border-zinc-200/60 dark:border-zinc-800/60 text-xs sm:text-sm text-zinc-800 dark:text-zinc-200">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 mt-2" />
+                            <span className="leading-relaxed whitespace-pre-line">{kp}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Step-by-Step Guides ("Cara-Cara Pengerjaan") */}
+                  {topic.stepByStepGuides && topic.stepByStepGuides.length > 0 && (activeTabFilter === 'all' || activeTabFilter === 'guides') && (
+                    <div className="space-y-4 pt-2">
+                      <h4 className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <ListOrdered className="w-4 h-4" /> Cara & Langkah-Langkah Pengerjaan
+                      </h4>
+
+                      <div className="space-y-4">
+                        {topic.stepByStepGuides.map((guide, gIdx) => (
+                          <div key={gIdx} className="p-5 sm:p-6 rounded-2xl bg-emerald-50/40 dark:bg-emerald-950/20 border border-emerald-200/80 dark:border-emerald-900/60 space-y-3">
+                            <div className="space-y-1">
+                              <h5 className="text-xs sm:text-sm font-bold text-emerald-950 dark:text-emerald-200">
+                                {guide.title}
+                              </h5>
+                              {guide.description && (
+                                <p className="text-xs text-zinc-600 dark:text-zinc-400">
+                                  {guide.description}
+                                </p>
+                              )}
+                            </div>
+
+                            <div className="space-y-2 pt-1">
+                              {guide.steps.map((step, sIdx) => (
+                                <div key={sIdx} className="flex items-start gap-3 text-xs sm:text-sm text-zinc-800 dark:text-zinc-200">
+                                  <span className="w-5 h-5 rounded-full bg-emerald-600 text-white font-bold text-[10px] flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                                    {sIdx + 1}
+                                  </span>
+                                  <span className="leading-relaxed">{step}</span>
+                                </div>
+                              ))}
+                            </div>
+
+                            {guide.tips && (
+                              <div className="p-3 rounded-xl bg-white dark:bg-zinc-900 border border-emerald-200 dark:border-emerald-800/80 text-xs text-emerald-800 dark:text-emerald-300 font-medium flex items-start gap-2">
+                                <Lightbulb className="w-4 h-4 shrink-0 text-amber-500 mt-0.5" />
+                                <span><strong>Tips Praktis:</strong> {guide.tips}</span>
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Rich Formulas & Variables Breakdown */}
+                  {topic.formulaDetails && topic.formulaDetails.length > 0 && (activeTabFilter === 'all' || activeTabFilter === 'formulas') && (
+                    <div className="space-y-4 pt-2">
+                      <h4 className="text-xs font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <Calculator className="w-4 h-4 text-emerald-500" /> Bank Rumus & Makna Variabel
+                      </h4>
+
+                      <div className="grid grid-cols-1 gap-4">
+                        {topic.formulaDetails.map((fDetail, fIdx) => (
+                          <div key={fIdx} className="p-5 rounded-2xl bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 space-y-3">
+                            <div className="flex items-center justify-between gap-2">
+                              {fDetail.title && (
+                                <span className="text-xs font-bold text-zinc-900 dark:text-zinc-100">
+                                  {fDetail.title}
+                                </span>
+                              )}
+                              <button
+                                onClick={() => handleCopyFormula(fDetail.formula)}
+                                className="flex items-center gap-1 text-[11px] font-semibold text-zinc-500 hover:text-zinc-900 dark:hover:text-white px-2 py-1 rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors cursor-pointer"
+                              >
+                                {copiedFormula === fDetail.formula ? (
+                                  <>
+                                    <Check className="w-3 h-3 text-emerald-500" />
+                                    <span className="text-emerald-600 dark:text-emerald-400 font-bold">Tersalin!</span>
+                                  </>
+                                ) : (
+                                  <>
+                                    <Copy className="w-3 h-3" />
+                                    <span>Salin Rumus</span>
+                                  </>
+                                )}
+                              </button>
+                            </div>
+
+                            <div className="p-3.5 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 font-mono text-xs sm:text-sm text-emerald-600 dark:text-emerald-400 overflow-x-auto shadow-inner">
+                              {fDetail.formula}
+                            </div>
+
+                            {fDetail.explanation && (
+                              <p className="text-xs text-zinc-600 dark:text-zinc-300">
+                                {fDetail.explanation}
+                              </p>
+                            )}
+
+                            {fDetail.variables && fDetail.variables.length > 0 && (
+                              <div className="pt-2 border-t border-zinc-200/60 dark:border-zinc-800/60 space-y-1.5">
+                                <span className="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block">
+                                  Keterangan Simbol / Variabel:
+                                </span>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                  {fDetail.variables.map((v, vIdx) => (
+                                    <div key={vIdx} className="flex items-start gap-1.5">
+                                      <code className="px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-mono font-bold text-[11px] shrink-0">
+                                        {v.symbol}
+                                      </code>
+                                      <span className="text-zinc-600 dark:text-zinc-400">= {v.meaning}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+
+                            {fDetail.quickTip && (
+                              <div className="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 text-xs text-amber-900 dark:text-amber-200 flex items-start gap-1.5">
+                                <Lightbulb className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+                                <span><strong>Trik Singkat:</strong> {fDetail.quickTip}</span>
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Fallback Standard Formulas */}
+                  {(!topic.formulaDetails || topic.formulaDetails.length === 0) && topic.formulas && topic.formulas.length > 0 && (activeTabFilter === 'all' || activeTabFilter === 'formulas') && (
+                    <div className="p-4 rounded-2xl bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 space-y-2">
+                      <h4 className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Rumus Utama</h4>
+                      <div className="space-y-1.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">
+                        {topic.formulas.map((form, idx) => (
+                          <div key={idx} className="py-2 px-3 bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+                            <span>{form}</span>
+                            <button
+                              onClick={() => handleCopyFormula(form)}
+                              className="text-zinc-400 hover:text-zinc-900 dark:hover:text-white p-1"
+                            >
+                              <Copy className="w-3.5 h-3.5" />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Pro Tips / Quick Tricks */}
+                  {topic.quickTips && topic.quickTips.length > 0 && (activeTabFilter === 'all' || activeTabFilter === 'guides') && (
+                    <div className="p-4 rounded-2xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/60 space-y-2">
+                      <h4 className="text-xs font-bold text-amber-800 dark:text-amber-300 uppercase tracking-wider flex items-center gap-1.5">
+                        <Lightbulb className="w-4 h-4 text-amber-600 dark:text-amber-400" /> Trik Cepat & Cara Ingat
+                      </h4>
+                      <div className="space-y-1.5">
+                        {topic.quickTips.map((tip, idx) => (
+                          <div key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-amber-950 dark:text-amber-200">
+                            <span className="text-amber-500 font-bold">•</span>
+                            <span>{tip}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Worked Examples (Contoh Soal & Cara Penyelesaian Detail) */}
+                  {topic.examples && topic.examples.length > 0 && (activeTabFilter === 'all' || activeTabFilter === 'examples') && (
+                    <div className="space-y-4 pt-2">
+                      <h4 className="text-xs font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <HelpCircle className="w-4 h-4 text-emerald-500" /> Contoh Soal & Pembahasan Langkah Demi Langkah
+                      </h4>
+
+                      <div className="space-y-4">
+                        {topic.examples.map((ex, idx) => (
+                          <div key={idx} className="p-5 rounded-2xl bg-zinc-50/70 dark:bg-zinc-950/50 border border-zinc-200 dark:border-zinc-800 space-y-3 text-xs sm:text-sm">
+                            <div className="p-3.5 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+                              <strong className="text-zinc-900 dark:text-zinc-100 block mb-1 text-xs uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                                Contoh Soal:
+                              </strong>
+                              <p className="font-semibold text-zinc-800 dark:text-zinc-200 leading-relaxed">
+                                {ex.problem}
+                              </p>
+                            </div>
+
+                            {ex.given && (
+                              <div className="text-xs text-zinc-600 dark:text-zinc-400">
+                                <strong className="text-zinc-900 dark:text-zinc-200">Diketahui:</strong> {ex.given}
+                              </div>
+                            )}
+
+                            {ex.questionTarget && (
+                              <div className="text-xs text-zinc-600 dark:text-zinc-400">
+                                <strong className="text-zinc-900 dark:text-zinc-200">Ditanya:</strong> {ex.questionTarget}
+                              </div>
+                            )}
+
+                            {ex.steps && ex.steps.length > 0 && (
+                              <div className="space-y-1.5 pt-1">
+                                <strong className="text-zinc-900 dark:text-zinc-100 text-xs block">
+                                  Langkah Penyelesaian:
+                                </strong>
+                                <div className="space-y-1.5">
+                                  {ex.steps.map((st, sIdx) => (
+                                    <div key={sIdx} className="flex items-start gap-2 text-xs text-zinc-700 dark:text-zinc-300">
+                                      <span className="w-4 h-4 rounded-full bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-bold text-[9px] flex items-center justify-center shrink-0 mt-0.5">
+                                        {sIdx + 1}
+                                      </span>
+                                      <span className="leading-relaxed">{st}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+
+                            <div className="p-3.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-emerald-950 dark:text-emerald-200 font-medium space-y-1">
+                              <strong className="block text-xs uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
+                                Kesimpulan / Jawaban Akhir:
+                              </strong>
+                              <p className="leading-relaxed">{ex.solution}</p>
+                            </div>
+
+                            {ex.tip && (
+                              <div className="text-[11px] text-zinc-500 italic">
+                                Catatan: {ex.tip}
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          );
+        })}
+
+        {filteredTopics.length === 0 && (
+          <div className="text-center py-16 bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-200 dark:border-zinc-800 space-y-3">
+            <BookOpen className="w-8 h-8 text-zinc-400 mx-auto" />
+            <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100">
+              Materi tidak ditemukan
+            </h3>
+            <p className="text-xs text-zinc-500 max-w-sm mx-auto">
+              Tidak ada materi yang sesuai dengan kata kunci "{searchQuery}". Coba gunakan istilah umum seperti rumus, aljabar, atau tenses.
+            </p>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
