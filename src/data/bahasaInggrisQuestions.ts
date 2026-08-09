@@ -4,456 +4,451 @@ export const bahasaInggrisQuestions: Question[] = [
   {
     id: 'biq-1',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Grammar',
-    difficulty: 'Sedang',
-    question: 'Choose the correct sentence with proper subjunctive mood:',
+    topicTag: 'Pronouns',
+    difficulty: 'Mudah',
+    question: 'Complete the sentence: "Siti and Budi are students. ____ study at SMP Merdeka."',
     options: [
-      { id: 'A', text: 'The board recommended that the CEO resign immediately.' },
-      { id: 'B', text: 'The board recommended that the CEO resigns immediately.' },
-      { id: 'C', text: 'The board recommended the CEO to resign immediately.' },
-      { id: 'D', text: 'The board recommended that the CEO resigning immediately.' }
+      { id: 'A', text: 'He' },
+      { id: 'B', text: 'She' },
+      { id: 'C', text: 'They' },
+      { id: 'D', text: 'We' }
     ],
-    correctAnswer: 'A',
-    explanation: 'After verbs of recommendation/demand (recommend, suggest, insist), the subjunctive base form (resign) is required without -s or -ing.'
+    correctAnswer: 'C',
+    explanation: 'Siti and Budi are two people (plural third person), so the correct pronoun is "They".'
   },
   {
     id: 'biq-2',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Error Recognition',
-    difficulty: 'Sulit',
-    question: 'Identify the error or correct form in: "Neither the professor nor her assistants was aware of the scheduling conflict."',
+    topicTag: 'To Be (Am/Is/Are)',
+    difficulty: 'Mudah',
+    question: 'Fill in the blank: "My mother ____ a doctor in the local hospital."',
     options: [
-      { id: 'A', text: 'Change "was" to "were"' },
-      { id: 'B', text: 'Change "nor" to "or"' },
-      { id: 'C', text: 'Change "her" to "their"' },
-      { id: 'D', text: 'No error' }
+      { id: 'A', text: 'am' },
+      { id: 'B', text: 'is' },
+      { id: 'C', text: 'are' },
+      { id: 'D', text: 'were' }
     ],
-    correctAnswer: 'A',
-    explanation: 'With neither/nor, the verb agrees with the closer subject ("assistants", plural). Therefore, "was" must be changed to "were".'
+    correctAnswer: 'B',
+    explanation: 'Subject "My mother" is singular (third person), so we use "is".'
   },
   {
     id: 'biq-3',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Reading',
+    topicTag: 'Simple Present Tense',
     difficulty: 'Mudah',
-    question: 'Contextual Vocabulary: "Despite the meticulous planning, unforeseen logistical hurdles impeded the expedition."',
-    contextSnippet: 'What does "impeded" most nearly mean in this sentence?',
+    question: 'Choose the correct verb: "He always ____ football every Sunday afternoon."',
     options: [
-      { id: 'A', text: 'Facilitated' },
-      { id: 'B', text: 'Hindered or delayed' },
-      { id: 'C', text: 'Accelerated' },
-      { id: 'D', text: 'Funded' }
+      { id: 'A', text: 'play' },
+      { id: 'B', text: 'plays' },
+      { id: 'C', text: 'playing' },
+      { id: 'D', text: 'played' }
     ],
     correctAnswer: 'B',
-    explanation: '"Impeded" means delayed, obstructed, or hindered progress.'
+    explanation: 'For singular third person subject ("He") in Simple Present Tense, the verb takes -s/-es ("plays").'
   },
   {
     id: 'biq-4',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Structure',
-    difficulty: 'Sedang',
-    question: 'Complete the sentence: "____ by strong winds, the vessel managed to dock safely."',
+    topicTag: 'Vocabulary Antonym',
+    difficulty: 'Mudah',
+    question: 'What is the opposite (antonym) of the word "Hot"?',
     options: [
-      { id: 'A', text: 'Buffeted' },
-      { id: 'B', text: 'Buffeting' },
-      { id: 'C', text: 'To buffet' },
-      { id: 'D', text: 'Having buffet' }
+      { id: 'A', text: 'Cold' },
+      { id: 'B', text: 'Big' },
+      { id: 'C', text: 'Fast' },
+      { id: 'D', text: 'Tall' }
     ],
     correctAnswer: 'A',
-    explanation: 'Reduced passive participle clause: "Although it was buffeted by strong winds" becomes "Buffeted by strong winds".'
+    explanation: '"Cold" (dingin) is the antonym/opposite of "Hot" (panas).'
   },
   {
     id: 'biq-5',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Grammar',
-    difficulty: 'Sedang',
-    question: 'Select the sentence demonstrating correct parallel structure:',
+    topicTag: 'Articles (A/An/The)',
+    difficulty: 'Mudah',
+    question: 'Fill in the blank: "I ate ____ apple and a banana for breakfast."',
     options: [
-      { id: 'A', text: 'She enjoys hiking, to read novels, and swimming.' },
-      { id: 'B', text: 'She enjoys hiking, reading novels, and swimming.' },
-      { id: 'C', text: 'She enjoys to hike, reading, and swim.' },
-      { id: 'D', text: 'She enjoys hiking, reading, and to swim.' }
+      { id: 'A', text: 'a' },
+      { id: 'B', text: 'an' },
+      { id: 'C', text: 'the' },
+      { id: 'D', text: '-' }
     ],
     correctAnswer: 'B',
-    explanation: 'Parallel structure requires matching grammatical forms in a series: hiking, reading, and swimming (all gerunds).'
+    explanation: 'We use "an" before singular countable nouns starting with a vowel sound ("apple").'
   },
   {
     id: 'biq-6',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Conditionals',
-    difficulty: 'Sedang',
-    question: 'Choose the correct conditional form: "If she ____ about the traffic congestion, she would have taken the subway."',
+    topicTag: 'Prepositions of Place',
+    difficulty: 'Mudah',
+    question: 'Choose the correct preposition: "The cat is sleeping ____ the table."',
     options: [
-      { id: 'A', text: 'knows' },
-      { id: 'B', text: 'knew' },
-      { id: 'C', text: 'had known' },
-      { id: 'D', text: 'would know' }
+      { id: 'A', text: 'in' },
+      { id: 'B', text: 'on' },
+      { id: 'C', text: 'at' },
+      { id: 'D', text: 'between' }
     ],
-    correctAnswer: 'C',
-    explanation: 'Third conditional (past hypothetical): If + past perfect (had known), would have + past participle.'
+    correctAnswer: 'B',
+    explanation: 'We use "on" to indicate a surface position (on the table).'
   },
   {
     id: 'biq-7',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Inversion',
-    difficulty: 'Sulit',
-    question: 'Choose the correctly inverted sentence:',
+    topicTag: 'Family Vocabulary',
+    difficulty: 'Mudah',
+    question: 'Your father\'s brother is your...',
     options: [
-      { id: 'A', text: 'Never before has the company experienced such rapid growth.' },
-      { id: 'B', text: 'Never before the company has experienced such rapid growth.' },
-      { id: 'C', text: 'Never before experienced the company such rapid growth.' },
-      { id: 'D', text: 'Never before did the company has experienced such growth.' }
+      { id: 'A', text: 'Uncle' },
+      { id: 'B', text: 'Aunt' },
+      { id: 'C', text: 'Cousin' },
+      { id: 'D', text: 'Nephew' }
     ],
     correctAnswer: 'A',
-    explanation: 'Negative adverbial at the start ("Never before") triggers subject-auxiliary inversion: "has the company experienced".'
+    explanation: 'Father\'s or mother\'s brother is called an "Uncle" (paman).'
   },
   {
     id: 'biq-8',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Vocabulary',
+    topicTag: 'Question Words',
     difficulty: 'Mudah',
-    question: 'Synonym test: The CEO’s speech was concise, delivering all key points in under five minutes.',
+    question: '____ is your name? - My name is Rina.',
     options: [
-      { id: 'A', text: 'Verbose' },
-      { id: 'B', text: 'Succinct' },
-      { id: 'C', text: 'Ambiguous' },
-      { id: 'D', text: 'Tedious' }
+      { id: 'A', text: 'Where' },
+      { id: 'B', text: 'When' },
+      { id: 'C', text: 'What' },
+      { id: 'D', text: 'Who' }
     ],
-    correctAnswer: 'B',
-    explanation: '"Concise" means brief and clear; "succinct" is its direct synonym.'
+    correctAnswer: 'C',
+    explanation: 'To ask someone\'s name or identity, we use "What".'
   },
   {
     id: 'biq-9',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Passive Voice',
-    difficulty: 'Sedang',
-    question: 'Convert to passive: "They are currently reviewing the architectural blueprints."',
+    topicTag: 'Colors & Vocabulary',
+    difficulty: 'Mudah',
+    question: 'What color is a ripe banana?',
     options: [
-      { id: 'A', text: 'The architectural blueprints are reviewed currently.' },
-      { id: 'B', text: 'The architectural blueprints are being reviewed currently.' },
-      { id: 'C', text: 'The architectural blueprints were being reviewed.' },
-      { id: 'D', text: 'The architectural blueprints have been reviewed.' }
+      { id: 'A', text: 'Red' },
+      { id: 'B', text: 'Blue' },
+      { id: 'C', text: 'Yellow' },
+      { id: 'D', text: 'Green' }
     ],
-    correctAnswer: 'B',
-    explanation: 'Present continuous active ("are reviewing") becomes present continuous passive ("are being reviewed").'
+    correctAnswer: 'C',
+    explanation: 'A ripe banana is yellow (kuning).'
   },
   {
     id: 'biq-10',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Relative Clause',
-    difficulty: 'Sedang',
-    question: 'Choose the correct relative pronoun: "The scientist ____ research breakthrough revolutionized renewable energy was awarded the prize."',
+    topicTag: 'Present Continuous',
+    difficulty: 'Mudah',
+    question: 'Look! The children ____ in the yard right now.',
     options: [
-      { id: 'A', text: 'who' },
-      { id: 'B', text: 'whom' },
-      { id: 'C', text: 'whose' },
-      { id: 'D', text: 'which' }
+      { id: 'A', text: 'is swimming' },
+      { id: 'B', text: 'are playing' },
+      { id: 'C', text: 'plays' },
+      { id: 'D', text: 'played' }
     ],
-    correctAnswer: 'C',
-    explanation: 'Showing possession ("research belonging to the scientist") requires the relative pronoun "whose".'
+    correctAnswer: 'B',
+    explanation: 'Present Continuous tense uses "are + verb-ing" because the subject "children" is plural.'
   },
   {
     id: 'biq-11',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Grammar',
-    difficulty: 'Sedang',
-    question: 'Complete the sentence: "Hardly had the meeting started ____ the projector malfunctioned."',
+    topicTag: 'Simple Past Tense',
+    difficulty: 'Mudah',
+    question: 'What is the past form (Verb 2) of the verb "Go"?',
     options: [
-      { id: 'A', text: 'when' },
-      { id: 'B', text: 'than' },
-      { id: 'C', text: 'then' },
-      { id: 'D', text: 'before' }
+      { id: 'A', text: 'Goed' },
+      { id: 'B', text: 'Gone' },
+      { id: 'C', text: 'Went' },
+      { id: 'D', text: 'Going' }
     ],
-    correctAnswer: 'A',
-    explanation: 'The correlative conjunction pair is "Hardly / Scarcely ... when" (or "No sooner ... than").'
+    correctAnswer: 'C',
+    explanation: 'The past tense (Verb 2) of the irregular verb "go" is "went".'
   },
   {
     id: 'biq-12',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Error Recognition',
-    difficulty: 'Sulit',
-    question: 'Identify the error in: "Each of the candidates are required to submit their portfolio before Friday."',
+    topicTag: 'Simple Past Tense',
+    difficulty: 'Mudah',
+    question: 'Complete the sentence: "We ____ to Bali for holiday last year."',
     options: [
-      { id: 'A', text: 'Change "Each" to "All"' },
-      { id: 'B', text: 'Change "are" to "is"' },
-      { id: 'C', text: 'Change "their" to "his or her"' },
-      { id: 'D', text: 'Both B and C' }
+      { id: 'A', text: 'go' },
+      { id: 'B', text: 'went' },
+      { id: 'C', text: 'goes' },
+      { id: 'D', text: 'going' }
     ],
-    correctAnswer: 'D',
-    explanation: '"Each" is singular, so it requires singular verb ("is") and traditional singular pronoun agreement (though singular "their" is common in modern casual English, formal TKA strictly tests singular verb agreement and pronoun consistency).'
+    correctAnswer: 'B',
+    explanation: '"Last year" indicates Simple Past Tense, so we use Verb 2 ("went").'
   },
   {
     id: 'biq-13',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Reading',
-    difficulty: 'Sedang',
-    question: 'Contextual Inference: "The critic dismissed the modern art installation as derivative and devoid of originality."',
-    contextSnippet: 'What does "derivative" imply about the art installation?',
+    topicTag: 'Everyday Greetings',
+    difficulty: 'Mudah',
+    question: 'If someone says "Thank you very much", what is the best polite reply?',
     options: [
-      { id: 'A', text: 'It is highly innovative and groundbreaking.' },
-      { id: 'B', text: 'It imitates earlier styles without adding new ideas.' },
-      { id: 'C', text: 'It relies heavily on mathematical equations.' },
-      { id: 'D', text: 'It is extremely valuable and rare.' }
+      { id: 'A', text: 'I am fine' },
+      { id: 'B', text: 'You are welcome' },
+      { id: 'C', text: 'Good bye' },
+      { id: 'D', text: 'See you later' }
     ],
     correctAnswer: 'B',
-    explanation: '"Derivative" means unoriginal, copied, or closely imitating previous works.'
+    explanation: '"You are welcome" (sama-sama) is the standard polite response to thank you.'
   },
   {
     id: 'biq-14',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Grammar',
-    difficulty: 'Sedang',
-    question: 'Choose the correct preposition: "Her success in the scientific field is attributed ____ rigorous dedication and peer collaboration."',
+    topicTag: 'Possessive Pronouns',
+    difficulty: 'Mudah',
+    question: 'This is my book, and that book on the desk is ____ (milikmu).',
     options: [
-      { id: 'A', text: 'in' },
-      { id: 'B', text: 'to' },
-      { id: 'C', text: 'for' },
-      { id: 'D', text: 'with' }
+      { id: 'A', text: 'your' },
+      { id: 'B', text: 'yours' },
+      { id: 'C', text: 'you' },
+      { id: 'D', text: 'yourself' }
     ],
     correctAnswer: 'B',
-    explanation: 'The phrasal verb/idiom is "attribute something TO something".'
+    explanation: '"Yours" is an independent possessive pronoun used without repeating the noun "book".'
   },
   {
     id: 'biq-15',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Conjunctions',
+    topicTag: 'Telling Time',
     difficulty: 'Mudah',
-    question: 'Complete the sentence: "____ graduating top of her class, she received numerous fellowship offers."',
+    question: 'What does "Half past seven" mean in numbers?',
     options: [
-      { id: 'A', text: 'Because of' },
-      { id: 'B', text: 'Although' },
-      { id: 'C', text: 'Upon' },
-      { id: 'D', text: 'Unless' }
+      { id: 'A', text: '07:15' },
+      { id: 'B', text: '07:30' },
+      { id: 'C', text: '07:45' },
+      { id: 'D', text: '08:30' }
     ],
-    correctAnswer: 'C',
-    explanation: '"Upon graduating" means immediately after graduating, acting as a temporal prepositional phrase.'
+    correctAnswer: 'B',
+    explanation: '"Half past" means 30 minutes past the hour. So "half past seven" is 07:30.'
   },
   {
     id: 'biq-16',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Vocabulary',
-    difficulty: 'Sulit',
-    question: 'Choose the antonym for "ephemeral":',
+    topicTag: 'Days of the Week',
+    difficulty: 'Mudah',
+    question: 'Which day comes after Wednesday?',
     options: [
-      { id: 'A', text: 'Transient' },
-      { id: 'B', text: 'Permanent' },
-      { id: 'C', text: 'Fleeting' },
-      { id: 'D', text: 'Momentary' }
+      { id: 'A', text: 'Tuesday' },
+      { id: 'B', text: 'Thursday' },
+      { id: 'C', text: 'Friday' },
+      { id: 'D', text: 'Saturday' }
     ],
     correctAnswer: 'B',
-    explanation: '"Ephemeral" means lasting for a very short time (fleeting, transient). Its antonym is "permanent".'
+    explanation: 'The order of days: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.'
   },
   {
     id: 'biq-17',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Grammar',
-    difficulty: 'Sedang',
-    question: 'Choose the correct sentence structure:',
+    topicTag: 'Countable vs Uncountable',
+    difficulty: 'Mudah',
+    question: 'How ____ water do you drink every day?',
     options: [
-      { id: 'A', text: 'Not only did he complete the report, but he also presented it.' },
-      { id: 'B', text: 'Not only he completed the report, but he also presented it.' },
-      { id: 'C', text: 'Not only did he completed the report, but also presented.' },
-      { id: 'D', text: 'Not only he did complete the report, and presented it.' }
+      { id: 'A', text: 'many' },
+      { id: 'B', text: 'much' },
+      { id: 'C', text: 'few' },
+      { id: 'D', text: 'any' }
     ],
-    correctAnswer: 'A',
-    explanation: '"Not only" at the beginning of the clause requires auxiliary inversion ("did he complete"), followed by "but also".'
+    correctAnswer: 'B',
+    explanation: 'Water is an uncountable liquid noun, so we use "How much".'
   },
   {
     id: 'biq-18',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Reading',
-    difficulty: 'Sedang',
-    question: 'Contextual Vocabulary: "The ambassador maintained an amicable demeanor throughout the tense negotiations."',
-    contextSnippet: 'What does "amicable" mean?',
+    topicTag: 'Countable vs Uncountable',
+    difficulty: 'Mudah',
+    question: 'How ____ students are there in your classroom?',
     options: [
-      { id: 'A', text: 'Hostile and aggressive' },
-      { id: 'B', text: 'Friendly and peaceful' },
-      { id: 'C', text: 'Indifferent and cold' },
-      { id: 'D', text: 'Suspicious and guarded' }
+      { id: 'A', text: 'much' },
+      { id: 'B', text: 'many' },
+      { id: 'C', text: 'little' },
+      { id: 'D', text: 'lot' }
     ],
     correctAnswer: 'B',
-    explanation: '"Amicable" means characterized by friendliness and absence of animosity.'
+    explanation: 'Students is a plural countable noun, so we use "How many".'
   },
   {
     id: 'biq-19',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Grammar',
-    difficulty: 'Sedang',
-    question: 'Complete the sentence: "It is crucial that every employee ____ safety protocols strictly."',
+    topicTag: 'Negative Sentences',
+    difficulty: 'Mudah',
+    question: 'Choose the correct negative sentence: "She ____ like spicy food."',
     options: [
-      { id: 'A', text: 'follows' },
-      { id: 'B', text: 'follow' },
-      { id: 'C', text: 'followed' },
-      { id: 'D', text: 'is following' }
+      { id: 'A', text: 'do not' },
+      { id: 'B', text: 'does not' },
+      { id: 'C', text: 'is not' },
+      { id: 'D', text: 'are not' }
     ],
     correctAnswer: 'B',
-    explanation: 'Subjunctive mood after impersonal expression ("It is crucial that...") requires the base form of the verb ("follow").'
+    explanation: 'For singular third person "She" with the action verb "like", use "does not".'
   },
   {
     id: 'biq-20',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Structure',
-    difficulty: 'Sulit',
-    question: 'Identify the error in: "Scarcely had we stepped outside when the torrential rain began falling."',
+    topicTag: 'Comparative Adjectives',
+    difficulty: 'Mudah',
+    question: 'An elephant is ____ than a rabbit.',
     options: [
-      { id: 'A', text: 'Change "Scarcely" to "No sooner"' },
-      { id: 'B', text: 'Change "when" to "than"' },
-      { id: 'C', text: 'Change "began" to "had begun"' },
-      { id: 'D', text: 'No error' }
+      { id: 'A', text: 'big' },
+      { id: 'B', text: 'bigger' },
+      { id: 'C', text: 'biggest' },
+      { id: 'D', text: 'more big' }
     ],
-    correctAnswer: 'D',
-    explanation: 'The sentence is entirely correct: "Scarcely had [subject] [past participle] when [subject] [simple past]".'
+    correctAnswer: 'B',
+    explanation: 'Comparative degree of one-syllable adjective "big" is "bigger" (followed by "than").'
   },
   {
     id: 'biq-21',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Vocabulary',
+    topicTag: 'Superlative Adjectives',
     difficulty: 'Mudah',
-    question: 'Choose the word that best fits: "The scientist offered a plausible explanation supported by empirical data."',
+    question: 'Mount Everest is the ____ mountain in the world.',
     options: [
-      { id: 'A', text: 'Credible and believable' },
-      { id: 'B', text: 'Fictional and imaginary' },
-      { id: 'C', text: 'Absurd and ridiculous' },
-      { id: 'D', text: 'Ambiguous and vague' }
+      { id: 'A', text: 'high' },
+      { id: 'B', text: 'higher' },
+      { id: 'C', text: 'highest' },
+      { id: 'D', text: 'most high' }
     ],
-    correctAnswer: 'A',
-    explanation: '"Plausible" means seeming reasonable or probable (credible).'
+    correctAnswer: 'C',
+    explanation: 'Superlative degree uses "the + adjective-est": "the highest".'
   },
   {
     id: 'biq-22',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Grammar',
-    difficulty: 'Sedang',
-    question: 'Choose the correct form: "Had I known about the delay, I ____ alternative arrangements."',
+    topicTag: 'Prepositions of Time',
+    difficulty: 'Mudah',
+    question: 'Our school starts ____ 7 o\'clock in the morning.',
     options: [
-      { id: 'A', text: 'will make' },
-      { id: 'B', text: 'would make' },
-      { id: 'C', text: 'would have made' },
-      { id: 'D', text: 'had made' }
+      { id: 'A', text: 'in' },
+      { id: 'B', text: 'on' },
+      { id: 'C', text: 'at' },
+      { id: 'D', text: 'to' }
     ],
     correctAnswer: 'C',
-    explanation: 'Inverted third conditional ("Had I known" = "If I had known"), main clause requires "would have made".'
+    explanation: 'We use the preposition "at" for specific exact clock times (at 7 o\'clock).'
   },
   {
     id: 'biq-23',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Error Recognition',
-    difficulty: 'Sedang',
-    question: 'Identify the error in: "Despite of the adverse weather conditions, the flight arrived on schedule."',
+    topicTag: 'Prepositions of Time',
+    difficulty: 'Mudah',
+    question: 'Independence Day of Indonesia is celebrated ____ August 17th.',
     options: [
-      { id: 'A', text: 'Change "Despite of" to "Despite" or "In spite of"' },
-      { id: 'B', text: 'Change "adverse" to "averse"' },
-      { id: 'C', text: 'Change "arrived" to "has arrived"' },
-      { id: 'D', text: 'No error' }
+      { id: 'A', text: 'in' },
+      { id: 'B', text: 'on' },
+      { id: 'C', text: 'at' },
+      { id: 'D', text: 'from' }
     ],
-    correctAnswer: 'A',
-    explanation: '"Despite" does not take "of" (unlike "in spite of"). Therefore, "Despite of" is incorrect.'
+    correctAnswer: 'B',
+    explanation: 'We use "on" for specific calendar dates and days (on August 17th, on Monday).'
   },
   {
     id: 'biq-24',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Reading',
-    difficulty: 'Sedang',
-    question: 'Contextual Inference: "The novel’s ambiguous ending left readers debating the protagonist’s true fate."',
-    contextSnippet: 'What does "ambiguous" mean?',
+    topicTag: 'Modal Verbs (Can)',
+    difficulty: 'Mudah',
+    question: 'Fish can swim, but birds ____ fly.',
     options: [
-      { id: 'A', text: 'Clear and definitive' },
-      { id: 'B', text: 'Open to multiple interpretations' },
-      { id: 'C', text: 'Tragic and depressing' },
-      { id: 'D', text: 'Predictable and dull' }
+      { id: 'A', text: 'can' },
+      { id: 'B', text: 'cannot' },
+      { id: 'C', text: 'are' },
+      { id: 'D', text: 'do' }
     ],
-    correctAnswer: 'B',
-    explanation: '"Ambiguous" means having more than one possible meaning or interpretation.'
+    correctAnswer: 'A',
+    explanation: '"Can" expresses ability. Birds have the ability to fly.'
   },
   {
     id: 'biq-25',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Grammar',
-    difficulty: 'Sedang',
-    question: 'Complete the sentence: "She is one of those managers who always ____ their team during crises."',
+    topicTag: 'Plural Nouns',
+    difficulty: 'Mudah',
+    question: 'What is the correct plural form of the word "Child"?',
     options: [
-      { id: 'A', text: 'supports' },
-      { id: 'B', text: 'support' },
-      { id: 'C', text: 'supporting' },
-      { id: 'D', text: 'is supporting' }
+      { id: 'A', text: 'Childs' },
+      { id: 'B', text: 'Children' },
+      { id: 'C', text: 'Childes' },
+      { id: 'D', text: 'Childrens' }
     ],
     correctAnswer: 'B',
-    explanation: 'In the structure "one of those [plural noun] who...", the relative pronoun "who" refers to the plural noun "managers", so the verb must be plural ("support").'
+    explanation: '"Child" is an irregular noun whose plural form is "Children".'
   },
   {
     id: 'biq-26',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Vocabulary',
+    topicTag: 'Plural Nouns',
     difficulty: 'Mudah',
-    question: 'Choose the synonym for "ubiquitous":',
+    question: 'What is the plural form of the word "Box"?',
     options: [
-      { id: 'A', text: 'Rare' },
-      { id: 'B', text: 'Omnipresent / Found everywhere' },
-      { id: 'C', text: 'Hidden' },
-      { id: 'D', text: 'Ancient' }
+      { id: 'A', text: 'Boxs' },
+      { id: 'B', text: 'Boxes' },
+      { id: 'C', text: 'Boxies' },
+      { id: 'D', text: 'Boxen' }
     ],
     correctAnswer: 'B',
-    explanation: '"Ubiquitous" means present, appearing, or found everywhere.'
+    explanation: 'Nouns ending in -x add -es in the plural form: "Boxes".'
   },
   {
     id: 'biq-27',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Structure',
-    difficulty: 'Sulit',
-    question: 'Choose the correct sentence:',
+    topicTag: 'WH-Questions',
+    difficulty: 'Mudah',
+    question: '____ do you live? - I live in Jakarta.',
     options: [
-      { id: 'A', text: 'No sooner had we arrived at the station than the train departed.' },
-      { id: 'B', text: 'No sooner had we arrived at the station when the train departed.' },
-      { id: 'C', text: 'No sooner we arrived at the station than the train departed.' },
-      { id: 'D', text: 'No sooner did we arrived than the train departed.' }
+      { id: 'A', text: 'What' },
+      { id: 'B', text: 'When' },
+      { id: 'C', text: 'Where' },
+      { id: 'D', text: 'Who' }
     ],
-    correctAnswer: 'A',
-    explanation: '"No sooner" requires past perfect inversion ("had we arrived") and is paired with "than".'
+    correctAnswer: 'C',
+    explanation: '"Where" is the question word used to ask about a place or location.'
   },
   {
     id: 'biq-28',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Grammar',
-    difficulty: 'Sedang',
-    question: 'Complete the sentence: "Neither the supervisor nor the technicians ____ responsible for the equipment failure."',
+    topicTag: 'Simple Past Question',
+    difficulty: 'Mudah',
+    question: '____ you watch the football match last night?',
     options: [
-      { id: 'A', text: 'was' },
-      { id: 'B', text: 'were' },
-      { id: 'C', text: 'is' },
-      { id: 'D', text: 'has been' }
+      { id: 'A', text: 'Do' },
+      { id: 'B', text: 'Does' },
+      { id: 'C', text: 'Did' },
+      { id: 'D', text: 'Are' }
     ],
-    correctAnswer: 'B',
-    explanation: 'With neither/nor, the verb agrees with the closer subject ("technicians", plural). Therefore, past tense plural "were" is correct.'
+    correctAnswer: 'C',
+    explanation: 'For questions in Simple Past Tense ("last night"), we use the auxiliary "Did".'
   },
   {
     id: 'biq-29',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Reading',
-    difficulty: 'Sedang',
-    question: 'Contextual Vocabulary: "The startup’s innovative business model proved resilient against market volatility."',
-    contextSnippet: 'What does "resilient" mean?',
+    topicTag: 'Vocabulary Profession',
+    difficulty: 'Mudah',
+    question: 'A person who flies an airplane is called a...',
     options: [
-      { id: 'A', text: 'Fragile and easily broken' },
-      { id: 'B', text: 'Able to recover quickly from tough conditions' },
-      { id: 'C', text: 'Stagnant and unchanging' },
-      { id: 'D', text: 'Overpriced' }
+      { id: 'A', text: 'Driver' },
+      { id: 'B', text: 'Pilot' },
+      { id: 'C', text: 'Captain' },
+      { id: 'D', text: 'Mechanic' }
     ],
     correctAnswer: 'B',
-    explanation: '"Resilient" means able to withstand or recover quickly from difficult situations.'
+    explanation: 'A person qualified to fly aircraft is a "Pilot".'
   },
   {
     id: 'biq-30',
     subjectId: 'bahasa_inggris',
-    topicTag: 'Grammar',
-    difficulty: 'Sedang',
-    question: 'Choose the correct adjective form: "The presentation was far ____ than anyone had anticipated."',
+    topicTag: 'Apology & Expressions',
+    difficulty: 'Mudah',
+    question: 'I accidentally stepped on your shoe. I say: "____, I didn\'t mean to."',
     options: [
-      { id: 'A', text: 'engaging' },
-      { id: 'B', text: 'more engaging' },
-      { id: 'C', text: 'most engaging' },
-      { id: 'D', text: 'as engaging' }
+      { id: 'A', text: 'Congratulations' },
+      { id: 'B', text: 'Good job' },
+      { id: 'C', text: 'I am sorry' },
+      { id: 'D', text: 'Nice to meet you' }
     ],
-    correctAnswer: 'B',
-    explanation: 'Comparative degree for a multi-syllable adjective ("engaging") preceded by intensifier "far" requires "more engaging".'
+    correctAnswer: 'C',
+    explanation: '"I am sorry" is the standard expression used to apologize for a mistake.'
   }
 ];

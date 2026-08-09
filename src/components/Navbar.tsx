@@ -31,12 +31,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             <GraduationCap className="w-5 h-5" />
           </div>
           <div>
-            <div className="flex items-center gap-2">
+            <div>
               <span className="text-base font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100">
                 Latihan Soal TKA
-              </span>
-              <span className="px-1.5 py-0.5 text-[9px] font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 rounded-md">
-                Next.js App
               </span>
             </div>
             <span className="text-[10px] font-medium text-emerald-600 dark:text-emerald-400 block -mt-0.5">

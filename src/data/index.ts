@@ -25,9 +25,9 @@ import { sejarahQuestions } from './sejarahQuestions';
 export const subjects: Subject[] = [
   {
     id: 'matematika',
-    title: 'Matematika Lanjutan',
+    title: 'Matematika Dasar',
     shortTitle: 'Matematika',
-    description: 'Aljabar, Kalkulus, Trigonometri, dan Statistika untuk Uji Kompetensi Akademik.',
+    description: 'Operasi Hitung Dasar, Pecahan & Desimal, Aljabar Dasar, Geometri, dan Statistika Dasar.',
     iconName: 'Calculator',
     accentColor: 'from-emerald-500 to-teal-600',
     badgeBg: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20',
@@ -35,9 +35,9 @@ export const subjects: Subject[] = [
   },
   {
     id: 'bahasa_inggris',
-    title: 'Bahasa Inggris Lanjutan',
+    title: 'Bahasa Inggris Dasar',
     shortTitle: 'B. Inggris',
-    description: 'Reading Comprehension, Advanced Grammar, Subjunctive, dan Error Recognition.',
+    description: 'Basic Grammar, Pronouns & To Be, Simple Tenses, Kosakata Sehari-hari, dan Dialog Pendek.',
     iconName: 'Languages',
     accentColor: 'from-sky-500 to-blue-600',
     badgeBg: 'bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/20',

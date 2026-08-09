@@ -19,6 +19,7 @@ export default function App() {
 
   const [activeView, setActiveView] = useState<AppView>('home');
   const [selectedSubjectId, setSelectedSubjectId] = useState<SubjectId>('matematika');
+  const [quizSessionId, setQuizSessionId] = useState(0);
   const [currentAnswers, setCurrentAnswers] = useState<UserAnswer[]>([]);
   const [totalTimeSec, setTotalTimeSec] = useState(0);
 
@@ -42,6 +43,7 @@ export default function App() {
 
   const handleSelectSubject = (subjectId: SubjectId) => {
     setSelectedSubjectId(subjectId);
+    setQuizSessionId(Date.now());
     setActiveView('quiz');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -85,6 +87,7 @@ export default function App() {
 
         {activeView === 'quiz' && (
           <QuizView
+            key={quizSessionId}
             subject={currentSubject}
             questions={subjectQuestions}
             onFinishQuiz={handleFinishQuiz}

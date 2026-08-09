@@ -80,6 +80,7 @@ export interface UserAnswer {
   isCorrect: boolean;
   timeSpentSec: number;
   timestamp: number;
+  isFlagged?: boolean;
 }
 
 export type AppView = 'home' | 'quiz' | 'summary' | 'materials';

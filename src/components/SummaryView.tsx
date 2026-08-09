@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Award, 
   CheckCircle2, 
@@ -7,8 +7,8 @@ import {
   RotateCcw, 
   Home, 
   BookOpen, 
-  CheckSquare,
-  HelpCircle
+  Bookmark,
+  Filter
 } from 'lucide-react';
 import { Question, Subject, UserAnswer } from '../types';
 
@@ -31,8 +31,11 @@ export const SummaryView: React.FC<SummaryViewProps> = ({
   onGoHome,
   onOpenMaterials
 }) => {
+  const [filterMode, setFilterMode] = useState<'all' | 'wrong' | 'correct' | 'flagged'>('all');
+
   const correctCount = answers.filter((a) => a.isCorrect).length;
   const totalCount = questions.length;
+  const flaggedCount = answers.filter((a) => a.isFlagged).length;
   const scorePercent = totalCount > 0 ? Math.round((correctCount / totalCount) * 100) : 0;
 
   const formatTimer = (sec: number) => {
@@ -42,6 +45,14 @@ export const SummaryView: React.FC<SummaryViewProps> = ({
   };
 
   const answerMap = new Map<string, UserAnswer>(answers.map((a) => [a.questionId, a]));
+
+  const filteredQuestions = questions.filter((q) => {
+    const userAns = answerMap.get(q.id);
+    if (filterMode === 'correct') return userAns?.isCorrect;
+    if (filterMode === 'wrong') return !userAns?.isCorrect;
+    if (filterMode === 'flagged') return !!userAns?.isFlagged;
+    return true;
+  });
 
   return (
     <div className="max-w-3xl mx-auto space-y-8 pb-24">
@@ -85,7 +96,7 @@ export const SummaryView: React.FC<SummaryViewProps> = ({
             onClick={onRetake}
             className="flex items-center gap-2 px-6 py-3 rounded-xl text-xs sm:text-sm font-bold text-white bg-zinc-900 dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 transition-opacity shadow-xs"
           >
-            <RotateCcw className="w-4 h-4" /> Ulangi Ujian (Soal Acak)
+            <RotateCcw className="w-4 h-4" /> Mulai Ulang
           </button>
           <button
             onClick={onOpenMaterials}
@@ -104,14 +115,64 @@ export const SummaryView: React.FC<SummaryViewProps> = ({
 
       {/* Review Questions & Explanations */}
       <div className="space-y-4">
-        <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">
-          Evaluasi & Pembahasan Soal
-        </h2>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">
+            Evaluasi & Pembahasan Soal
+          </h2>
+
+          {/* Filter Pills */}
+          <div className="flex flex-wrap items-center gap-1.5 p-1 bg-zinc-100 dark:bg-zinc-800 rounded-xl">
+            <button
+              onClick={() => setFilterMode('all')}
+              className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
+                filterMode === 'all'
+                  ? 'bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white shadow-xs'
+                  : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
+              }`}
+            >
+              Semua ({totalCount})
+            </button>
+            <button
+              onClick={() => setFilterMode('wrong')}
+              className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
+                filterMode === 'wrong'
+                  ? 'bg-rose-500 text-white shadow-xs'
+                  : 'text-zinc-600 dark:text-zinc-400 hover:text-rose-600'
+              }`}
+            >
+              Salah ({totalCount - correctCount})
+            </button>
+            <button
+              onClick={() => setFilterMode('correct')}
+              className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
+                filterMode === 'correct'
+                  ? 'bg-emerald-600 text-white shadow-xs'
+                  : 'text-zinc-600 dark:text-zinc-400 hover:text-emerald-600'
+              }`}
+            >
+              Benar ({correctCount})
+            </button>
+            {flaggedCount > 0 && (
+              <button
+                onClick={() => setFilterMode('flagged')}
+                className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
+                  filterMode === 'flagged'
+                    ? 'bg-amber-500 text-white shadow-xs'
+                    : 'text-zinc-600 dark:text-zinc-400 hover:text-amber-600'
+                }`}
+              >
+                Ragu ({flaggedCount})
+              </button>
+            )}
+          </div>
+        </div>
 
         <div className="space-y-4">
-          {questions.map((q, idx) => {
+          {filteredQuestions.map((q) => {
+            const originalIndex = questions.findIndex((origQ) => origQ.id === q.id);
             const userAns = answerMap.get(q.id);
             const isCorrect = userAns?.isCorrect;
+            const isFlagged = userAns?.isFlagged;
             const chosen = userAns?.selectedOption || '-';
 
             return (
@@ -128,9 +189,14 @@ export const SummaryView: React.FC<SummaryViewProps> = ({
                     <span className={`w-7 h-7 rounded-xl flex items-center justify-center font-bold text-xs ${
                       isCorrect ? 'bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300' : 'bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300'
                     }`}>
-                      {idx + 1}
+                      {originalIndex + 1}
                     </span>
                     <span className="text-xs font-semibold text-zinc-400">Topik: {q.topicTag}</span>
+                    {isFlagged && (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800">
+                        <Bookmark className="w-3 h-3 fill-current" /> Ragu saat ujian
+                      </span>
+                    )}
                   </div>
 
                   <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold ${
