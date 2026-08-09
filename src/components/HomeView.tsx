@@ -27,10 +27,10 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <Sparkles className="w-3.5 h-3.5" /> Platform Latihan & Simulasi Uji Kompetensi
           </div>
           <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
-            Asah Potensi & Kuasai Ujian Akademik.
+            Kuasai TKA & Uji Kompetensi Kejuruan.
           </h1>
           <p className="text-sm sm:text-base text-zinc-300 leading-relaxed font-normal">
-            Latihan soal terstruktur, pembahasan mendalam, dan simulasi ujian lengkap untuk Matematika, Bahasa Inggris, PKWU, dan Teknik Komputer.
+            Portal belajar dan latihan TKA untuk siswa SMA & SMK terlengkap. Kuasai materi akademik dan kejuruan dengan bank soal interaktif, pembahasan mendalam, dan simulasi ujian.
           </p>
 
           <div className="flex flex-wrap items-center gap-3 pt-2">

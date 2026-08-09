@@ -33,14 +33,14 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div>
             <div className="flex items-center gap-2">
               <span className="text-base font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100">
-                Akademika
+                Latihan Soal TKA
               </span>
               <span className="px-1.5 py-0.5 text-[9px] font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 rounded-md">
                 Next.js App
               </span>
             </div>
             <span className="text-[10px] font-medium text-emerald-600 dark:text-emerald-400 block -mt-0.5">
-              Uji Kompetensi & Materi SMK
+              Uji Kompetensi & Materi SMA & SMK
             </span>
           </div>
         </button>

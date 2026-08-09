@@ -1,5 +1,5 @@
 {
-  "name": "Akademika",
+  "name": "Latihan Soal TKA",
   "description": "Platform Latihan Uji Kompetensi & Materi Akademik dengan Soal Acak dan Pembahasan Detail",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]

@@ -1,5 +1,9 @@
 import React from 'react';
-import { Calculator, Languages, Briefcase, Cpu, ArrowRight, BookOpen, Play } from 'lucide-react';
+import { 
+  Calculator, Languages, Briefcase, Cpu, Terminal, 
+  Atom, FlaskConical, Dna, TrendingUp, Users, Globe, Landmark, 
+  ArrowRight, BookOpen, Play 
+} from 'lucide-react';
 import { Subject } from '../types';
 
 interface SubjectCardProps {
@@ -19,6 +23,14 @@ export const SubjectCard: React.FC<SubjectCardProps> = ({
       case 'Languages': return <Languages className="w-6 h-6 text-sky-600 dark:text-sky-400" />;
       case 'Briefcase': return <Briefcase className="w-6 h-6 text-amber-600 dark:text-amber-400" />;
       case 'Cpu': return <Cpu className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />;
+      case 'Terminal': return <Terminal className="w-6 h-6 text-purple-600 dark:text-purple-400" />;
+      case 'Atom': return <Atom className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />;
+      case 'FlaskConical': return <FlaskConical className="w-6 h-6 text-rose-600 dark:text-rose-400" />;
+      case 'Dna': return <Dna className="w-6 h-6 text-emerald-700 dark:text-emerald-400" />;
+      case 'TrendingUp': return <TrendingUp className="w-6 h-6 text-amber-700 dark:text-amber-400" />;
+      case 'Users': return <Users className="w-6 h-6 text-purple-600 dark:text-purple-400" />;
+      case 'Globe': return <Globe className="w-6 h-6 text-teal-600 dark:text-teal-400" />;
+      case 'Landmark': return <Landmark className="w-6 h-6 text-orange-600 dark:text-orange-400" />;
       default: return <BookOpen className="w-6 h-6 text-zinc-600" />;
     }
   };
@@ -57,7 +69,7 @@ export const SubjectCard: React.FC<SubjectCardProps> = ({
           className="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-zinc-700 dark:text-zinc-300 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
           title="Baca Ringkasan Materi"
         >
-          Materi
+          <BookOpen className="w-4 h-4" />
         </button>
       </div>
     </div>

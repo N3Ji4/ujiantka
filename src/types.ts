@@ -1,4 +1,4 @@
-export type SubjectId = 'matematika' | 'bahasa_inggris' | 'pkwu' | 'teknik_komputer';
+export type SubjectId = 'matematika' | 'bahasa_inggris' | 'pkwu' | 'teknik_komputer' | 'fisika' | 'kimia' | 'biologi' | 'ekonomi' | 'sosiologi' | 'geografi' | 'sejarah';
 
 export type Difficulty = 'Mudah' | 'Sedang' | 'Sulit';
 
