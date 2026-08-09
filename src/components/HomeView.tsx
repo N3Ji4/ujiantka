@@ -16,6 +16,10 @@ export const HomeView: React.FC<HomeViewProps> = ({
   onViewMaterials,
   onOpenSearch
 }) => {
+  const scrollToSubjects = () => {
+    document.getElementById('subjects-section')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="space-y-12 pb-20">
       {/* Hero Banner */}
@@ -35,7 +39,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <button
-              onClick={() => onSelectSubject('matematika')}
+              onClick={scrollToSubjects}
               className="flex items-center gap-2 px-6 py-3 rounded-xl text-xs sm:text-sm font-bold text-zinc-900 bg-white hover:bg-zinc-100 transition-colors shadow-sm"
             >
               Mulai Latihan Sekarang <ArrowRight className="w-4 h-4" />
@@ -53,7 +57,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
 
       {/* Subject Cards Section */}
-      <div className="space-y-6">
+      <div id="subjects-section" className="space-y-6">
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">Pilih Mata Pelajaran</h2>
