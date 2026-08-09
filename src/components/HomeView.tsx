@@ -50,38 +50,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
         </div>
       </div>
 
-      {/* Feature Highlights */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 shadow-xs space-y-3">
-          <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
-            ⚡
-          </div>
-          <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100">Bank Soal Terkurasi</h3>
-          <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
-            Soal latihan disusun sesuai standar ujian akademik tingkat lanjut dengan variasi tingkat kesulitan.
-          </p>
-        </div>
 
-        <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 shadow-xs space-y-3">
-          <div className="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-600 dark:text-sky-400 flex items-center justify-center font-bold">
-            💡
-          </div>
-          <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100">Pembahasan Detail</h3>
-          <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
-            Setiap soal dilengkapi kunci jawaban dan penjelasan langkah demi langkah yang mudah dipahami.
-          </p>
-        </div>
-
-        <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 shadow-xs space-y-3">
-          <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold">
-            📈
-          </div>
-          <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100">Evaluasi & Rekapitulasi</h3>
-          <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
-            Analisis skor, waktu pengerjaan, dan review lengkap setelah menyelesaikan sesi latihan.
-          </p>
-        </div>
-      </div>
 
       {/* Subject Cards Section */}
       <div className="space-y-6">
